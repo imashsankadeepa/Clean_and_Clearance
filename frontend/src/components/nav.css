@@ -1,0 +1,97 @@
+.navbar {
+  background-color: #48db5e; /* Dark green for eco-conscious branding */
+  padding: 1px; /* Reduced padding to decrease navbar height */
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.nav-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 70px; /* Fixed height to make navbar more compact */
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 200px; /* Slightly reduced from 140px to balance navbar */
+  width: fit-content; /* Adapts to logo size */
+  padding: 0.4rem; /* Minimal padding for compact container */
+  border-radius: 10px; /* Soft rounding */
+  background-color: rgba(255, 255, 255, 0.05); /* Subtle backdrop */
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+.logo:hover {
+  background-color: rgba(23, 23, 23, 0.15); /* Slightly stronger green on hover */
+  transform: scale(1.20); /* Subtle zoom for interactivity */
+}
+
+.logo-img {
+  height: 200px; /* Larger logo for prominence */
+  width: 150px; /* Ensuring the logo is square */
+  border-radius: 50%; /* Circular logo for modern look */
+  object-fit: contain;
+  filter: drop-shadow(0 3px 5px rgba(238, 238, 238, 0.2)); /* Enhanced shadow for depth */
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.logo-img:hover {
+  transform: scale(1.30); /* Larger hover effect for emphasis */
+  filter: drop-shadow(0 5px 7px rgba(0, 0, 0, 0.3));
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+}
+
+.nav-link {
+  color: #171616;
+  text-decoration: none;
+  font-size: 1.1rem;
+  font-weight: 500;
+  font-family: 'Roboto', sans-serif; /* Modern font */
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+  color: #111211; /* Bright green for hover */
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -3px;
+  left: 0;
+  background-color: #181a18;
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+  width: 100%; /* Underline effect on hover */
+}
+
+.mobile-menu-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+}
+
+.bar {
+  width: 25px;
+  height: 3px;
+  background-color: #ffffff;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
