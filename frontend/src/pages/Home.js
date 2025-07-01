@@ -6,6 +6,11 @@ import logo2 from '../assets/Logo2.png';
 import oakTree from '../assets/OAK_Tree.png';
 import roots from '../assets/roots.png';
 import roots5 from '../assets/roots5.png';
+import school from '../assets/school.jpg';
+import office from '../assets/office.jpg';
+import home from '../assets/home.jpg';
+
+
 
 const Home = () => {
   const [selectedPlan, setSelectedPlan] = useState('monthly');
@@ -37,9 +42,9 @@ const Home = () => {
   };
 
   const services = [
-    { id: 1, title: 'Office Cleaning', description: 'Professional office cleaning tailored to your schedule.', image: background1, buttonStyle: 'outline' },
-    { id: 2, title: 'Spring Cleaning', description: 'Deep cleaning for a fresh start every season.', image: background4, buttonStyle: 'filled' },
-    { id: 3, title: 'House Cleaning', description: 'Comprehensive home cleaning services.', image: logo2, buttonStyle: 'outline' },
+    { id: 1, title: 'Office Cleaning', description: 'Professional office cleaning tailored to your schedule.', image: office, buttonStyle: 'outline' },
+    { id: 2, title: 'School Cleaning', description: 'Deep cleaning for a fresh start every season.', image: school, buttonStyle: 'filled' },
+    { id: 3, title: 'House Cleaning', description: 'Comprehensive home cleaning services.', image: home, buttonStyle: 'outline' },
   ];
 
   const teamMembers = [
@@ -67,8 +72,8 @@ const Home = () => {
         <div className="hero-overlay"></div>
         <div className="container">
           <div className="hero-content">
-            <p className="hero-subtitle">Welcome to Clean Living</p>
-            <h1 className="hero-title">Top Cleaning Services</h1>
+            <p className="hero-subtitle">Welcome to Cleaner World</p>
+            <h1 className="hero-title">Britain's Most Trusted Cleaning & clearance Experts (Homes , Offices , Schools)</h1>
             <p className="hero-description">Over 20 years of excellence in cleaning solutions</p>
             <div className="hero-buttons">
               <button onClick={handleGetQuote} className="hero-button primary">Get Started</button>
@@ -82,7 +87,7 @@ const Home = () => {
       <section className="services-section">
         <div className="container">
           <div className="services-header">
-            <h2 className="section-title">Trusted Cleaning Experts</h2>
+            <h1 className="section-title">OUR SERVICES - TAILORED TO YOU </h1>
             <p className="section-description">20+ years of professional service with spotless results</p>
           </div>
           <div className="services-grid">
