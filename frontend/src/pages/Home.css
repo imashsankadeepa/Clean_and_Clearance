@@ -306,7 +306,7 @@
 /* Services Section */
 .services-section {
   padding: 80px 0; /* Increased padding for a more spacious feel */
-  background-color: #f9f9f9; /* Light background for contrast */
+  background-color: #ffffff; /* Light background for contrast */
 }
 
 .services-header {
@@ -474,55 +474,136 @@
   .service-button { padding: 6px 16px; font-size: 0.85rem; }
 }
 
-/* Quality Section */
-.quality-section {
-  padding: 64px 0;
+/* Why Choose Us Section Styling */
+.why-choose-section {
+  background-color: #ffffff;
+  padding: 4rem 1rem;
 }
 
-.quality-content {
-  display: grid;
-  gap: 48px;
-  grid-template-columns: 1fr;
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.why-choose-content {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  align-items: center;
 }
 
 @media (min-width: 1024px) {
-  .quality-content { grid-template-columns: 1fr 1fr; align-items: center; }
+  .why-choose-content {
+    flex-direction: row;
+    align-items: center;
+  }
 }
 
-.quality-text {
-  text-align: center;
+.why-choose-text {
+  flex: 1;
 }
 
-@media (min-width: 1024px) {
-  .quality-text { text-align: left; }
+.why-subtitle {
+  color: #3cea73;
+  font-size: 3.125rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
 }
 
-.quality-subtitle {
-  font-size: 14px;
-  color: var(--primary);
-  font-family: 'Lato', sans-serif;
-  margin-bottom: 16px;
+.section-title {
+  color: #1f2937;
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
 }
 
-.quality-images {
-  position: relative;
+.section-description {
+  color: #ffffff;
+  font-size: 1.25rem;
+  margin-bottom: 2rem;
 }
 
-.main-image, .secondary-image {
-  width: 100%;
-  height: auto;
+.benefits-list {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 2rem;
+}
+
+.benefit-item {
+  display: flex;
+  align-items: center;
+  color: #4b5563;
+  font-size: 1rem;
+  margin-bottom: 0.75rem;
+}
+
+.benefit-icon {
+  color: #2563eb;
+  margin-right: 0.5rem;
+  font-size: 1.25rem;
+}
+
+.company-name {
+  color: #1f2937;
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+}
+
+.cta-button {
+  background-color: #2563eb;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 9999px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.cta-button:hover {
+  background-color: #1d4ed8;
+}
+
+.why-choose-images {
+  flex: 1;
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+}
+
+.main-image {
+  width: 80%;
+
   object-fit: cover;
-  border-radius: 16px;
 }
 
 .secondary-image {
-  position: absolute;
-  bottom: -32px;
-  left: -32px;
-  width: 196px;
-  height: 172px;
+  width: 40%;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  object-fit: cover;
 }
 
+@media (max-width: 768px) {
+  .main-image {
+    width: 100%;
+  }
+
+  .secondary-image {
+    display: none;
+  }
+
+  .section-title {
+    font-size: 1.875rem;
+  }
+
+  .section-description {
+    font-size: 1.125rem;
+  }
+}
 /* Team Section */
 .team-section {
   padding: 64px 0;

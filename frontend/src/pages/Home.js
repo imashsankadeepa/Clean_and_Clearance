@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Home.css';
 import background1 from '../assets/background1.jpg';
 import background4 from '../assets/background4.png';
@@ -9,8 +9,12 @@ import roots5 from '../assets/roots5.png';
 import school from '../assets/school.jpg';
 import office from '../assets/office.jpg';
 import home from '../assets/home.jpg';
+import cleaning1 from '../assets/cleaning1.png'; // Importing the main CSS file for global styles
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-
+// Register GSAP ScrollTrigger
+gsap.registerPlugin(ScrollTrigger);
 
 const Home = () => {
   const [selectedPlan, setSelectedPlan] = useState('monthly');
@@ -40,6 +44,44 @@ const Home = () => {
   const handleGetQuote = () => {
     alert('Quote request submitted! We will contact you shortly.');
   };
+
+  // GSAP Animations for Why Choose Us Section
+  useEffect(() => {
+    // Animate text content
+    gsap.fromTo(
+      '.why-choose-text',
+      { opacity: 0, y: 50 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 1,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: '.why-choose-section',
+          start: 'top 80%',
+          toggleActions: 'play none none reverse',
+        },
+      }
+    );
+
+    // Animate images
+    gsap.fromTo(
+      '.why-choose-images img',
+      { opacity: 0, scale: 0.8 },
+      {
+        opacity: 1,
+        scale: 1,
+        duration: 1.2,
+        stagger: 0.3,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: '.why-choose-section',
+          start: 'top 80%',
+          toggleActions: 'play none none reverse',
+        },
+      }
+    );
+  }, []);
 
   const services = [
     { id: 1, title: 'Office Cleaning', description: 'Professional office cleaning tailored to your schedule.', image: office, buttonStyle: 'outline' },
@@ -105,26 +147,45 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Quality Section */}
-      <section className="quality-section">
+      {/* Why Choose Us Section */}
+      <section className="why-choose-section">
         <div className="container">
-          <div className="quality-content">
-            <div className="quality-text">
-              <p className="quality-subtitle">Affordable Solutions</p>
-              <h2 className="section-title">Quality Cleaning at Fair Prices</h2>
-              <p className="section-description">Tailored services for homes and offices</p>
-              <button onClick={handleGetQuote} className="cta-button">Get a Quote</button>
+          <div className="why-choose-content">
+            <div className="why-choose-text">
+              <p className="why-subtitle">Why Choose Us</p>
+              <h2 className="section-title">Let Us Be the Secret Behind Your Spotless Space</h2>
+              <p className="section-description">We're not just a service - we're your partners in peace of mind.</p>
+              <ul className="benefits-list">
+                <li className="benefit-item">
+                  <span className="benefit-icon">✔</span> Affordable packages for all budgets
+                </li>
+                <li className="benefit-item">
+                  <span className="benefit-icon">✔</span> Free site surveys
+                </li>
+                <li className="benefit-item">
+                  <span className="benefit-icon">✔</span> After-clean performing options
+                </li>
+                <li className="benefit-item">
+                  <span className="benefit-icon">✔</span> 100% satisfaction guaranteed
+                </li>
+                <li className="benefit-item">
+                  <span className="benefit-icon">✔</span> Loyalty program with discounts for regular customers & schools
+                </li>
+              </ul>
+              <p className="company-name">Oak Roots Cleaning & Clearance UK</p>
+              <button onClick={handleGetQuote} className="cta-button">
+                Get a Quote
+              </button>
             </div>
-            <div className="quality-images">
-              <img src={background4} alt="Cleaning Service" className="main-image" />
-              <img src={logo2} alt="Professional Cleaner" className="secondary-image" />
+            <div className="why-choose-images">
+              <img src={cleaning1} alt="Cleaning Service" className="main-image" />
+              
             </div>
           </div>
         </div>
       </section>
 
       {/* Team Section */}
-       {/* Team Section aa */}
       <section className="team-section">
         <div className="container">
           <div className="team-header">
