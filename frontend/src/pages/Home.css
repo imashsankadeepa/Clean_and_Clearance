@@ -93,7 +93,7 @@
 .hero-section {
   position: relative;
   min-height: 100vh;
-  background-image: url('../assets/background4.png');
+  background-image: url('../assets/background4.webp');
   background-size: cover;
   background-position: center;
   background-attachment: fixed; /* Parallax effect */
@@ -303,79 +303,71 @@
     background-image: url('../assets/background1.jpg');
   }
 }
-/* Services Section */
+/* ===== Services Section ===== */
 .services-section {
-  padding: 80px 0; /* Increased padding for a more spacious feel */
-  background-color: #ffffff; /* Light background for contrast */
+  padding: 80px 20px;
+  background-color: #ffffff;
 }
 
 .services-header {
-  color: #1a1a1a; /* Darker gray for better readability */
-  font-size: 4.5rem; /* Slightly larger for impact */
-  font-family: 'Roboto', serif;
-  font-weight: 400; /* Adjusted for a balanced look */
-  line-height: 1.2; /* Tighter line height for elegance */
-  margin-bottom: 40px; /* Increased margin for spacing */
-  transform: translateY(30px); /* Start below for animation */
-  animation: slideFadeInUp 1.5s ease-out 0.5s forwards; /* Enhanced animation */
-  text-align: left;
+  text-align: center;
+  margin-bottom: 60px;
+  animation: slideFadeInUp 1s ease-out;
 }
 
-.section-title {
-  font-size: 1.5rem; /* Increased for prominence */
-  font-weight: 700; /* Bolder for hierarchy */
-  color: #2c3e50; /* Rich dark blue for a premium feel */
-  font-family: 'Vietnam Pro', sans-serif;
-  margin-bottom: 12px;
-  text-transform: capitalize; /* Subtle capitalization */
+.services-header .section-title {
+  font-size: 3rem;
+  font-weight: 700;
+  color: #22C55E;
+  font-family: 'Poppins', sans-serif;
+  margin-bottom: 4px;
 }
 
-.section-description {
-  font-size: 1rem; /* Slightly larger for readability */
-  color: #7f8c8d; /* Muted gray for secondary text */
-  font-family: 'Vietnam Pro', sans-serif;
-  line-height: 1.6; /* Improved line spacing */
-}
-
-.divider {
-  width: 100%;
-  height: 2px; /* Thicker divider for emphasis */
-  background-color: #dfe6e9; /* Light gray for subtlety */
-  margin-bottom: 40px;
+.services-header .section-description {
+  font-size: 1.125rem;
+  color: #111827;
+  font-family: 'Poppins', sans-serif;
+  max-width: 500px;
+  margin: 0 auto;
+  line-height: 1.6;
 }
 
 .services-grid {
   display: grid;
-  gap: 40px; /* Increased gap for better spacing */
+  gap: 40px;
   grid-template-columns: 1fr;
 }
 
 @media (min-width: 768px) {
-  .services-grid { grid-template-columns: repeat(2, 1fr); }
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 @media (min-width: 1024px) {
-  .services-grid { grid-template-columns: repeat(3, 1fr); }
+  .services-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
+/* ===== Individual Service Card ===== */
 .service-card {
-  position: relative;
-  background: #ffffff; /* White card background for contrast */
-  border-radius: 12px; /* Rounded corners for modern look */
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-  overflow: hidden; /* Ensure image respects border-radius */
-  transition: transform 0.3s ease; /* Smooth hover effect */
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease;
 }
 
 .service-card:hover {
-  transform: translateY(-5px); /* Lift effect on hover */
+  transform: translateY(-5px);
 }
 
 .service-image {
   width: 100%;
-  height: 220px; /* Slightly taller for better visuals */
+  height: 220px;
   object-fit: cover;
-  border-radius: 12px 12px 0 0; /* Rounded top corners */
+  border-radius: 12px 12px 0 0;
 }
 
 .service-details {
@@ -383,39 +375,40 @@
 }
 
 .service-title {
-  font-size: 1.25rem; /* Larger for emphasis */
+  font-size: 1.25rem;
   font-weight: 700;
-  color: #3498db; /* Vibrant blue for primary text */
-  font-family: 'Vietnam Pro', sans-serif;
+  color: #666666;
+  font-family: 'Poppins', sans-serif;
   margin-bottom: 12px;
 }
 
 .service-description {
   font-size: 1rem;
-  color: #7f8c8d; /* Consistent muted gray */
-  font-family: 'Vietnam Pro', sans-serif;
+  color: #7f8c8d;
+  font-family: 'Poppins', sans-serif;
   margin-bottom: 20px;
   line-height: 1.6;
 }
 
+/* ===== Buttons ===== */
 .service-button {
-  padding: 10px 30px; /* More padding for better click area */
-  border-radius: 8px; /* Softer corners */
+  padding: 10px 30px;
+  border-radius: 8px;
   font-size: 1rem;
-  font-family: 'Vietnam Pro', sans-serif;
+  font-family: 'Poppins', sans-serif;
   cursor: pointer;
-  transition: all 0.4s ease; /* Smoother transition */
+  transition: all 0.4s ease;
 }
 
 .service-button.filled {
-   background-color: transparent;
+  background-color: transparent;
   color: #29d479;
-  border: 2px solid  #29d479;
+  border: 2px solid #29d479;
   box-shadow: 0 3px 10px rgba(56, 215, 39, 0.94);
 }
 
 .service-button.filled:hover {
-   background-color: #24ca4b;
+  background-color: #24ca4b;
   color: #ffffff;
   transform: translateY(-2px);
   box-shadow: 0 5px 15px rgba(50, 238, 107, 0.4);
@@ -424,7 +417,7 @@
 .service-button.outline {
   background-color: transparent;
   color: #29d479;
-  border: 2px solid  #29d479;
+  border: 2px solid #29d479;
   box-shadow: 0 3px 10px rgba(56, 215, 39, 0.94);
 }
 
@@ -435,7 +428,7 @@
   box-shadow: 0 5px 15px rgba(50, 238, 107, 0.4);
 }
 
-/* Animation Keyframes */
+/* ===== Animation Keyframes ===== */
 @keyframes slideFadeInUp {
   from {
     opacity: 0;
@@ -447,32 +440,82 @@
   }
 }
 
-/* Responsive Design */
-@media (min-width: 1024px) {
-  .services-header { display: flex; justify-content: space-between; align-items: center; }
-}
-
+/* ===== Responsive Design Tweaks ===== */
 @media (max-width: 768px) {
-  .services-section { padding: 60px 0; }
-  .services-header { font-size: 3.5rem; margin-bottom: 30px; }
-  .services-grid { gap: 24px; }
-  .service-image { height: 180px; }
-  .service-details { padding: 16px; }
-  .service-title { font-size: 1.1rem; }
-  .service-description { font-size: 0.9rem; }
-  .service-button { padding: 8px 20px; font-size: 0.9rem; }
+  .services-section {
+    padding: 60px 0;
+  }
+
+  .services-title {
+    font-size: 2.25rem;
+  }
+
+  .services-subtitle {
+    font-size: 1rem;
+    padding: 0 20px;
+  }
+
+  .services-grid {
+    gap: 24px;
+  }
+
+  .service-image {
+    height: 180px;
+  }
+
+  .service-details {
+    padding: 16px;
+  }
+
+  .service-title {
+    font-size: 1.1rem;
+  }
+
+  .service-description {
+    font-size: 0.95rem;
+  }
+
+  .service-button {
+    padding: 8px 20px;
+    font-size: 0.9rem;
+  }
 }
 
 @media (max-width: 480px) {
-  .services-section { padding: 40px 0; }
-  .services-header { font-size: 2.5rem; margin-bottom: 20px; }
-  .services-grid { gap: 16px; }
-  .service-image { height: 150px; }
-  .service-details { padding: 12px; }
-  .service-title { font-size: 1rem; }
-  .service-description { font-size: 0.85rem; }
-  .service-button { padding: 6px 16px; font-size: 0.85rem; }
+  .services-section {
+    padding: 40px 0;
+  }
+
+  .services-title {
+    font-size: 2rem;
+  }
+
+  .services-subtitle {
+    font-size: 0.95rem;
+  }
+
+  .service-image {
+    height: 150px;
+  }
+
+  .service-details {
+    padding: 12px;
+  }
+
+  .service-title {
+    font-size: 1rem;
+  }
+
+  .service-description {
+    font-size: 0.85rem;
+  }
+
+  .service-button {
+    padding: 6px 16px;
+    font-size: 0.85rem;
+  }
 }
+
 
 /* Why Choose Us Section Styling */
 .why-choose-section {
@@ -489,7 +532,7 @@
 .why-choose-content {
   display: flex;
   flex-direction: column;
-  gap: 3rem;
+  gap: 20rem;
   align-items: center;
 }
 
@@ -506,16 +549,20 @@
 
 .why-subtitle {
   color: #3cea73;
-  font-size: 3.125rem;
+  font-size: 3.250rem;
   font-weight: 600;
-  margin-bottom: 1rem;
+  margin-bottom: 9.rem;
+  line-height: 1.2;
 }
 
-.section-title {
+.section-title2 {
   color: #1f2937;
-  font-size: 1.75rem;
+  font-size: 1.5rem;
   font-weight: 700;
   margin-bottom: 1.5rem;
+  font-family: 'Poppins', sans-serif;
+  text-transform: uppercase;
+  text-align: center;
   line-height: 1.2;
 }
 
@@ -572,6 +619,7 @@
   display: flex;
   gap: 1.5rem;
   justify-content: center;
+  background: #fff;
 }
 
 .main-image {
@@ -604,21 +652,56 @@
     font-size: 1.125rem;
   }
 }
+/* Custom properties for consistent theming */
+:root {
+  --primary: #010101; /* Deep green for trust and professionalism */
+  --secondary: #4a5e5a; /* Muted gray for secondary text */
+  --accent: #2a9d8f; /* Vibrant teal for highlights */
+  --white: #ffffff;
+  --background: #ffffff; /* Light background for clean aesthetic */
+  --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  --transition: all 0.5s ease;
+}
+
 /* Team Section */
 .team-section {
-  padding: 64px 0;
+  padding: 80px 0;
+  background-color: var(--background);
 }
 
+/* Container for consistent width */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+/* Team Header */
 .team-header {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 48px;
+  text-align: center;
+  margin-bottom: 64px;
 }
 
-@media (min-width: 1024px) {
-  .team-header { flex-direction: row; justify-content: space-between; }
+.section-title1 {
+  font-size: 3.5rem;
+  font-weight: 700;
+
+  color: #3cea73;
+  font-family: 'Vietnam Pro', sans-serif;
+  margin-bottom: 16px;
+  line-height: 0.5;
 }
 
+.section-description {
+  font-size: 1.125rem;
+  color: var(--secondary);
+  font-family: 'Vietnam Pro', sans-serif;
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.5;
+}
+
+/* Team Grid */
 .team-grid {
   display: grid;
   gap: 32px;
@@ -626,84 +709,136 @@
 }
 
 @media (min-width: 768px) {
-  .team-grid { grid-template-columns: repeat(2, 1fr); }
+  .team-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 @media (min-width: 1024px) {
-  .team-grid { grid-template-columns: repeat(3, 1fr); }
+  .team-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
+/* Team Card */
 .team-card {
   background-color: var(--white);
   border-radius: 16px;
   overflow: hidden;
+  box-shadow: var(--shadow);
+  transition: var(--transition);
+  position: relative;
 }
 
+.team-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+/* Team Image */
 .team-image {
   width: 100%;
-  height: 224px;
+  height: 240px;
   object-fit: cover;
   border-top-left-radius: 16px;
   border-top-right-radius: 16px;
+  transition: var(--transition);
 }
 
+.team-card:hover .team-image {
+  transform: scale(1.05);
+}
+
+/* Team Details */
 .team-details {
-  padding: 16px;
+  padding: 24px;
 }
 
+/* Team Name */
 .team-name {
-  font-size: 18px;
+  font-size: 1.25rem;
   font-weight: 600;
   color: var(--primary);
   font-family: 'Vietnam Pro', sans-serif;
-  margin-bottom: 8px;
+  margin-bottom: 12px;
 }
 
+/* Team Description */
 .team-description {
-  font-size: 14px;
+  font-size: 0.875rem;
   color: var(--secondary);
   font-family: 'Vietnam Pro', sans-serif;
   margin-bottom: 16px;
-  line-height: 1.5;
+  line-height: 1.6;
 }
 
+/* Social Links */
 .social-links {
   display: flex;
-  gap: 8px;
+  gap: 12px;
 }
 
 .social-link {
-  width: 24px;
-  height: 24px;
+  width: 32px;
+  height: 32px;
   display: flex;
   align-items: center;
   justify-content: center;
+  border-radius: 50%;
+  background-color: var(--accent);
+  transition: var(--transition);
 }
 
 .social-link:hover {
-  opacity: 0.75;
+  background-color: var(--primary);
+  transform: scale(1.1);
 }
 
 .social-icon {
-  width: 24px;
-  height: 24px;
+  width: 20px;
+  height: 20px;
+  filter: brightness(0) invert(1); /* White icons for contrast */
 }
 
+/* Accessibility Improvements */
+.team-card:focus-within {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+}
+
+.social-link:focus {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .section-title {
+    font-size: 2rem;
+  }
+
+  .section-description {
+    font-size: 1rem;
+  }
+
+  .team-image {
+    height: 200px;
+  }
+
+  .team-details {
+    padding: 16px;
+  }
+}
 /* Pricing Section */
 .pricing-section {
   padding: 80px 0;
   position: relative;
-  background-image: url('../assets/background3.jpg');
+  background-image: url('../assets/background4.webp');
   background-size: cover;
   background-position: center;
 }
 
-.pricing-overlay {
-  position: absolute;
-  inset: 0;
-  background-color: var(--success);
-  opacity: 0.9;
-}
+
 
 .pricing-header {
   text-align: center;
@@ -713,10 +848,25 @@
 }
 
 .pricing-subtitle {
-  font-size: 14px;
-  color: var(--white);
-  font-family: 'Gilroy', sans-serif;
-  margin-bottom: 8px;
+  color: var(--success);
+  font-size: 3.250rem;
+  font-weight: 600;
+  margin-bottom: 9.rem;
+  line-height: 1.2;
+   text-transform: uppercase;
+}
+
+.section-title4{
+  color:white;
+  font-size: 3.5rem;
+  font-weight: 700;
+  margin-bottom: 16px;
+  font-family: 'Poppins', sans-serif;
+  text-transform: uppercase;
+  outline-color: black;
+  text-align: center;
+  line-height: 1.2;
+  text-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
 }
 
 .plan-toggle {
@@ -842,359 +992,567 @@
 }
 
 /* Blog Section */
+/* ===== BLOG SECTION WITH BACKGROUND IMAGE AND ROTATION EFFECT ===== */
+
 .blog-section {
-  padding: 64px 0;
+  position: relative;
+  padding: 80px 20px;
+  background-color: var(--near-white); /* fallback background */
+  background-image: url('../assets/cleaning2.webp'); /* ✅ replace with your path */
+  background-repeat: no-repeat;
+  background-position: left top; /* or use left center or left bottom */
+  background-size: 450px auto; /* ✅ larger background image */
 }
 
+/* Container inside blog section */
+.blog-section > .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* ===== Blog Header ===== */
 .blog-header {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 48px;
+  text-align: center;
+  margin-bottom: 64px;
+  color: #49ed33;
+
 }
 
-@media (min-width: 1024px) {
-  .blog-header { flex-direction: row; justify-content: space-between; }
+.section-title {
+  font-size: 3.5rem;
+  font-weight: 700;
+  color:  #2ae77f;
+  margin-bottom: 12px;
+  font-family: 'Vietnam Pro', sans-serif;
 }
 
+.section-description {
+  font-size: 1.125rem;
+  color: var(--secondary);
+  max-width: 600px;
+  margin: 0 auto;
+  font-family: 'Vietnam Pro', sans-serif;
+}
+
+/* ===== Blog Grid ===== */
 .blog-grid {
   display: grid;
-  gap: 32px;
+  gap: 40px;
   grid-template-columns: 1fr;
+  margin-top: 40px;
+  animation: fadeInUp 0.5s ease-out;
+  
 }
 
 @media (min-width: 768px) {
-  .blog-grid { grid-template-columns: repeat(2, 1fr); }
+  .blog-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 @media (min-width: 1024px) {
-  .blog-grid { grid-template-columns: repeat(3, 1fr); }
+  .blog-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
+/* ===== Blog Card ===== */
 .blog-card {
   background-color: var(--white);
   border-radius: 24px;
   overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  transition: transform 0.4s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  display: center;
+  flex-direction: column;
+
+  /* 3D effect preparation */
+  transform-style: preserve-3d;
+  perspective: 1000px;
 }
 
+.blog-card:hover {
+  transform: rotateY(5deg) scale(1.03) translateY(-8px);
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.15);
+}
+
+/* ===== Blog Image ===== */
 .blog-image {
   width: 100%;
-  height: 204px;
+  height: 220px;
   object-fit: cover;
   border-top-left-radius: 24px;
   border-top-right-radius: 24px;
+  transition: transform 0.4s ease;
+  flex-shrink: 0;
 }
 
+.blog-card:hover .blog-image {
+  transform: scale(1.05);
+}
+
+/* ===== Blog Details ===== */
 .blog-details {
-  padding: 20px;
+  padding: 24px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
 }
 
+/* ===== Blog Meta ===== */
 .blog-meta {
   font-size: 12px;
   color: var(--secondary);
-  font-family: 'Vietnam Pro', sans-serif;
   margin-bottom: 8px;
-}
-
-.blog-title {
-  font-size: 14px;
-  font-weight: 700;
-  color: var(--dark);
   font-family: 'Vietnam Pro', sans-serif;
-  margin-bottom: 12px;
-  text-align: center;
-  line-height: 1.2;
 }
 
+
+
+/* ===== Blog Title ===== */
+.blog-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 12px;
+  line-height: 1.4;
+  font-family: 'Vietnam Pro', sans-serif;
+}
+
+/* ===== Blog Excerpt ===== */
 .blog-excerpt {
   font-size: 14px;
   color: var(--secondary);
+  line-height: 1.6;
+  margin-bottom: 20px;
   font-family: 'Vietnam Pro', sans-serif;
-  margin-bottom: 16px;
-  text-align: center;
-  line-height: 1.5;
+  flex-grow: 1;
 }
 
-.read-more {
-  font-size: 14px;
-  font-weight: 500;
-  color: var(--secondary);
-  font-family: 'Vietnam Pro', sans-serif;
-  text-decoration: underline;
-}
-
-.read-more:hover {
-  color: var(--primary);
-}
-
+/* ===== Read More Button ===== */
 .read-more-button {
-  background-color: var(--success);
+  background-color: var(--primary);
   color: var(--white);
-  padding: 12px 32px;
+  padding: 12px 28px;
   border-radius: 12px;
-  font-size: 14px;
-  font-family: 'Vietnam Pro', sans-serif;
-  font-weight: 600;
   border: none;
   cursor: pointer;
-  transition: background-color 0.3s;
+  font-weight: 600;
+  font-family: 'Vietnam Pro', sans-serif;
+  align-self: flex-start;
+  transition: background-color 0.3s ease;
 }
 
 .read-more-button:hover {
-  background-color: #16a34a;
+  background-color: #2ae77f;
 }
 
+/* ===== Contact Section ===== */
 /* Contact Section */
+/* ===== Contact Section ===== */
 .contact-section {
-  padding: 64px 0;
+  padding: 80px 20px;
+  background-color: var(--near-white);
+  font-family: 'Vietnam Pro', sans-serif;
 }
 
 .contact-content {
   display: grid;
-  gap: 48px;
   grid-template-columns: 1fr;
+  gap: 64px;
+  max-width: 1200px;
+  margin: 0 auto;
+  align-items: start;
 }
 
 @media (min-width: 1024px) {
-  .contact-content { grid-template-columns: 1fr 1fr; }
+  .contact-content {
+    grid-template-columns: 1fr 1fr;
+  }
 }
 
+/* Contact Info */
 .contact-info {
   text-align: center;
+  color: var(--primary);
+  user-select: none;
 }
 
 @media (min-width: 1024px) {
-  .contact-info { text-align: left; }
+  .contact-info {
+    text-align: left;
+  }
 }
 
 .contact-items {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 32px;
+  margin-top: 24px;
 }
 
 .contact-item {
-  background-color: var(--near-white);
-  border-radius: 8px;
-  padding: 16px;
+  background-color: var(--white);
+  border-radius: 12px;
+  padding: 24px 30px;
   display: flex;
   align-items: center;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.07);
   border: 1px solid var(--off-white);
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+  cursor: default;
+}
+
+.contact-item:hover,
+.contact-item:focus-within {
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+  border-color: var(--success);
 }
 
 .contact-icon {
-  width: 40px;
-  height: 40px;
-  margin-right: 16px;
+  width: 48px;
+  height: 48px;
+  margin-right: 24px;
+  filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.1));
+  flex-shrink: 0;
 }
 
-.contact-title {
-  font-size: 14px;
-  font-weight: 600;
+.contact-item h3 {
+  margin: 0 0 6px 0;
+  font-size: 18px;
+  font-weight: 700;
   color: var(--primary);
-  font-family: 'Vietnam Pro', sans-serif;
 }
 
-.contact-detail {
-  font-size: 14px;
+.contact-item p {
+  margin: 0;
+  font-size: 15px;
   color: var(--secondary);
   font-family: 'Work Sans', sans-serif;
 }
 
+/* Contact Form */
 .contact-form-container {
-  text-align: center;
+  background-color: var(--white);
+  border-radius: 12px;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.1);
+  padding: 40px 36px;
+  max-width: 520px;
+  margin: 0 auto;
+  user-select: text;
+  transition: box-shadow 0.3s ease;
+}
+
+.contact-form-container:hover,
+.contact-form-container:focus-within {
+  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.15);
 }
 
 @media (min-width: 1024px) {
-  .contact-form-container { text-align: left; }
+  .contact-form-container {
+    margin: 0;
+  }
 }
 
 .contact-form {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 24px;
 }
 
-.form-input, .form-textarea {
+.form-input,
+.form-textarea {
   width: 100%;
-  padding: 12px;
-  border: 1px solid var(--off-white);
-  border-radius: 4px;
+  padding: 16px 18px;
+  border: 1.8px solid var(--off-white);
+  border-radius: 8px;
+  font-size: 16px;
+  color: var(--primary);
   background-color: var(--white);
-  font-size: 14px;
-  color: var(--secondary);
   font-family: 'Vietnam Pro', sans-serif;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
 }
 
-.form-input:focus, .form-textarea:focus {
+.form-input::placeholder,
+.form-textarea::placeholder {
+  color: var(--secondary);
+  opacity: 0.7;
+}
+
+.form-input:focus,
+.form-textarea:focus {
   outline: none;
-  box-shadow: 0 0 0 2px var(--success);
+  border-color: var(--success);
+  box-shadow: 0 0 8px var(--success);
 }
 
 .form-textarea {
-  resize: none;
-}
-
-.form-button {
-  background-color: var(--success);
-  color: var(--white);
-  padding: 8px 32px;
-  border-radius: 4px;
-  font-size: 14px;
-  font-family: 'Graphik', sans-serif;
-  font-weight: 500;
-  border: none;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-.form-button:hover {
-  background-color: #16a34a;
-}
-
-/* Footer */
-.footer {
-  background-color: var(--primary);
-  padding: 64px 0;
-}
-
-.footer-content {
-  display: grid;
-  gap: 32px;
-  grid-template-columns: 1fr;
-  margin-bottom: 32px;
-}
-
-@media (min-width: 768px) {
-  .footer-content { grid-template-columns: 1fr 1fr; }
-}
-
-@media (min-width: 1024px) {
-  .footer-content { grid-template-columns: repeat(4, 1fr); }
-}
-
-.footer-section {
-  text-align: center;
-}
-
-@media (min-width: 1024px) {
-  .footer-section { text-align: left; }
-}
-
-.footer-logo {
-  display: flex;
-  align-items: center;
-  margin-bottom: 16px;
-  justify-content: center;
-}
-
-@media (min-width: 1024px) {
-  .footer-logo { justify-content: flex-start; }
-}
-
-.footer-logo-title {
-  font-size: 18px;
-  font-weight: 700;
-  font-family: 'Vietnam Pro', sans-serif;
-}
-
-.footer-logo-title .highlight {
-  color: var(--success);
-}
-
-.footer-logo-title span:not(.highlight) {
-  color: var(--white);
-}
-
-.footer-logo-subtitle {
-  font-size: 12px;
-  color: var(--white);
-  font-family: 'Vietnam Pro', sans-serif;
-}
-
-.footer-description {
-  font-size: 14px;
-  color: var(--white);
-  font-family: 'Vietnam Pro', sans-serif;
+  resize: vertical;
+  min-height: 140px;
   line-height: 1.5;
 }
 
-.footer-title {
-  font-size: 14px;
-  font-weight: 700;
+.form-button {
+  align-self: flex-start;
+  background-color: var(--success);
   color: var(--white);
-  font-family: 'Vietnam Pro', sans-serif;
-  margin-bottom: 24px;
+  padding: 14px 40px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  font-family: 'Graphik', sans-serif;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 12px rgba(34, 197, 94, 0.5);
 }
 
+.form-button:hover,
+.form-button:focus-visible {
+  background-color: #16a34a;
+  box-shadow: 0 6px 20px rgba(22, 163, 74, 0.7);
+  outline: none;
+}
+/* ===== Footer Section ===== */
+.footer {
+  background: linear-gradient(135deg, #0f1f2f 0%, #1a293d 100%);
+  color: #e0e6f0;
+  padding: 80px 20px 40px;
+  font-family: 'Vietnam Pro', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  user-select: none;
+  box-shadow: inset 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+/* Max container */
+.footer-content {
+  max-width: 1400px;
+  margin: 0 auto 40px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 48px;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .footer-content {
+    grid-template-columns: repeat(2, 1fr);
+    text-align: left;
+  }
+}
+
+@media (min-width: 1024px) {
+  .footer-content {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* Section Wrapper */
+.footer-section {
+  user-select: text;
+}
+
+/* Logo & Branding */
+.footer-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+  gap: 12px;
+  transition: transform 0.3s ease;
+}
+
+.footer-logo:hover,
+.footer-logo:focus-within {
+  transform: scale(1.05);
+  outline: none;
+}
+
+.footer-logo-title {
+  font-size: 28px;
+  font-weight: 800;
+  line-height: 1.1;
+  color: #f5f7fa;
+  letter-spacing: 1.2px;
+  user-select: none;
+}
+
+.footer-logo-title .highlight {
+  color: #4ade80; /* Soft green */
+  text-shadow: 0 0 6px #4ade80aa;
+}
+
+.footer-logo-subtitle {
+  font-size: 14px;
+  color: #b0b8c1;
+  font-weight: 400;
+  margin-top: 6px;
+  user-select: text;
+}
+
+/* Description */
+.footer-description {
+  font-size: 16px;
+  color: #cbd5e1;
+  line-height: 1.7;
+  margin-bottom: 32px;
+  user-select: text;
+}
+
+/* Titles */
+.footer-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #f5f7fa;
+  margin-bottom: 28px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* Links List */
 .footer-links {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 18px;
 }
 
 .footer-link {
-  font-size: 14px;
-  color: var(--white);
-  font-family: 'Vietnam Pro', sans-serif;
+  font-size: 15px;
+  color: #a0aec0;
   text-decoration: none;
+  transition: color 0.25s ease, transform 0.2s ease;
+  position: relative;
+  padding-left: 4px;
 }
 
-.footer-link:hover {
-  color: var(--success);
+.footer-link::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: #4ade80;
+  font-weight: 700;
+  opacity: 0;
+  transition: opacity 0.25s ease;
 }
 
+.footer-link:hover,
+.footer-link:focus-visible {
+  color: #4ade80;
+  transform: translateX(6px);
+  outline: none;
+}
+
+.footer-link:hover::before,
+.footer-link:focus-visible::before {
+  opacity: 1;
+}
+
+/* Newsletter Form */
 .newsletter-form {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 20px;
+  max-width: 320px;
 }
 
 .newsletter-input {
   width: 100%;
-  padding: 12px;
-  border: 1px solid #4b5563;
-  border-radius: 4px;
+  padding: 16px 20px;
+  border: 2px solid #374151;
+  border-radius: 10px;
   background-color: transparent;
-  font-size: 14px;
-  color: var(--muted);
+  font-size: 16px;
+  color: #cbd5e1;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
   font-family: 'Vietnam Pro', sans-serif;
 }
 
 .newsletter-input::placeholder {
-  color: #9ca3af;
+  color: #6b7280;
+  opacity: 1;
 }
 
 .newsletter-input:focus {
   outline: none;
-  box-shadow: 0 0 0 2px var(--success);
+  border-color: #4ade80;
+  box-shadow: 0 0 12px #4ade80aa;
 }
 
 .newsletter-button {
-  background-color: var(--success);
-  color: var(--white);
-  padding: 8px 24px;
-  border-radius: 4px;
-  font-size: 14px;
-  font-family: 'Vietnam Pro', sans-serif;
+  background-color: #4ade80;
+  color: #0f172a;
+  padding: 14px 36px;
+  font-size: 16px;
   font-weight: 700;
+  border-radius: 12px;
   border: none;
   cursor: pointer;
-  transition: background-color 0.3s;
+  font-family: 'Vietnam Pro', sans-serif;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 6px 18px rgba(74, 222, 128, 0.6);
 }
 
-.newsletter-button:hover {
-  background-color: #16a34a;
+.newsletter-button:hover,
+.newsletter-button:focus-visible {
+  background-color: #22c55e;
+  box-shadow: 0 8px 24px rgba(34, 197, 94, 0.85);
+  outline: none;
 }
 
+/* Social Icons Wrapper */
+.footer-social {
+  margin-top: 32px;
+  display: flex;
+  gap: 24px;
+  justify-content: center;
+}
+
+@media (min-width: 1024px) {
+  .footer-social {
+    justify-content: flex-start;
+  }
+}
+
+.footer-social a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  background-color: #374151;
+  border-radius: 50%;
+  color: #a0aec0;
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+  text-decoration: none;
+  font-size: 20px;
+}
+
+.footer-social a:hover,
+.footer-social a:focus-visible {
+  background-color: #4ade80;
+  color: #0f172a;
+  transform: scale(1.1);
+  outline: none;
+}
+
+/* Footer Bottom Bar */
 .footer-bottom {
   border-top: 1px solid #374151;
-  padding-top: 24px;
+  padding-top: 28px;
+  text-align: center;
+  font-size: 14px;
+  color: #9ca3af;
+  user-select: none;
 }
 
-.footer-copyright {
-  font-size: 14px;
-  color: var(--white);
-  font-family: 'Vietnam Pro', sans-serif;
-  text-align: center;
+/* Accessibility: visible focus outlines */
+.footer-link:focus-visible,
+.newsletter-input:focus-visible,
+.newsletter-button:focus-visible,
+.footer-social a:focus-visible {
+  outline: 2px solid #4ade80;
+  outline-offset: 3px;
 }
+

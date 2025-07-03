@@ -1,15 +1,18 @@
+
 import React, { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
 import './Home.css';
+ // Import the separate Team Section CSS
 import background1 from '../assets/background1.jpg';
-import background4 from '../assets/background4.png';
+import background4 from '../assets/background4.webp';
 import logo2 from '../assets/Logo2.png';
-import oakTree from '../assets/OAK_Tree.png';
-import roots from '../assets/roots.png';
-import roots5 from '../assets/roots5.png';
-import school from '../assets/school.jpg';
-import office from '../assets/office.jpg';
-import home from '../assets/home.jpg';
-import cleaning1 from '../assets/cleaning1.png'; // Importing the main CSS file for global styles
+import office1 from '../assets/office1.webp';
+import home1 from '../assets/home1.webp';
+import kichen from '../assets/kichen.webp';
+import cleaning2 from '../assets/cleaning2.webp';
+import p1 from '../assets/p1.webp';
+import p2 from '../assets/p2.webp';
+import p3 from '../assets/p3.webp';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -47,7 +50,6 @@ const Home = () => {
 
   // GSAP Animations for Why Choose Us Section
   useEffect(() => {
-    // Animate text content
     gsap.fromTo(
       '.why-choose-text',
       { opacity: 0, y: 50 },
@@ -64,7 +66,6 @@ const Home = () => {
       }
     );
 
-    // Animate images
     gsap.fromTo(
       '.why-choose-images img',
       { opacity: 0, scale: 0.8 },
@@ -84,15 +85,15 @@ const Home = () => {
   }, []);
 
   const services = [
-    { id: 1, title: 'Office Cleaning', description: 'Professional office cleaning tailored to your schedule.', image: office, buttonStyle: 'outline' },
-    { id: 2, title: 'School Cleaning', description: 'Deep cleaning for a fresh start every season.', image: school, buttonStyle: 'filled' },
-    { id: 3, title: 'House Cleaning', description: 'Comprehensive home cleaning services.', image: home, buttonStyle: 'outline' },
+    { id: 1, title: 'Office Cleaning', description: 'Professional office cleaning tailored to your schedule.', image: office1, buttonStyle: 'outline' },
+    { id: 2, title: 'School Cleaning', description: 'Deep cleaning for a fresh start every season.', image:home1 , buttonStyle: 'filled' },
+    { id: 3, title: 'House Cleaning', description: 'Comprehensive home cleaning services.', image: kichen, buttonStyle: 'outline' },
   ];
 
   const teamMembers = [
-    { id: 1, name: 'Jane Doe', image: oakTree, description: 'Expert in residential cleaning.', socialLinks: [{ icon: '/images/img_instagram.svg', url: '#' }] },
-    { id: 2, name: 'John Smith', image: roots, description: 'Specialist in office hygiene.', socialLinks: [{ icon: '/images/img_linkedin.svg', url: '#' }] },
-    { id: 3, name: 'Emily Brown', image: roots5, description: 'Pro in deep cleaning.', socialLinks: [{ icon: '/images/img_behance.svg', url: '#' }] },
+    { id: 1, name: 'Amashi', image: p1, description: 'Expert in residential cleaning.', socialLinks: [{ icon: '/images/img_instagram.svg', url: '#' }] },
+    { id: 2, name: 'Sanka', image: p2, description: 'Specialist in office hygiene.', socialLinks: [{ icon: '/images/img_linkedin.svg', url: '#' }] },
+    { id: 3, name: 'Sathisma', image: p3, description: 'Pro in deep cleaning.', socialLinks: [{ icon: '/images/img_behance.svg', url: '#' }] },
   ];
 
   const pricingPlans = [
@@ -102,10 +103,45 @@ const Home = () => {
   ];
 
   const blogPosts = [
-    { id: 1, title: 'Cleaning Tips', author: 'Jane Doe', date: 'Jun 15, 2025', excerpt: 'Learn simple cleaning hacks.', image: background1, buttonStyle: 'link' },
-    { id: 2, title: 'Eco-Friendly Cleaning', author: 'John Smith', date: 'Jun 20, 2025', excerpt: 'Go green with our methods.', image: background4, buttonStyle: 'filled' },
-    { id: 3, title: 'Seasonal Prep', author: 'Emily Brown', date: 'Jun 25, 2025', excerpt: 'Prepare your home for seasons.', image: logo2, buttonStyle: 'link' },
-  ];
+  {
+    id: 1,
+    image:p1,
+    title: '5 Essential Kitchen Cleaning Tips',
+    excerpt: 'Keep your UK kitchen spotless with minimal effort.',
+    author: 'Sarah M.',
+    date: 'July 2025',
+  },
+  {
+    id: 2,
+    image:p1,
+    title: 'End-of-Tenancy Cleaning Guide',
+    excerpt: 'Make sure you get your full deposit back with these tips.',
+    author: 'John B.',
+    date: 'June 2025',
+  },
+  {
+    id: 3,
+    image: p3,
+    title: 'Eco-Friendly Cleaning Products',
+    excerpt: 'Safe, sustainable and budget-friendly options for your home.',
+    author: 'Claire D.',
+    date: 'May 2025',
+  },
+]
+
+  // Animation variants for team cards
+  const cardVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: (i) => ({
+      opacity: 1,
+      y: 0,
+      transition: {
+        delay: i * 0.2,
+        duration: 0.6,
+        ease: 'easeOut',
+      },
+    }),
+  };
 
   return (
     <div className="home-container">
@@ -115,7 +151,7 @@ const Home = () => {
         <div className="container">
           <div className="hero-content">
             <p className="hero-subtitle">Welcome to Cleaner World</p>
-            <h1 className="hero-title">Britain's Most Trusted Cleaning & clearance Experts (Homes , Offices , Schools)</h1>
+            <h1 className="hero-title">Britain's Most Trusted Cleaning & Clearance Experts (Homes, Offices, Schools)</h1>
             <p className="hero-description">Over 20 years of excellence in cleaning solutions</p>
             <div className="hero-buttons">
               <button onClick={handleGetQuote} className="hero-button primary">Get Started</button>
@@ -129,7 +165,7 @@ const Home = () => {
       <section className="services-section">
         <div className="container">
           <div className="services-header">
-            <h1 className="section-title">OUR SERVICES - TAILORED TO YOU </h1>
+            <h1 className="section-title">OUR SERVICES - TAILORED TO YOU</h1>
             <p className="section-description">20+ years of professional service with spotless results</p>
           </div>
           <div className="services-grid">
@@ -153,7 +189,7 @@ const Home = () => {
           <div className="why-choose-content">
             <div className="why-choose-text">
               <p className="why-subtitle">Why Choose Us</p>
-              <h2 className="section-title">Let Us Be the Secret Behind Your Spotless Space</h2>
+              <h2 className="section-title2">Let Us Be the Secret Behind Your Spotless Space</h2>
               <p className="section-description">We're not just a service - we're your partners in peace of mind.</p>
               <ul className="benefits-list">
                 <li className="benefit-item">
@@ -178,36 +214,61 @@ const Home = () => {
               </button>
             </div>
             <div className="why-choose-images">
-              <img src={cleaning1} alt="Cleaning Service" className="main-image" />
-              
+              <img src={cleaning2} alt="Cleaning Service" className="main-image" />
             </div>
           </div>
         </div>
       </section>
 
       {/* Team Section */}
-      <section className="team-section">
+      <section className="team-section" aria-labelledby="team-heading">
         <div className="container">
           <div className="team-header">
-            <h2 className="section-title">Our Expert Team</h2>
-            <p className="section-description">Professionals ensuring top hygiene</p>
+            <h2 id="team-heading" className="section-title1">Our Expert Team</h2>
+            <p className="section-description">Professionals delivering exceptional cleaning and clearance services across the UK</p>
           </div>
           <div className="team-grid">
-            {teamMembers.map((member) => (
-              <div key={member.id} className="team-card">
-                <img src={member.image} alt={member.name} className="team-image" />
+            {teamMembers.map((member, index) => (
+              <motion.div
+                key={member.id}
+                className="team-card"
+                custom={index}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.3 }}
+                variants={cardVariants}
+                role="article"
+                aria-labelledby={`team-member-${member.id}`}
+              >
+                <img
+                  src={member.image}
+                  alt={`Portrait of ${member.name}`}
+                  className="team-image"
+                  loading="lazy"
+                />
                 <div className="team-details">
-                  <h3 className="team-name">{member.name}</h3>
+                  <h3 id={`team-member-${member.id}`} className="team-name">{member.name}</h3>
                   <p className="team-description">{member.description}</p>
-                  <div className="social-links">
+                  <div className="social-links" role="navigation" aria-label={`Social media links for ${member.name}`}>
                     {member.socialLinks.map((link, index) => (
-                      <a key={index} href={link.url} className="social-link">
-                        <img src={link.icon} alt="Social" className="social-icon" />
+                      <a
+                        key={index}
+                        href={link.url}
+                        className="social-link"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={`Visit ${member.name}'s ${
+                          link.icon.includes('linkedin') ? 'LinkedIn' :
+                          link.icon.includes('instagram') ? 'Instagram' :
+                          link.icon.includes('behance') ? 'Behance' : 'social'
+                        } profile`}
+                      >
+                        <img src={link.icon} alt="" className="social-icon" />
                       </a>
                     ))}
                   </div>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
@@ -219,7 +280,7 @@ const Home = () => {
         <div className="container">
           <div className="pricing-header">
             <p className="pricing-subtitle">Our Plans</p>
-            <h2 className="section-title">Choose Your Plan</h2>
+            <h2 className="section-title4">Choose Your Plan</h2>
             <div className="plan-toggle">
               <button onClick={() => setSelectedPlan('monthly')} className={`toggle-button ${selectedPlan === 'monthly' ? 'active' : ''}`}>Monthly</button>
               <button onClick={() => setSelectedPlan('yearly')} className={`toggle-button ${selectedPlan === 'yearly' ? 'active' : ''}`}>Yearly</button>
@@ -247,26 +308,43 @@ const Home = () => {
 
       {/* Blog Section */}
       <section className="blog-section">
-        <div className="container">
-          <div className="blog-header">
-            <h2 className="section-title">Latest Cleaning Tips</h2>
-            <p className="section-description">Stay updated with our advice</p>
-          </div>
-          <div className="blog-grid">
-            {blogPosts.map((post) => (
-              <div key={post.id} className="blog-card">
-                <img src={post.image} alt={post.title} className="blog-image" />
-                <div className="blog-details">
-                  <p className="blog-meta">{post.author} | {post.date}</p>
-                  <h3 className="blog-title">{post.title}</h3>
-                  <p className="blog-excerpt">{post.excerpt}</p>
-                  {post.buttonStyle === 'link' ? <a href="#" className="read-more">Read More</a> : <button className="read-more-button">Read More</button>}
-                </div>
+      <div className="container">
+        <motion.div 
+          className="blog-header"
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+        >
+          <h2 className="section-title">Latest Cleaning Tips</h2>
+          <p className="section-description">Stay updated with expert advice</p>
+        </motion.div>
+        
+  
+
+
+        <div className="blog-grid">
+          {blogPosts.map((post, index) => (
+            <motion.div 
+              key={post.id}
+              className="blog-card"
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: index * 0.2 }}
+              whileHover={{ scale: 1.03 }}
+              viewport={{ once: true }}
+            >
+              <img src={post.image} alt={post.title} className="blog-image" />
+              <div className="blog-details">
+                <p className="blog-meta">{post.author} | {post.date}</p>
+                <h3 className="blog-title">{post.title}</h3>
+                <p className="blog-excerpt">{post.excerpt}</p>
+                <button className="read-more-button">Read More</button>
               </div>
-            ))}
-          </div>
+            </motion.div>
+          ))}
         </div>
-      </section>
+      </div>
+    </section>
 
       {/* Contact Section */}
       <section className="contact-section">
@@ -300,28 +378,30 @@ const Home = () => {
 
       {/* Footer */}
       <footer className="footer">
-        <div className="container">
-          <div className="footer-content">
-            <div className="footer-section">
-              <h3>Clean Living</h3>
-              <p>Top cleaning services since 2005</p>
-            </div>
-            <div className="footer-section">
-              <h4>Links</h4>
-              <ul><li><a href="#">About</a></li><li><a href="#">Services</a></li></ul>
-            </div>
-            <div className="footer-section">
-              <h4>Newsletter</h4>
-              <form onSubmit={handleNewsletterSubmit} className="newsletter-form">
-                <input type="email" placeholder="Your Email" value={newsletterEmail} onChange={(e) => setNewsletterEmail(e.target.value)} className="newsletter-input" required />
-                <button type="submit" className="newsletter-button">Send</button>
-              </form>
-            </div>
-          </div>
-          <p className="footer-copyright">2025 Clean Living | All Rights Reserved</p>
-        </div>
-      </footer>
+  <div className="footer-content">
+    <section className="footer-section">
+      <div className="footer-logo" tabIndex="0" aria-label="Company Logo">
+        <h1 className="footer-logo-title">
+          OAK<span className="highlight">Root</span>
+        </h1>
+      </div>
+      <p className="footer-description">
+        Leading cleaning service provider with eco-friendly solutions.
+      </p>
+      <div className="footer-social" aria-label="Social media links">
+        <a href="#" aria-label="Facebook"><i className="fab fa-facebook-f"></i></a>
+        <a href="#" aria-label="Twitter"><i className="fab fa-twitter"></i></a>
+        <a href="#" aria-label="LinkedIn"><i className="fab fa-linkedin-in"></i></a>
+      </div>
+    </section>
+    {/* More sections with .footer-section */}
+  </div>
+  <div className="footer-bottom">
+    &copy; 2025 CleanPro. All rights reserved.
+  </div>
+</footer>
     </div>
+
   );
 };
 
