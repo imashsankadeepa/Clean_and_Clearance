@@ -91,17 +91,15 @@
 
 /* Hero Section */
 .hero-section {
-  position: relative;
-  min-height: 100vh;
-  background-image: url('../assets/background4.webp');
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed; /* Parallax effect */
+ position: relative;
+  height: 95vh;
   display: flex;
   align-items: center;
-  justify-content: flex-start; /* Aligns content to the left */
-  padding: 0 30px; /* Reduced padding for closer left alignment */
+  justify-content: center;
+  text-align: center;
   overflow: hidden;
+  color: var(--white);
+  background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.6)), url('../assets/background4.webp') center/cover no-repeat;
 }
 
 .hero-content {
@@ -114,6 +112,7 @@
   transform: translateX(-50px); /* Start off-screen for animation */
   animation: slideInFromLeft 1s ease-out 0.3s forwards;
 }
+
 
 .hero-subtitle {
   color: #ffffff;
@@ -130,7 +129,7 @@
   /* Added padding for better readability */
 }
 
-.hero-title {
+.hero-title2{
   color: #ffffff;
   font-size: 4.5rem;
   font-family: 'Poppins', serif;

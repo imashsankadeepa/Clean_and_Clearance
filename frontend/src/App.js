@@ -1,3 +1,5 @@
+// App.js
+import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Nav from './components/nav';
 import Home from './pages/Home';
@@ -7,7 +9,7 @@ import About from './pages/Aboutus';
 import OfficeCleaning from './pages/OfficeCleaning';
 import HomeCleaning from './pages/HomeCleaning';
 import SchoolCleaning from './pages/SchoolCleaning';
-import './App.css'; // Global styles
+import './App.css';
 
 function App() {
   return (

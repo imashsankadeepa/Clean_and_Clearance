@@ -151,7 +151,7 @@ const Home = () => {
         <div className="container">
           <div className="hero-content">
             <p className="hero-subtitle">Welcome to Cleaner World</p>
-            <h1 className="hero-title">Britain's Most Trusted Cleaning & Clearance Experts (Homes, Offices, Schools)</h1>
+            <h1 className="hero-title2">Britain's Most Trusted Cleaning & Clearance Experts (Homes, Offices, Schools)</h1>
             <p className="hero-description">Over 20 years of excellence in cleaning solutions</p>
             <div className="hero-buttons">
               <button onClick={handleGetQuote} className="hero-button primary">Get Started</button>
