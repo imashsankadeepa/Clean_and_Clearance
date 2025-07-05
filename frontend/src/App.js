@@ -2,6 +2,8 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Nav from './components/nav';
+import BookingForm from './components/BookingForm'; // ✅ Only one import
+
 import Home from './pages/Home';
 import Services from './pages/Service';
 import Contact from './pages/Contact';
@@ -23,6 +25,7 @@ function App() {
         <Route path="/services/office-cleaning" element={<OfficeCleaning />} />
         <Route path="/services/home-cleaning" element={<HomeCleaning />} />
         <Route path="/services/school-cleaning" element={<SchoolCleaning />} />
+        <Route path="/booking" element={<BookingForm />} />
       </Routes>
     </Router>
   );

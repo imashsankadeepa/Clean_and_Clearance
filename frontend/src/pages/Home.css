@@ -31,7 +31,7 @@
   padding: 0 1rem;
 }
 
-/* Header (Not present in new Home.js, but kept for consistency) */
+/* Header */
 .header {
   background-color: var(--white);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -71,7 +71,7 @@
   font-family: 'Vietnam Pro', sans-serif;
 }
 
-/* CTA Button (Used in multiple sections) */
+/* CTA Button */
 .cta-button {
   background-color: var(--success);
   color: var(--white);
@@ -91,7 +91,7 @@
 
 /* Hero Section */
 .hero-section {
- position: relative;
+  position: relative;
   height: 95vh;
   display: flex;
   align-items: center;
@@ -102,17 +102,80 @@
   background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.6)), url('../assets/background4.webp') center/cover no-repeat;
 }
 
-.hero-content {
-  position: left;
-  z-index: 2;
-  max-width: 1000px; /* Slightly narrower for a compact look */
-  text-align: left;
-  padding: 10px 0 40px 20px; /* Minimal padding to keep content near left edge */
-  opacity: 0;
-  transform: translateX(-50px); /* Start off-screen for animation */
-  animation: slideInFromLeft 1s ease-out 0.3s forwards;
+.animated-waves {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  z-index: 1;
 }
 
+.wave {
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  bottom: -100%;
+  left: -50%;
+  border-radius: 40%;
+  background: rgba(var(--success), 0.1); /* Using --success for consistency */
+  animation: wave 20s linear infinite;
+}
+
+.wave1 {
+  animation-duration: 20s;
+  opacity: 0.3;
+}
+
+.wave2 {
+  animation-duration: 17s;
+  animation-delay: -5s;
+  opacity: 0.2;
+}
+
+.wave3 {
+  animation-duration: 25s;
+  animation-delay: -2s;
+  opacity: 0.1;
+}
+
+.wave4 {
+  animation-duration: 22s;
+  animation-delay: -7s;
+  opacity: 0.15;
+}
+
+@keyframes wave {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes sparkle {
+  0%, 100% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.hero-content {
+  position: relative; /* Changed to relative to sit above waves */
+  z-index: 2;
+  max-width: 1000px;
+  text-align: left;
+  padding: 10px 0 40px 20px;
+  opacity: 0;
+  transform: translateX(-50px);
+  animation: slideInFromLeft 1s ease-out 0.3s forwards;
+}
 
 .hero-subtitle {
   color: #ffffff;
@@ -125,24 +188,23 @@
   text-shadow: 0 3px 6px rgba(0, 0, 0, 0.6);
   opacity: 0;
   animation: fadeInUp 1s ease-out 0.5s forwards;
-  text-align:left;  
-  /* Added padding for better readability */
+  text-align: left;
 }
 
-.hero-title2{
+.hero-title2 {
   color: #ffffff;
   font-size: 4.5rem;
-  font-family: 'Poppins', serif;
+  font-family: 'Poppins', sans-serif;
   font-weight: 800;
   line-height: 1.15;
   margin-bottom: 20px;
-  text-shadow: 0 5px 14px rgba(0, 0, 0, 0.7); /* Increased shadow for readability */
+  text-shadow: 0 5px 14px rgba(0, 0, 0, 0.7);
   opacity: 0;
   animation: fadeInUp 1s ease-out 0.7s forwards;
 }
 
 .hero-description {
-  color: #000000;
+  color: #ffffff; /* Changed to white for readability */
   font-size: 1.25rem;
   font-family: 'Roboto', sans-serif;
   font-weight: 300;
@@ -181,7 +243,7 @@
 }
 
 .hero-button.primary:hover {
- background: #ffffff;
+  background: #ffffff;
   color: #1dc872;
   transform: translateY(-3px);
   box-shadow: 0 6px 20px rgba(0, 212, 192, 0.5);
@@ -224,9 +286,6 @@
   }
 }
 
-/* Parallax Effect for Background */
-
-
 /* Responsive Design */
 @media (max-width: 1024px) {
   .hero-content {
@@ -237,7 +296,7 @@
     font-size: 1.3rem;
     letter-spacing: 2px;
   }
-  .hero-title {
+  .hero-title2 {
     font-size: 3.5rem;
   }
   .hero-description {
@@ -248,7 +307,7 @@
 @media (max-width: 500px) {
   .hero-section {
     min-height: 80vh;
-    background-attachment: scroll; /* Disable parallax on mobile */
+    background-attachment: scroll;
     padding: 0 20px;
   }
   .hero-content {
@@ -259,10 +318,9 @@
     margin-bottom: 10px;
     padding: 0 10px;
   }
-  .hero-title {
+  .hero-title2 {
     font-size: 2.5rem;
     margin-bottom: 15px;
-    
   }
   .hero-description {
     font-size: 0.95rem;
@@ -285,7 +343,7 @@
   .hero-content {
     padding: 15px 0 15px 5px;
   }
-  .hero-title {
+  .hero-title2 {
     font-size: 2rem;
   }
   .hero-description {
@@ -302,7 +360,8 @@
     background-image: url('../assets/background1.jpg');
   }
 }
-/* ===== Services Section ===== */
+
+/* Services Section */
 .services-section {
   padding: 80px 20px;
   background-color: #ffffff;
@@ -349,7 +408,7 @@
   }
 }
 
-/* ===== Individual Service Card ===== */
+/* Individual Service Card */
 .service-card {
   background: #ffffff;
   border-radius: 12px;
@@ -389,7 +448,7 @@
   line-height: 1.6;
 }
 
-/* ===== Buttons ===== */
+/* Buttons */
 .service-button {
   padding: 10px 30px;
   border-radius: 8px;
@@ -427,7 +486,7 @@
   box-shadow: 0 5px 15px rgba(50, 238, 107, 0.4);
 }
 
-/* ===== Animation Keyframes ===== */
+/* Animation Keyframes */
 @keyframes slideFadeInUp {
   from {
     opacity: 0;
@@ -439,17 +498,17 @@
   }
 }
 
-/* ===== Responsive Design Tweaks ===== */
+/* Responsive Design Tweaks */
 @media (max-width: 768px) {
   .services-section {
     padding: 60px 0;
   }
 
-  .services-title {
+  .services-header .section-title {
     font-size: 2.25rem;
   }
 
-  .services-subtitle {
+  .services-header .section-description {
     font-size: 1rem;
     padding: 0 20px;
   }
@@ -485,11 +544,11 @@
     padding: 40px 0;
   }
 
-  .services-title {
+  .services-header .section-title {
     font-size: 2rem;
   }
 
-  .services-subtitle {
+  .services-header .section-description {
     font-size: 0.95rem;
   }
 
@@ -515,23 +574,16 @@
   }
 }
 
-
-/* Why Choose Us Section Styling */
+/* Why Choose Us Section */
 .why-choose-section {
   background-color: #ffffff;
   padding: 4rem 1rem;
 }
 
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 1rem;
-}
-
 .why-choose-content {
   display: flex;
   flex-direction: column;
-  gap: 20rem;
+  gap: 2rem;
   align-items: center;
 }
 
@@ -548,9 +600,9 @@
 
 .why-subtitle {
   color: #3cea73;
-  font-size: 3.250rem;
+  font-size: 3.25rem;
   font-weight: 600;
-  margin-bottom: 9.rem;
+  margin-bottom: 0.9rem;
   line-height: 1.2;
 }
 
@@ -598,21 +650,6 @@
   margin-bottom: 1.5rem;
 }
 
-.cta-button {
-  background-color: #2563eb;
-  color: white;
-  padding: 0.75rem 1.5rem;
-  border-radius: 9999px;
-  font-weight: 600;
-  border: none;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.cta-button:hover {
-  background-color: #1d4ed8;
-}
-
 .why-choose-images {
   flex: 1;
   display: flex;
@@ -623,7 +660,6 @@
 
 .main-image {
   width: 80%;
-
   object-fit: cover;
 }
 
@@ -643,23 +679,13 @@
     display: none;
   }
 
-  .section-title {
+  .section-title2 {
     font-size: 1.875rem;
   }
 
   .section-description {
     font-size: 1.125rem;
   }
-}
-/* Custom properties for consistent theming */
-:root {
-  --primary: #010101; /* Deep green for trust and professionalism */
-  --secondary: #4a5e5a; /* Muted gray for secondary text */
-  --accent: #2a9d8f; /* Vibrant teal for highlights */
-  --white: #ffffff;
-  --background: #ffffff; /* Light background for clean aesthetic */
-  --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  --transition: all 0.5s ease;
 }
 
 /* Team Section */
@@ -668,14 +694,6 @@
   background-color: var(--background);
 }
 
-/* Container for consistent width */
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 16px;
-}
-
-/* Team Header */
 .team-header {
   text-align: center;
   margin-bottom: 64px;
@@ -684,7 +702,6 @@
 .section-title1 {
   font-size: 3.5rem;
   font-weight: 700;
-
   color: #3cea73;
   font-family: 'Vietnam Pro', sans-serif;
   margin-bottom: 16px;
@@ -700,7 +717,6 @@
   line-height: 1.5;
 }
 
-/* Team Grid */
 .team-grid {
   display: grid;
   gap: 32px;
@@ -719,7 +735,6 @@
   }
 }
 
-/* Team Card */
 .team-card {
   background-color: var(--white);
   border-radius: 16px;
@@ -734,7 +749,6 @@
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
 }
 
-/* Team Image */
 .team-image {
   width: 100%;
   height: 240px;
@@ -748,12 +762,10 @@
   transform: scale(1.05);
 }
 
-/* Team Details */
 .team-details {
   padding: 24px;
 }
 
-/* Team Name */
 .team-name {
   font-size: 1.25rem;
   font-weight: 600;
@@ -762,7 +774,6 @@
   margin-bottom: 12px;
 }
 
-/* Team Description */
 .team-description {
   font-size: 0.875rem;
   color: var(--secondary);
@@ -771,7 +782,6 @@
   line-height: 1.6;
 }
 
-/* Social Links */
 .social-links {
   display: flex;
   gap: 12px;
@@ -796,10 +806,9 @@
 .social-icon {
   width: 20px;
   height: 20px;
-  filter: brightness(0) invert(1); /* White icons for contrast */
+  filter: brightness(0) invert(1);
 }
 
-/* Accessibility Improvements */
 .team-card:focus-within {
   outline: 2px solid var(--accent);
   outline-offset: 4px;
@@ -810,9 +819,8 @@
   outline-offset: 2px;
 }
 
-/* Responsive Adjustments */
 @media (max-width: 768px) {
-  .section-title {
+  .section-title1 {
     font-size: 2rem;
   }
 
@@ -828,6 +836,7 @@
     padding: 16px;
   }
 }
+
 /* Pricing Section */
 .pricing-section {
   padding: 80px 0;
@@ -836,8 +845,6 @@
   background-size: cover;
   background-position: center;
 }
-
-
 
 .pricing-header {
   text-align: center;
@@ -848,21 +855,20 @@
 
 .pricing-subtitle {
   color: var(--success);
-  font-size: 3.250rem;
+  font-size: 3.25rem;
   font-weight: 600;
-  margin-bottom: 9.rem;
+  margin-bottom: 0.9rem;
   line-height: 1.2;
-   text-transform: uppercase;
+  text-transform: uppercase;
 }
 
-.section-title4{
-  color:white;
+.section-title4 {
+  color: white;
   font-size: 3.5rem;
   font-weight: 700;
   margin-bottom: 16px;
   font-family: 'Poppins', sans-serif;
   text-transform: uppercase;
-  outline-color: black;
   text-align: center;
   line-height: 1.2;
   text-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
@@ -904,11 +910,15 @@
 }
 
 @media (min-width: 768px) {
-  .pricing-grid { grid-template-columns: repeat(2, 1fr); }
+  .pricing-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 @media (min-width: 1024px) {
-  .pricing-grid { grid-template-columns: repeat(3, 1fr); }
+  .pricing-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
 .pricing-card {
@@ -991,37 +1001,32 @@
 }
 
 /* Blog Section */
-/* ===== BLOG SECTION WITH BACKGROUND IMAGE AND ROTATION EFFECT ===== */
-
 .blog-section {
   position: relative;
   padding: 80px 20px;
-  background-color: var(--near-white); /* fallback background */
-  background-image: url('../assets/cleaning2.webp'); /* ✅ replace with your path */
+  background-color: var(--near-white);
+  background-image: url('../assets/cleaning2.webp');
   background-repeat: no-repeat;
-  background-position: left top; /* or use left center or left bottom */
-  background-size: 450px auto; /* ✅ larger background image */
+  background-position: left top;
+  background-size: 450px auto;
 }
 
-/* Container inside blog section */
 .blog-section > .container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 20px;
 }
 
-/* ===== Blog Header ===== */
 .blog-header {
   text-align: center;
   margin-bottom: 64px;
   color: #49ed33;
-
 }
 
 .section-title {
   font-size: 3.5rem;
   font-weight: 700;
-  color:  #2ae77f;
+  color: #2ae77f;
   margin-bottom: 12px;
   font-family: 'Vietnam Pro', sans-serif;
 }
@@ -1034,14 +1039,12 @@
   font-family: 'Vietnam Pro', sans-serif;
 }
 
-/* ===== Blog Grid ===== */
 .blog-grid {
   display: grid;
   gap: 40px;
   grid-template-columns: 1fr;
   margin-top: 40px;
   animation: fadeInUp 0.5s ease-out;
-  
 }
 
 @media (min-width: 768px) {
@@ -1056,7 +1059,6 @@
   }
 }
 
-/* ===== Blog Card ===== */
 .blog-card {
   background-color: var(--white);
   border-radius: 24px;
@@ -1064,10 +1066,8 @@
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
   transition: transform 0.4s ease, box-shadow 0.3s ease;
   cursor: pointer;
-  display: center;
+  display: flex;
   flex-direction: column;
-
-  /* 3D effect preparation */
   transform-style: preserve-3d;
   perspective: 1000px;
 }
@@ -1077,7 +1077,6 @@
   box-shadow: 0 16px 32px rgba(0, 0, 0, 0.15);
 }
 
-/* ===== Blog Image ===== */
 .blog-image {
   width: 100%;
   height: 220px;
@@ -1092,7 +1091,6 @@
   transform: scale(1.05);
 }
 
-/* ===== Blog Details ===== */
 .blog-details {
   padding: 24px;
   flex-grow: 1;
@@ -1100,7 +1098,6 @@
   flex-direction: column;
 }
 
-/* ===== Blog Meta ===== */
 .blog-meta {
   font-size: 12px;
   color: var(--secondary);
@@ -1108,9 +1105,6 @@
   font-family: 'Vietnam Pro', sans-serif;
 }
 
-
-
-/* ===== Blog Title ===== */
 .blog-title {
   font-size: 18px;
   font-weight: 700;
@@ -1120,7 +1114,6 @@
   font-family: 'Vietnam Pro', sans-serif;
 }
 
-/* ===== Blog Excerpt ===== */
 .blog-excerpt {
   font-size: 14px;
   color: var(--secondary);
@@ -1130,7 +1123,6 @@
   flex-grow: 1;
 }
 
-/* ===== Read More Button ===== */
 .read-more-button {
   background-color: var(--primary);
   color: var(--white);
@@ -1148,9 +1140,7 @@
   background-color: #2ae77f;
 }
 
-/* ===== Contact Section ===== */
 /* Contact Section */
-/* ===== Contact Section ===== */
 .contact-section {
   padding: 80px 20px;
   background-color: var(--near-white);
@@ -1172,7 +1162,6 @@
   }
 }
 
-/* Contact Info */
 .contact-info {
   text-align: center;
   color: var(--primary);
@@ -1232,7 +1221,6 @@
   font-family: 'Work Sans', sans-serif;
 }
 
-/* Contact Form */
 .contact-form-container {
   background-color: var(--white);
   border-radius: 12px;
@@ -1315,7 +1303,8 @@
   box-shadow: 0 6px 20px rgba(22, 163, 74, 0.7);
   outline: none;
 }
-/* ===== Footer Section ===== */
+
+/* Footer Section */
 .footer {
   background: linear-gradient(135deg, #0f1f2f 0%, #1a293d 100%);
   color: #e0e6f0;
@@ -1325,7 +1314,6 @@
   box-shadow: inset 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 
-/* Max container */
 .footer-content {
   max-width: 1400px;
   margin: 0 auto 40px;
@@ -1348,12 +1336,10 @@
   }
 }
 
-/* Section Wrapper */
 .footer-section {
   user-select: text;
 }
 
-/* Logo & Branding */
 .footer-logo {
   display: flex;
   align-items: center;
@@ -1379,7 +1365,7 @@
 }
 
 .footer-logo-title .highlight {
-  color: #4ade80; /* Soft green */
+  color: #4ade80;
   text-shadow: 0 0 6px #4ade80aa;
 }
 
@@ -1391,7 +1377,6 @@
   user-select: text;
 }
 
-/* Description */
 .footer-description {
   font-size: 16px;
   color: #cbd5e1;
@@ -1400,7 +1385,6 @@
   user-select: text;
 }
 
-/* Titles */
 .footer-title {
   font-size: 18px;
   font-weight: 700;
@@ -1410,7 +1394,6 @@
   text-transform: uppercase;
 }
 
-/* Links List */
 .footer-links {
   display: flex;
   flex-direction: column;
@@ -1448,7 +1431,6 @@
   opacity: 1;
 }
 
-/* Newsletter Form */
 .newsletter-form {
   display: flex;
   flex-direction: column;
@@ -1500,7 +1482,6 @@
   outline: none;
 }
 
-/* Social Icons Wrapper */
 .footer-social {
   margin-top: 32px;
   display: flex;
@@ -1536,7 +1517,6 @@
   outline: none;
 }
 
-/* Footer Bottom Bar */
 .footer-bottom {
   border-top: 1px solid #374151;
   padding-top: 28px;
@@ -1546,7 +1526,6 @@
   user-select: none;
 }
 
-/* Accessibility: visible focus outlines */
 .footer-link:focus-visible,
 .newsletter-input:focus-visible,
 .newsletter-button:focus-visible,
@@ -1554,4 +1533,3 @@
   outline: 2px solid #4ade80;
   outline-offset: 3px;
 }
-

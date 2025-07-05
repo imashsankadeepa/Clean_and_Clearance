@@ -2,16 +2,22 @@ import React from 'react';
 import './SchoolCleaning.css';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
+
 import background4 from '../assets/background4.webp';
-import cleaning2 from '../assets/cleaning2.webp';
-import office1 from '../assets/office1.webp';
-import home1 from '../assets/home1.webp';
-import kichen from '../assets/kichen.webp';
 import pic1 from '../assets/pic1.webp';
 import pic2 from '../assets/pic2.webp';
 import pic3 from '../assets/pic3.webp';
 
 const SchoolCleaning = () => {
+  const navigate = useNavigate();
+  const bookingFormPath = '/booking';
+
+  const handleBookNow = (service, price) => {
+    navigate(bookingFormPath, {
+      state: { service, price },
+    });
+  };
+
   return (
     <div className="school-cleaning">
       {/* Hero Section */}
@@ -29,15 +35,33 @@ const SchoolCleaning = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
         >
-          <h1>School Cleaning</h1>
+          <h1>
+            {"School Cleaning".split("").map((letter, index) => (
+              <motion.span
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{
+                  delay: 0.1 * index,
+                  duration: 0.5,
+                  ease: "easeOut"
+                }}
+              >
+                {letter === " " ? "\u00A0" : letter}
+              </motion.span>
+            ))}
+          </h1>
           <p>
             Professional cleaning services tailored for educational facilities,
             ensuring a clean, safe, and healthy learning environment for students and staff.
           </p>
-          <button className="btn primary-btn">Book Now</button>
+          <button className="btn primary-btn" onClick={() => handleBookNow("School Cleaning", "Custom")}>
+            Book Now
+          </button>
         </motion.div>
       </section>
-          {/* Our Services as Cards with Images */}
+
+      {/* Services Section */}
       <section className="services">
         <div className="services-header">
           <h5 className="section-tag">Professional Solutions</h5>
@@ -46,56 +70,42 @@ const SchoolCleaning = () => {
         </div>
 
         <div className="service-cards">
-          {/* Service Card 1 */}
-          <motion.div
-            className="service-card"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-          >
-            <div className="card-image">
-              <img src={pic1} alt="Hall and toilet cleaning" />
-            </div>
-            <div className="card-content">
-              <h3>Cleaner, Hall, Toilet Cleaning</h3>
-              <p>Comprehensive cleaning of all school facilities including hallways and restrooms</p>
-            </div>
-            <a href="#" className="card-link">Learn more →</a>
-          </motion.div>
-
-          {/* Service Card 2 */}
-          <motion.div
-            className="service-card"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-          >
-            <div className="card-image">
-              <img src={pic2} alt="Playground and classroom cleaning" />
-            </div>
-            <div className="card-content">
-              <h3>Playground & Classroom Supports</h3>
-              <p>Specialized cleaning for playground equipment and classroom furniture</p>
-            </div>
-            <a href="#" className="card-link">Learn more →</a>
-          </motion.div>
-
-          {/* Service Card 3 */}
-          <motion.div
-            className="service-card"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.4 }}
-          >
-            <div className="card-image">
-              <img src={pic3} alt="Morning school cleaning" />
-            </div>
-            <div className="card-content">
-              <h3>Morning School Cleaning</h3>
-              <p>Early morning services to ensure facilities are ready before students arrive</p>
-            </div>
-            <a href="#" className="card-link">Learn more →</a>
-          </motion.div>
+          {[
+            {
+              img: pic1,
+              title: "Cleaner, Hall, Toilet Cleaning",
+              desc: "Comprehensive cleaning of all school facilities including hallways and restrooms"
+            },
+            {
+              img: pic2,
+              title: "Playground & Classroom Supports",
+              desc: "Specialized cleaning for playground equipment and classroom furniture"
+            },
+            {
+              img: pic3,
+              title: "Morning School Cleaning",
+              desc: "Early morning services to ensure facilities are ready before students arrive"
+            },
+          ].map((item, i) => (
+            <motion.div
+              key={i}
+              className="service-card"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: i * 0.2 }}
+            >
+              <div className="card-image">
+                <img src={item.img} alt={item.title} />
+              </div>
+              <div className="card-content">
+                <h3>{item.title}</h3>
+                <p>{item.desc}</p>
+              </div>
+              <button className="card-link" onClick={() => handleBookNow(item.title, "Custom")}>
+                Book Now →
+              </button>
+            </motion.div>
+          ))}
         </div>
       </section>
 
@@ -113,24 +123,21 @@ const SchoolCleaning = () => {
               title: 'Basic Package',
               price: '$30.00',
               features: ['✔ Dusting', '✔ Mopping'],
-              active: true,
             },
             {
               title: 'Standard Package',
               price: '$50.00',
               features: ['✔ Dusting', '✔ Mopping', '✔ Vacuuming'],
-              active: true,
             },
             {
               title: 'Premium Package',
               price: '$80.00',
               features: ['✔ Dusting', '✔ Mopping', '✔ Deep Clean'],
-              active: true,
             },
           ].map((plan, i) => (
             <motion.div
               key={i}
-              className={`plan-card ${plan.active ? 'active' : ''}`}
+              className="plan-card"
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               transition={{ delay: i * 0.2 }}
@@ -142,13 +149,13 @@ const SchoolCleaning = () => {
                   <li key={j}>{f}</li>
                 ))}
               </ul>
-              <button className="btn primary-btn">Book Now</button>
+              <button className="btn primary-btn" onClick={() => handleBookNow(plan.title, plan.price)}>
+                Book Now
+              </button>
             </motion.div>
           ))}
         </div>
       </section>
-
-  
 
       {/* Free Services */}
       <section className="free-services">
@@ -186,7 +193,37 @@ const SchoolCleaning = () => {
 
       {/* Footer */}
       <footer className="footer">
-        <p>&copy; {new Date().getFullYear()} Clean & Clearance. All rights reserved.</p>
+        <div className="footer-content">
+          <div className="footer-section">
+            <h3>Clean and Clear</h3>
+            <p>Professional cleaning services for schools and educational facilities.</p>
+          </div>
+          <div className="footer-section">
+            <h4>Services</h4>
+            <ul>
+              <li>School Cleaning</li>
+              <li>Office Cleaning</li>
+              <li>Commercial Cleaning</li>
+              <li>Special Services</li>
+            </ul>
+          </div>
+          <div className="footer-section">
+            <h4>Contact</h4>
+            <p>123 Cleaning Street<br />
+              London, UK<br />
+              info@cleanandclear.com<br />
+              +44 123 456 7890</p>
+          </div>
+          <div className="footer-section">
+            <h4>Hours</h4>
+            <p>Monday - Friday: 8am - 8pm<br />
+              Saturday: 9am - 5pm<br />
+              Sunday: Closed</p>
+          </div>
+        </div>
+        <div className="footer-bottom">
+          <p>&copy; {new Date().getFullYear()} Clean and Clear. All rights reserved.</p>
+        </div>
       </footer>
     </div>
   );

@@ -15,6 +15,7 @@ import p2 from '../assets/p2.webp';
 import p3 from '../assets/p3.webp';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { AnimatedWaves } from './AnimatedWaves';
 
 // Register GSAP ScrollTrigger
 gsap.registerPlugin(ScrollTrigger);

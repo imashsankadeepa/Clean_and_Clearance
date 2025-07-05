@@ -115,33 +115,7 @@ const Service = () => {
         />
       </section>
 
-      {/* Process Steps */}
-      <section className="process-steps">
-        <h2>Quick and Easy</h2>
-        <p className="process-intro">
-          Our streamlined process ensures your cleaning needs are met smoothly
-          and efficiently.
-        </p>
-        <div className="steps-grid">
-          {steps.map((step, index) => (
-            <motion.div
-              key={index}
-              className="step-card"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.15, duration: 0.6 }}
-            >
-              <div className="step-number">{index + 1}</div>
-              <div className="step-icon">{step.icon}</div>
-              <h3>{step.title}</h3>
-              <p>{step.description}</p>
-            </motion.div>
-          ))}
-        </div>
-      </section>
-
-      {/* Stats Section */}
+            {/* Stats Section */}
       <section className="why-stats">
         <h2>We Are Experienced & Have Expert Teams</h2>
         <div className="stats-grid">
@@ -184,7 +158,7 @@ const Service = () => {
         </div>
       </section>
 
-      {/* CTA Section */}
+            {/* CTA Section */}
       <section className="quote-section">
         <h2>Book a Cleaning Today</h2>
         <p>
@@ -193,6 +167,35 @@ const Service = () => {
         </p>
         <button className="primary-btn">Request a Quote</button>
       </section>
+
+      {/* Process Steps */}
+      <section className="process-steps">
+        <h2>Quick and Easy</h2>
+        <p className="process-intro">
+          Our streamlined process ensures your cleaning needs are met smoothly
+          and efficiently.
+        </p>
+        <div className="steps-grid">
+          {steps.map((step, index) => (
+            <motion.div
+              key={index}
+              className="step-card"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.15, duration: 0.6 }}
+            >
+              <div className="step-number">{index + 1}</div>
+              <div className="step-icon">{step.icon}</div>
+              <h3>{step.title}</h3>
+              <p>{step.description}</p>
+            </motion.div>
+          ))}
+        </div>
+      </section>
+
+
+
     </div>
   );
 };
