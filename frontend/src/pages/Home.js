@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import './Home.css';
  // Import the separate Team Section CSS
-import background1 from '../assets/background1.jpg';
+
 import background4 from '../assets/background4.webp';
 import logo2 from '../assets/Logo2.png';
 import office1 from '../assets/office1.webp';
@@ -347,60 +347,41 @@ const Home = () => {
       </div>
     </section>
 
-      {/* Contact Section */}
-      <section className="contact-section">
-        <div className="container">
-          <div className="contact-content">
-            <div className="contact-info">
-              <h2 className="section-title">Contact Us</h2>
-              <div className="contact-items">
-                <div className="contact-item">
-                  <img src="/images/img_call_icon.svg" alt="Phone" className="contact-icon" />
-                  <div><h3>Call Us</h3><p>+(01) 234 567 890</p></div>
-                </div>
-                <div className="contact-item">
-                  <img src="/images/img_email_icon.svg" alt="Email" className="contact-icon" />
-                  <div><h3>Email</h3><p>info@cleaning.com</p></div>
-                </div>
-              </div>
-            </div>
-            <div className="contact-form-container">
-              <h2 className="section-title">Get in Touch</h2>
-              <form onSubmit={handleContactSubmit} className="contact-form">
-                <input type="text" placeholder="Your Name" value={contactForm.name} onChange={(e) => setContactForm({ ...contactForm, name: e.target.value })} className="form-input" required />
-                <input type="email" placeholder="Your Email" value={contactForm.email} onChange={(e) => setContactForm({ ...contactForm, email: e.target.value })} className="form-input" required />
-                <textarea placeholder="Your Message" value={contactForm.message} onChange={(e) => setContactForm({ ...contactForm, message: e.target.value })} className="form-textarea" required></textarea>
-                <button type="submit" className="form-button">Send</button>
-              </form>
-            </div>
+
+       {/* Footer */}
+      <footer className="footer">
+        <div className="footer-content">
+          <div className="footer-section">
+            <h3>Clean and Clear</h3>
+            <p>Professional cleaning services for schools and educational facilities.</p>
+          </div>
+          <div className="footer-section">
+            <h4>Services</h4>
+            <ul>
+              <li>School Cleaning</li>
+              <li>Office Cleaning</li>
+              <li>Commercial Cleaning</li>
+              <li>Special Services</li>
+            </ul>
+          </div>
+          <div className="footer-section">
+            <h4>Contact</h4>
+            <p>123 Cleaning Street<br />
+              London, UK<br />
+              info@cleanandclear.com<br />
+              +44 123 456 7890</p>
+          </div>
+          <div className="footer-section">
+            <h4>Hours</h4>
+            <p>Monday - Friday: 8am - 8pm<br />
+              Saturday: 9am - 5pm<br />
+              Sunday: Closed</p>
           </div>
         </div>
-      </section>
-
-      {/* Footer */}
-      <footer className="footer">
-  <div className="footer-content">
-    <section className="footer-section">
-      <div className="footer-logo" tabIndex="0" aria-label="Company Logo">
-        <h1 className="footer-logo-title">
-          OAK<span className="highlight">Root</span>
-        </h1>
-      </div>
-      <p className="footer-description">
-        Leading cleaning service provider with eco-friendly solutions.
-      </p>
-      <div className="footer-social" aria-label="Social media links">
-        <a href="#" aria-label="Facebook"><i className="fab fa-facebook-f"></i></a>
-        <a href="#" aria-label="Twitter"><i className="fab fa-twitter"></i></a>
-        <a href="#" aria-label="LinkedIn"><i className="fab fa-linkedin-in"></i></a>
-      </div>
-    </section>
-    {/* More sections with .footer-section */}
-  </div>
-  <div className="footer-bottom">
-    &copy; 2025 CleanPro. All rights reserved.
-  </div>
-</footer>
+        <div className="footer-bottom">
+          <p>&copy; {new Date().getFullYear()} Clean and Clear. All rights reserved.</p>
+        </div>
+      </footer>
     </div>
 
   );

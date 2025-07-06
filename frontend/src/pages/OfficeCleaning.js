@@ -166,6 +166,41 @@ const OfficeCleaning = () => {
           ))}
         </div>
       </section>
+       {/* Footer */}
+      <footer className="footer">
+        <div className="footer-content">
+          <div className="footer-section">
+            <h3>Clean and Clear</h3>
+            <p>Professional cleaning services for schools and educational facilities.</p>
+          </div>
+          <div className="footer-section">
+            <h4>Services</h4>
+            <ul>
+              <li>School Cleaning</li>
+              <li>Office Cleaning</li>
+              <li>Commercial Cleaning</li>
+              <li>Special Services</li>
+            </ul>
+          </div>
+          <div className="footer-section">
+            <h4>Contact</h4>
+            <p>123 Cleaning Street<br />
+              London, UK<br />
+              info@cleanandclear.com<br />
+              +44 123 456 7890</p>
+          </div>
+          <div className="footer-section">
+            <h4>Hours</h4>
+            <p>Monday - Friday: 8am - 8pm<br />
+              Saturday: 9am - 5pm<br />
+              Sunday: Closed</p>
+          </div>
+        </div>
+        <div className="footer-bottom">
+          <p>&copy; {new Date().getFullYear()} Clean and Clear. All rights reserved.</p>
+        </div>
+      </footer>
+      
     </div>
   );
 };
