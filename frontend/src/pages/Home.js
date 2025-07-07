@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import './Home.css';
  // Import the separate Team Section CSS
+ import { Link } from 'react-router-dom';
 
 import background4 from '../assets/background4.webp';
 import logo2 from '../assets/Logo2.png';
@@ -11,6 +12,9 @@ import home1 from '../assets/home1.webp';
 import kichen from '../assets/kichen.webp';
 import cleaning2 from '../assets/cleaning2.webp';
 import p1 from '../assets/p1.webp';
+import tip1 from '../assets/tip1.webp';
+import tip2 from '../assets/tip2.webp';
+import tip3 from '../assets/tip3.webp';
 import p2 from '../assets/p2.webp';
 import p3 from '../assets/p3.webp';
 import gsap from 'gsap';
@@ -106,7 +110,7 @@ const Home = () => {
   const blogPosts = [
   {
     id: 1,
-    image:p1,
+    image:tip1,
     title: '5 Essential Kitchen Cleaning Tips',
     excerpt: 'Keep your UK kitchen spotless with minimal effort.',
     author: 'Sarah M.',
@@ -114,7 +118,7 @@ const Home = () => {
   },
   {
     id: 2,
-    image:p1,
+    image:tip2,
     title: 'End-of-Tenancy Cleaning Guide',
     excerpt: 'Make sure you get your full deposit back with these tips.',
     author: 'John B.',
@@ -122,7 +126,7 @@ const Home = () => {
   },
   {
     id: 3,
-    image: p3,
+    image: tip3,
     title: 'Eco-Friendly Cleaning Products',
     excerpt: 'Safe, sustainable and budget-friendly options for your home.',
     author: 'Claire D.',
@@ -152,10 +156,11 @@ const Home = () => {
         <div className="container">
           <div className="hero-content">
             <p className="hero-subtitle">Welcome to Cleaner World</p>
-            <h1 className="hero-title2">Britain's Most Trusted Cleaning & Clearance Experts (Homes, Offices, Schools)</h1>
+            <h1 className="hero-title2">Britain's Most Trusted Cleaning & Clearance Experts</h1>
             <p className="hero-description">Over 20 years of excellence in cleaning solutions</p>
             <div className="hero-buttons">
               <button onClick={handleGetQuote} className="hero-button primary">Get Started</button>
+              
               <button className="hero-button secondary">View Services</button>
             </div>
           </div>
@@ -177,6 +182,7 @@ const Home = () => {
                   <h3 className="service-title">{service.title}</h3>
                   <p className="service-description">{service.description}</p>
                   <button onClick={() => handleBookNow(service.title)} className={`service-button ${service.buttonStyle}`}>Book Now</button>
+                    <Link to="/booking" ></Link>
                 </div>
               </div>
             ))}

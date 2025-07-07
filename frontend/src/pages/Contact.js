@@ -41,7 +41,7 @@ function ContactUs() {
           <p>Secuscu viverra leo etiam diam. Sem efficitur molestie iaculis.</p>
           <div className="info-item">
             <span className="icon">🏢</span>
-            <p>Head Office<br />Jln. Compaka Wangi No 22<br />Jakarta, Indonesia</p>
+            <p>Head Office<br />123 High Street,London,SW1A 1AA<br />United Kindom</p>
           </div>
           <div className="info-item">
             <span className="icon">📧</span>
@@ -49,7 +49,7 @@ function ContactUs() {
           </div>
           <div className="info-item">
             <span className="icon">📞</span>
-            <p>Call Us<br /><a href="tel:+622130032013">+6221 3003 2013</a><br /><a href="tel:+622130032013">Fax: +6221 3003 2013</a></p>
+            <p>Call Us<br /><a href="tel:+44 2071234567">+442071234567</a><br /><a href="tel:+622130032013">Fax: +6221 3003 2013</a></p>
           </div>
           <div className="info-item">
             <p>Follow our social media</p>

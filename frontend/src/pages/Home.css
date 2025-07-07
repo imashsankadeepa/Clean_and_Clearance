@@ -111,7 +111,7 @@
 }
 
 .hero-subtitle,
-.hero-title2,
+
 .hero-description,
 .hero-buttons {
   opacity: 1;
@@ -131,8 +131,8 @@
 }
 
 .hero-title2 {
-  font-size: 3.5rem;
-  font-family: 'Poppins', sans-serif;
+  font-size: 4.5rem;
+  font-family: 'Poppins', serif;
   font-weight: 800;
   line-height: 1.15;
   margin-bottom: 20px;
@@ -462,13 +462,13 @@
 /* Why Choose Us Section */
 .why-choose-section {
   background-color: #ffffff;
-  padding: 4rem 1rem;
+  padding: 1rem 12rem;
 }
 
 .why-choose-content {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 4rem;
   align-items: center;
 }
 
@@ -485,20 +485,20 @@
 
 .why-subtitle {
   color: #3cea73;
-  font-size: 3.25rem;
+  font-size: 4.25rem;
   font-weight: 600;
   margin-bottom: 0.9rem;
-  line-height: 1.2;
+  line-height: 1.6;
 }
 
 .section-title2 {
   color: #1f2937;
   font-size: 1.5rem;
   font-weight: 700;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
   font-family: 'Poppins', sans-serif;
   text-transform: uppercase;
-  text-align: center;
+  text-align: left;
   line-height: 1.2;
 }
 
