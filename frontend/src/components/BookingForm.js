@@ -18,7 +18,7 @@ const BookingForm = () => {
   const [loading, setLoading] = useState(false);
   const firstErrorRef = useRef(null);
 
-  // Auto-fill plan from state (if exists)
+  // Auto-fill plan from previous page
   useEffect(() => {
     if (state?.service) {
       setFormData((prev) => ({
@@ -64,9 +64,8 @@ const BookingForm = () => {
     setStatus('');
 
     try {
-     await axios.post('http://localhost:5000/api/bookings', formData);
-
-      setStatus('✅ Booking successful!');
+      await axios.post('http://localhost:5000/api/bookings', formData);
+      setStatus('✅ Booking successful! Confirmation email sent.');
       setFormData({ name: '', email: '', date: '', plan: '', message: '' });
       setErrors({});
     } catch (err) {
@@ -82,7 +81,6 @@ const BookingForm = () => {
       <p>Fill out the form below to schedule your cleaning appointment.</p>
 
       <form className="booking-form" onSubmit={handleSubmit} noValidate>
-        {/* Name */}
         <label>Name</label>
         <input
           ref={errors.name && !firstErrorRef.current ? firstErrorRef : null}
@@ -94,7 +92,6 @@ const BookingForm = () => {
         />
         {errors.name && <span className="error-message">{errors.name}</span>}
 
-        {/* Email */}
         <label>Email</label>
         <input
           ref={errors.email && !firstErrorRef.current ? firstErrorRef : null}
@@ -106,7 +103,6 @@ const BookingForm = () => {
         />
         {errors.email && <span className="error-message">{errors.email}</span>}
 
-        {/* Date */}
         <label>Preferred Date</label>
         <input
           ref={errors.date && !firstErrorRef.current ? firstErrorRef : null}
@@ -118,7 +114,6 @@ const BookingForm = () => {
         />
         {errors.date && <span className="error-message">{errors.date}</span>}
 
-        {/* Plan */}
         <label>Choose a Plan</label>
         <select
           name="plan"
@@ -134,7 +129,6 @@ const BookingForm = () => {
         </select>
         {errors.plan && <span className="error-message">{errors.plan}</span>}
 
-        {/* Message */}
         <label>Additional Notes</label>
         <textarea
           name="message"
@@ -143,12 +137,10 @@ const BookingForm = () => {
           onChange={handleChange}
         />
 
-        {/* Submit */}
         <button type="submit" className="btn primary-btn" disabled={loading}>
           {loading ? 'Submitting...' : 'Submit Booking'}
         </button>
 
-        {/* Status */}
         {status && <p className="status-message">{status}</p>}
       </form>
     </div>

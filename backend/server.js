@@ -15,7 +15,7 @@ app.use(express.json());
 // Routes
 app.use('/api/bookings', bookingRoutes);
 
-// Connect to MongoDB
+// MongoDB Connection
 mongoose.connect(process.env.MONGO_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,

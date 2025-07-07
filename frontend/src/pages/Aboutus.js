@@ -2,8 +2,13 @@ import { Link } from 'react-router-dom';
 import './Aboutus.css';
 import { FaLeaf, FaShieldAlt, FaStar, FaUserTie, FaLightbulb } from 'react-icons/fa';
 import background4 from '../assets/background4.webp';
+import { useEffect } from 'react';
 
 function AboutUs() {
+
+   useEffect(() => {
+      window.scrollTo(0, 0);
+    }, []);
   return (
     <div className="about-container">
 

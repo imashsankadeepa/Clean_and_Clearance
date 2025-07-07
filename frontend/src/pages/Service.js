@@ -1,5 +1,5 @@
 // Service.js
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import {
@@ -18,6 +18,11 @@ import backgroundImg from '../assets/background4.webp';
 
 const Service = () => {
   const navigate = useNavigate();
+
+  // Scroll to top when the page loads
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const steps = [
     {
@@ -95,8 +100,7 @@ const Service = () => {
             transition={{ delay: 0.4, duration: 1 }}
             className="hero-subtitle"
           >
-            Delivering reliable, professional and eco-friendly cleaning across
-            the UK.
+            Delivering reliable, professional and eco-friendly cleaning across the UK.
           </motion.p>
           <div className="hero-buttons">
             <button className="primary-btn">Get a Quote</button>
@@ -115,7 +119,7 @@ const Service = () => {
         />
       </section>
 
-            {/* Stats Section */}
+      {/* Stats Section */}
       <section className="why-stats">
         <h2>We Are Experienced & Have Expert Teams</h2>
         <div className="stats-grid">
@@ -158,12 +162,11 @@ const Service = () => {
         </div>
       </section>
 
-            {/* CTA Section */}
+      {/* CTA Section */}
       <section className="quote-section">
         <h2>Book a Cleaning Today</h2>
         <p>
-          We’re ready to help you maintain a clean and healthy space. Schedule
-          a cleaning in just a few clicks.
+          We’re ready to help you maintain a clean and healthy space. Schedule a cleaning in just a few clicks.
         </p>
         <button className="primary-btn">Request a Quote</button>
       </section>
@@ -172,8 +175,7 @@ const Service = () => {
       <section className="process-steps">
         <h2>Quick and Easy</h2>
         <p className="process-intro">
-          Our streamlined process ensures your cleaning needs are met smoothly
-          and efficiently.
+          Our streamlined process ensures your cleaning needs are met smoothly and efficiently.
         </p>
         <div className="steps-grid">
           {steps.map((step, index) => (
@@ -193,7 +195,8 @@ const Service = () => {
           ))}
         </div>
       </section>
-       {/* Footer */}
+
+      {/* Footer */}
       <footer className="footer">
         <div className="footer-content">
           <div className="footer-section">
@@ -211,25 +214,26 @@ const Service = () => {
           </div>
           <div className="footer-section">
             <h4>Contact</h4>
-            <p>123 Cleaning Street<br />
+            <p>
+              123 Cleaning Street<br />
               London, UK<br />
               info@cleanandclear.com<br />
-              +44 123 456 7890</p>
+              +44 123 456 7890
+            </p>
           </div>
           <div className="footer-section">
             <h4>Hours</h4>
-            <p>Monday - Friday: 8am - 8pm<br />
+            <p>
+              Monday - Friday: 8am - 8pm<br />
               Saturday: 9am - 5pm<br />
-              Sunday: Closed</p>
+              Sunday: Closed
+            </p>
           </div>
         </div>
         <div className="footer-bottom">
           <p>&copy; {new Date().getFullYear()} Clean and Clear. All rights reserved.</p>
         </div>
       </footer>
-
-
-
     </div>
   );
 };

@@ -1,6 +1,8 @@
+import { useEffect } from 'react';
 import React, { useState } from 'react';
 import axios from 'axios';
 import './Contact.css';
+
 
 function ContactUs() {
   const [formData, setFormData] = useState({
@@ -16,6 +18,10 @@ function ContactUs() {
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
+
+   useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();

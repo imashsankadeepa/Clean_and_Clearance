@@ -2,7 +2,7 @@ import React from 'react';
 import './SchoolCleaning.css';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-
+import { useEffect } from 'react';
 import background4 from '../assets/background4.webp';
 import pic1 from '../assets/pic1.webp';
 import pic2 from '../assets/pic2.webp';
@@ -17,6 +17,10 @@ const SchoolCleaning = () => {
       state: { service, price },
     });
   };
+ useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+  
 
   return (
     <div className="school-cleaning">
