@@ -17,6 +17,9 @@ import tip2 from '../assets/tip2.webp';
 import tip3 from '../assets/tip3.webp';
 import p2 from '../assets/p2.webp';
 import p3 from '../assets/p3.webp';
+import Home123 from '../assets/Home123.webp';
+import school123 from '../assets/school123.webp';
+import office1234 from '../assets/office1234.webp';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -90,9 +93,9 @@ const Home = () => {
   }, []);
 
   const services = [
-    { id: 1, title: 'Office Cleaning', description: 'Professional office cleaning tailored to your schedule.', image: office1, buttonStyle: 'outline' },
-    { id: 2, title: 'School Cleaning', description: 'Deep cleaning for a fresh start every season.', image:home1 , buttonStyle: 'filled' },
-    { id: 3, title: 'House Cleaning', description: 'Comprehensive home cleaning services.', image: kichen, buttonStyle: 'outline' },
+    { id: 1, title: 'Office Cleaning', description: 'Professional office cleaning tailored to your schedule.', image: office1234, buttonStyle: 'outline' },
+    { id: 2, title: 'School Cleaning', description: 'Deep cleaning for a fresh start every season.', image:Home123 , buttonStyle: 'filled' },
+    { id: 3, title: 'House Cleaning', description: 'Comprehensive home cleaning services.', image: school123, buttonStyle: 'outline' },
   ];
 
   const teamMembers = [

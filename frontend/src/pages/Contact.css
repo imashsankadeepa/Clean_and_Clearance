@@ -34,9 +34,8 @@
 }
 
 .contact-header h1 {
-  font-size: 3.5rem;
+  font-size: 4.5rem;
   margin-bottom: 15px;
-   font-size: 4.5rem;
   font-family: 'Poppins', serif;
   font-weight: 800;
 }
@@ -45,7 +44,7 @@
   font-size: 1.5rem;
   opacity: 0.9;
   max-width: 600px;
-  color:rgb(253, 253, 253);
+  color: rgb(253, 253, 253);
 }
 
 /* Contact Section */
@@ -263,7 +262,7 @@
   background-color: #1482e5;
 }
 
-/* Responsive Styles */
+/* Tablet Responsive */
 @media (max-width: 992px) {
   .contact-content {
     flex-direction: column;
@@ -288,9 +287,11 @@
   }
 }
 
+/* Mobile Responsive */
 @media (max-width: 480px) {
   .contact-header {
     padding-left: 20px;
+    padding-right: 10px;
   }
 
   .contact-header h1 {
@@ -313,5 +314,24 @@
 
   .footer-section {
     min-width: 100%;
+  }
+
+  .contact-content {
+    margin: 30px 10px;
+    padding: 20px 15px;
+  }
+
+  .contact-form h2,
+  .contact-info h2 {
+    font-size: 1.8rem;
+  }
+
+  .map-section iframe {
+    height: 260px;
+  }
+
+  .submit-button {
+    padding: 12px;
+    font-size: 0.95rem;
   }
 }
