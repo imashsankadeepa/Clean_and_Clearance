@@ -1,5 +1,9 @@
+// App.js
+import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Nav from './components/nav';
+import BookingForm from './components/BookingForm'; // ✅ Only one import
+
 import Home from './pages/Home';
 import Services from './pages/Service';
 import Contact from './pages/Contact';
@@ -7,7 +11,7 @@ import About from './pages/Aboutus';
 import OfficeCleaning from './pages/OfficeCleaning';
 import HomeCleaning from './pages/HomeCleaning';
 import SchoolCleaning from './pages/SchoolCleaning';
-import './App.css'; // Global styles
+import './App.css';
 
 function App() {
   return (
@@ -21,6 +25,7 @@ function App() {
         <Route path="/services/office-cleaning" element={<OfficeCleaning />} />
         <Route path="/services/home-cleaning" element={<HomeCleaning />} />
         <Route path="/services/school-cleaning" element={<SchoolCleaning />} />
+        <Route path="/booking" element={<BookingForm />} />
       </Routes>
     </Router>
   );
