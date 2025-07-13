@@ -1,28 +1,22 @@
-
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import './Home.css';
- // Import the separate Team Section CSS
- import { Link } from 'react-router-dom';
+// Import the separate Team Section CSS
+import { Link } from 'react-router-dom';
 
-import background4 from '../assets/background4.webp';
-import logo2 from '../assets/Logo2.png';
-import office1 from '../assets/office1.webp';
-import home1 from '../assets/home1.webp';
-import kichen from '../assets/kichen.webp';
+
 import cleaning2 from '../assets/cleaning2.webp';
 import p1 from '../assets/p1.webp';
-import tip1 from '../assets/tip1.webp';
-import tip2 from '../assets/tip2.webp';
-import tip3 from '../assets/tip3.webp';
 import p2 from '../assets/p2.webp';
 import p3 from '../assets/p3.webp';
-import Home123 from '../assets/Home123.webp';
-import school123 from '../assets/school123.webp';
-import office1234 from '../assets/office1234.webp';
+import ss1 from '../assets/ss1.webp';
+import ss2 from '../assets/ss2.webp';
+import ss3 from '../assets/ss3.webp';
+import rr1 from '../assets/rr1.webp';
+import rr2 from '../assets/rr2.webp';
+import rr3 from '../assets/rr3.webp';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
 
 // Register GSAP ScrollTrigger
 gsap.registerPlugin(ScrollTrigger);
@@ -93,9 +87,9 @@ const Home = () => {
   }, []);
 
   const services = [
-    { id: 1, title: 'Office Cleaning', description: 'Professional office cleaning tailored to your schedule.', image: office1234, buttonStyle: 'outline' },
-    { id: 2, title: 'School Cleaning', description: 'Deep cleaning for a fresh start every season.', image:Home123 , buttonStyle: 'filled' },
-    { id: 3, title: 'House Cleaning', description: 'Comprehensive home cleaning services.', image: school123, buttonStyle: 'outline' },
+    { id: 1, title: 'Office Cleaning', description: 'Professional office cleaning tailored to your schedule.', image: ss1, buttonStyle: 'outline' },
+    { id: 2, title: 'School Cleaning', description: 'Deep cleaning for a fresh start every season.', image: ss3, buttonStyle: 'filled' },
+    { id: 3, title: 'House Cleaning', description: 'Comprehensive home cleaning services.', image: ss2, buttonStyle: 'outline' },
   ];
 
   const teamMembers = [
@@ -104,38 +98,49 @@ const Home = () => {
     { id: 3, name: 'Sathisma', image: p3, description: 'Pro in deep cleaning.', socialLinks: [{ icon: '/images/img_behance.svg', url: '#' }] },
   ];
 
-  const pricingPlans = [
-    { id: 1, name: 'Basic Package', price: '$30.00', period: '/month', features: ['Dusting', 'Mopping'], buttonStyle: 'outline' },
-    { id: 2, name: 'Standard Package', price: '$50.00', period: '/month', features: ['Dusting', 'Mopping', 'Vacuuming'], buttonStyle: 'filled', popular: true },
-    { id: 3, name: 'Premium Package', price: '$80.00', period: '/month', features: ['Dusting', 'Mopping', 'Deep Clean'], buttonStyle: 'outline' },
-  ];
+  // Pricing plans now depend on selectedPlan (monthly/yearly)
+  const getPricingPlans = (planType) => {
+    if (planType === 'monthly') {
+      return [
+        { id: 1, name: 'Basic Package', price: '$30.00', period: '/month', features: ['Dusting', 'Mopping'], buttonStyle: 'outline' },
+        { id: 2, name: 'Standard Package', price: '$50.00', period: '/month', features: ['Dusting', 'Mopping', 'Vacuuming'], buttonStyle: 'filled', popular: true },
+        { id: 3, name: 'Premium Package', price: '$80.00', period: '/month', features: ['Dusting', 'Mopping', 'Deep Clean'], buttonStyle: 'outline' },
+      ];
+    } else {
+      return [
+        { id: 1, name: 'Basic Package', price: '$300.00', period: '/year', features: ['Dusting', 'Mopping'], buttonStyle: 'outline' },
+        { id: 2, name: 'Standard Package', price: '$500.00', period: '/year', features: ['Dusting', 'Mopping', 'Vacuuming'], buttonStyle: 'filled', popular: true },
+        { id: 3, name: 'Premium Package', price: '$800.00', period: '/year', features: ['Dusting', 'Mopping', 'Deep Clean'], buttonStyle: 'outline' },
+      ];
+    }
+  };
 
   const blogPosts = [
-  {
-    id: 1,
-    image:tip1,
-    title: '5 Essential Kitchen Cleaning Tips',
-    excerpt: 'Keep your UK kitchen spotless with minimal effort.',
-    author: 'Sarah M.',
-    date: 'July 2025',
-  },
-  {
-    id: 2,
-    image:tip2,
-    title: 'End-of-Tenancy Cleaning Guide',
-    excerpt: 'Make sure you get your full deposit back with these tips.',
-    author: 'John B.',
-    date: 'June 2025',
-  },
-  {
-    id: 3,
-    image: tip3,
-    title: 'Eco-Friendly Cleaning Products',
-    excerpt: 'Safe, sustainable and budget-friendly options for your home.',
-    author: 'Claire D.',
-    date: 'May 2025',
-  },
-]
+    {
+      id: 1,
+      image: rr3,
+      title: '5 Essential Kitchen Cleaning Tips',
+      excerpt: 'Keep your UK kitchen spotless with minimal effort.',
+      author: 'Sarah M.',
+      date: 'July 2025',
+    },
+    {
+      id: 2,
+      image: rr1,
+      title: 'End-of-Tenancy Cleaning Guide',
+      excerpt: 'Make sure you get your full deposit back with these tips.',
+      author: 'John B.',
+      date: 'June 2025',
+    },
+    {
+      id: 3,
+      image: rr2,
+      title: 'Eco-Friendly Cleaning Products',
+      excerpt: 'Safe, sustainable and budget-friendly options for your home.',
+      author: 'Claire D.',
+      date: 'May 2025',
+    },
+  ];
 
   // Animation variants for team cards
   const cardVariants = {
@@ -162,9 +167,8 @@ const Home = () => {
             <h1 className="hero-title2">Britain's Most Trusted Cleaning & Clearance Experts</h1>
             <p className="hero-description">Over 20 years of excellence in cleaning solutions</p>
             <div className="hero-buttons">
-              <button onClick={handleGetQuote} className="hero-button primary">Get Started</button>
-              
-              <button className="hero-button secondary">View Services</button>
+            
+               <Link to="/services" className="hero-button primary">Book Our Service</Link>
             </div>
           </div>
         </div>
@@ -184,8 +188,8 @@ const Home = () => {
                 <div className="service-details">
                   <h3 className="service-title">{service.title}</h3>
                   <p className="service-description">{service.description}</p>
-                  <button onClick={() => handleBookNow(service.title)} className={`service-button ${service.buttonStyle}`}>Book Now</button>
-                    <Link to="/booking" ></Link>
+                 
+                  <Link to="/booking" className='service-button'>book now</Link>
                 </div>
               </div>
             ))}
@@ -297,7 +301,7 @@ const Home = () => {
             </div>
           </div>
           <div className="pricing-grid">
-            {pricingPlans.map((plan) => (
+            {getPricingPlans(selectedPlan).map((plan,period)  => (
               <div key={plan.id} className={`pricing-card ${plan.popular ? 'popular' : ''}`}>
                 <h3 className="plan-name">{plan.name}</h3>
                 <div className="price-container">
@@ -318,46 +322,42 @@ const Home = () => {
 
       {/* Blog Section */}
       <section className="blog-section">
-      <div className="container">
-        <motion.div 
-          className="blog-header"
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-        >
-          <h2 className="section-title">Latest Cleaning Tips</h2>
-          <p className="section-description">Stay updated with expert advice</p>
-        </motion.div>
-        
-  
+        <div className="container">
+          <motion.div 
+            className="blog-header"
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+          >
+            <h2 className="section-title">Latest Cleaning Tips</h2>
+            <p className="section-description">Stay updated with expert advice</p>
+          </motion.div>
 
-
-        <div className="blog-grid">
-          {blogPosts.map((post, index) => (
-            <motion.div 
-              key={post.id}
-              className="blog-card"
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: index * 0.2 }}
-              whileHover={{ scale: 1.03 }}
-              viewport={{ once: true }}
-            >
-              <img src={post.image} alt={post.title} className="blog-image" />
-              <div className="blog-details">
-                <p className="blog-meta">{post.author} | {post.date}</p>
-                <h3 className="blog-title">{post.title}</h3>
-                <p className="blog-excerpt">{post.excerpt}</p>
-                <button className="read-more-button">Read More</button>
-              </div>
-            </motion.div>
-          ))}
+          <div className="blog-grid">
+            {blogPosts.map((post, index) => (
+              <motion.div 
+                key={post.id}
+                className="blog-card"
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.2 }}
+                whileHover={{ scale: 1.03 }}
+                viewport={{ once: true }}
+              >
+                <img src={post.image} alt={post.title} className="blog-image" />
+                <div className="blog-details">
+                  <p className="blog-meta">{post.author} | {post.date}</p>
+                  <h3 className="blog-title">{post.title}</h3>
+                  <p className="blog-excerpt">{post.excerpt}</p>
+                  <button className="read-more-button">Read More</button>
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-
-       {/* Footer */}
+      {/* Footer */}
       <footer className="footer">
         <div className="footer-content">
           <div className="footer-section">
@@ -392,7 +392,6 @@ const Home = () => {
         </div>
       </footer>
     </div>
-
   );
 };
 

@@ -1,6 +1,5 @@
-import React from 'react';
-import './SchoolCleaning.css';
-import { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+import './SchoolCleaning.css'; // Reusing styles
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
@@ -11,16 +10,43 @@ import pic3 from '../assets/pic3.webp';
 
 const HomeCleaning = () => {
   const navigate = useNavigate();
-  const bookingFormPath = '/booking';
+  const [billingType, setBillingType] = useState('monthly');
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const handleBookNow = (service, price) => {
-    navigate(bookingFormPath, {
+    navigate('/booking', {
       state: { service, price },
     });
   };
-   useEffect(() => {
-      window.scrollTo(0, 0);
-    }, []);
+
+  const pricing = {
+    monthly: {
+      title: 'Home Cleaning Package',
+      price: '£79.00',
+      duration: '/month',
+      features: [
+        '✔ Weekly Home Cleaning Visits',
+        '✔ Kitchen & Bathroom Disinfection',
+        '✔ Living Space & Bedroom Cleaning'
+      ]
+    },
+    yearly: {
+      title: 'Home Cleaning Package',
+      price: '£849.00',
+      duration: '/year',
+      features: [
+        '✔ Weekly Home Cleaning Visits',
+        '✔ Kitchen & Bathroom Disinfection',
+        '✔ Living Space & Bedroom Cleaning',
+        '✔ 3 Bonus Deep Clean Services'
+      ]
+    }
+  };
+
+  const currentPlan = pricing[billingType];
 
   return (
     <div className="school-cleaning">
@@ -58,7 +84,7 @@ const HomeCleaning = () => {
           <p>
             Complete home cleaning and clearance services tailored to suit your needs. From deep cleaning to post-party cleanup, we’ve got your space covered.
           </p>
-          <button className="btn primary-btn" onClick={() => handleBookNow("Home Cleaning", "Custom")}>
+          <button className="btn primary-btn" onClick={() => handleBookNow("Home Cleaning", currentPlan.price + currentPlan.duration)}>
             Book Now
           </button>
         </motion.div>
@@ -114,11 +140,55 @@ const HomeCleaning = () => {
                 <h3>{item.title}</h3>
                 <p>{item.desc}</p>
               </div>
-              <button className="card-link" onClick={() => handleBookNow(item.title, "Custom")}>
+              <button className="card-link" onClick={() => handleBookNow(item.title, currentPlan.price + currentPlan.duration)}>
                 Book Now →
               </button>
             </motion.div>
           ))}
+        </div>
+      </section>
+
+      {/* Pricing Plan */}
+      <section className="plans">
+        <h2>Our Plan</h2>
+        <p>Home Cleaning Subscription</p>
+
+        <div className="plan-toggle">
+          <button
+            className={`btn secondary-btn ${billingType === 'monthly' ? 'active' : ''}`}
+            onClick={() => setBillingType('monthly')}
+          >
+            Monthly
+          </button>
+          <button
+            className={`btn secondary-btn ${billingType === 'yearly' ? 'active' : ''}`}
+            onClick={() => setBillingType('yearly')}
+          >
+            Yearly
+          </button>
+        </div>
+
+        <div className="plan-cards">
+          <motion.div
+            className="plan-card"
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.2 }}
+          >
+            <h3>{currentPlan.title}</h3>
+            <p className="price">{currentPlan.price} <span>{currentPlan.duration}</span></p>
+            <ul>
+              {currentPlan.features.map((feature, index) => (
+                <li key={index}>{feature}</li>
+              ))}
+            </ul>
+            <button
+              className="btn primary-btn"
+              onClick={() => handleBookNow(currentPlan.title, currentPlan.price + currentPlan.duration)}
+            >
+              Book Now
+            </button>
+          </motion.div>
         </div>
       </section>
 
@@ -155,20 +225,21 @@ const HomeCleaning = () => {
           ))}
         </div>
       </section>
-       {/* Footer */}
+
+      {/* Footer */}
       <footer className="footer">
         <div className="footer-content">
           <div className="footer-section">
             <h3>Clean and Clear</h3>
-            <p>Professional cleaning services for schools and educational facilities.</p>
+            <p>Professional cleaning services for residential homes and more.</p>
           </div>
           <div className="footer-section">
             <h4>Services</h4>
             <ul>
-              <li>School Cleaning</li>
+              <li>Home Cleaning</li>
               <li>Office Cleaning</li>
               <li>Commercial Cleaning</li>
-              <li>Special Services</li>
+              <li>Event Cleaning</li>
             </ul>
           </div>
           <div className="footer-section">
@@ -189,7 +260,6 @@ const HomeCleaning = () => {
           <p>&copy; {new Date().getFullYear()} Clean and Clear. All rights reserved.</p>
         </div>
       </footer>
-      
     </div>
   );
 };

@@ -16,14 +16,14 @@ const BookingForm = () => {
   const [errors, setErrors] = useState({});
   const [status, setStatus] = useState('');
   const [loading, setLoading] = useState(false);
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
   const firstErrorRef = useRef(null);
 
-  // Auto-fill plan from previous page
   useEffect(() => {
     if (state?.service) {
       setFormData((prev) => ({
         ...prev,
-        plan: `${state.service} ${state.price ? `- ${state.price}` : ''}`
+        plan: `${state.service} ${state.price ? `- ${state.price}` : ''}`,
       }));
     }
   }, [state]);
@@ -66,8 +66,14 @@ const BookingForm = () => {
     try {
       await axios.post('http://localhost:5000/api/bookings', formData);
       setStatus('✅ Booking successful! Confirmation email sent.');
+      setShowSuccessModal(true);
       setFormData({ name: '', email: '', date: '', plan: '', message: '' });
       setErrors({});
+
+      // Auto-close modal after 3 seconds
+      setTimeout(() => {
+        setShowSuccessModal(false);
+      }, 3000);
     } catch (err) {
       setStatus('❌ Booking failed. Please try again.');
     } finally {
@@ -143,6 +149,16 @@ const BookingForm = () => {
 
         {status && <p className="status-message">{status}</p>}
       </form>
+
+      {/* ✅ Success Modal */}
+      {showSuccessModal && (
+        <div className="success-modal">
+          <div className="success-content">
+            <div className="success-icon">✔</div>
+            <p>Your submission has been received!</p>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

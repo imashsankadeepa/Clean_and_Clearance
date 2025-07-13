@@ -1,5 +1,6 @@
 // Service.js
 import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import {
@@ -11,9 +12,9 @@ import {
   FaSmile,
 } from 'react-icons/fa';
 import './Service.css';
-import serviceImage1 from '../assets/office1.webp';
-import serviceImage2 from '../assets/home1.webp';
-import serviceImage3 from '../assets/kichen.webp';
+import ss1 from '../assets/ss1.webp';
+import ss2 from '../assets/ss2.webp';
+import ss3 from '../assets/ss3.webp';
 import backgroundImg from '../assets/background4.webp';
 
 const Service = () => {
@@ -65,9 +66,9 @@ const Service = () => {
   ];
 
   const services = [
-    { id: 1, title: 'Office Cleaning', image: serviceImage1 },
-    { id: 2, title: 'School Cleaning', image: serviceImage2 },
-    { id: 3, title: 'Home Cleaning', image: serviceImage3 },
+    { id: 1, title: 'Office Cleaning', image: ss1 },
+    { id: 2, title: 'School Cleaning', image: ss2 },
+    { id: 3, title: 'Home Cleaning', image: ss3 },
   ];
 
   const pathMap = {
@@ -103,20 +104,12 @@ const Service = () => {
             Delivering reliable, professional and eco-friendly cleaning across the UK.
           </motion.p>
           <div className="hero-buttons">
-            <button className="primary-btn">Get a Quote</button>
-            <button className="secondary-btn">Explore Services</button>
+
+             <Link to="/booking" className="primary-btn">Get a Quote</Link>
+
           </div>
         </div>
-        <img
-          src={serviceImage1}
-          alt="Office cleaning decor"
-          className="hero-decor decor-left"
-        />
-        <img
-          src={serviceImage2}
-          alt="Home cleaning decor"
-          className="hero-decor decor-right"
-        />
+        
       </section>
 
       {/* Stats Section */}
@@ -168,7 +161,8 @@ const Service = () => {
         <p>
           We’re ready to help you maintain a clean and healthy space. Schedule a cleaning in just a few clicks.
         </p>
-        <button className="primary-btn">Request a Quote</button>
+
+         <Link to="/booking" className="primary-btn">Request a Quote</Link>
       </section>
 
       {/* Process Steps */}

@@ -1,8 +1,7 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './OfficeCleaning.css';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { useEffect } from 'react';
 import background4 from '../assets/background4.webp';
 import pic1 from '../assets/pic1.webp';
 import pic2 from '../assets/pic2.webp';
@@ -17,9 +16,40 @@ const OfficeCleaning = () => {
       state: { service, price },
     });
   };
-   useEffect(() => {
-      window.scrollTo(0, 0);
-    }, []);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  // Billing type toggle state
+  const [billingType, setBillingType] = useState('monthly');
+
+  // Pricing plans for both billing types
+  const pricing = {
+    monthly: {
+      title: 'Office Cleaning Package',
+      price: '£69.00',
+      duration: '/month',
+      features: [
+        '✔ Daily/Weekly Office Cleaning',
+        '✔ Desk & Shared Area Cleaning',
+        '✔ Equipment & Monitor Wipes'
+      ]
+    },
+    yearly: {
+      title: 'Office Cleaning Package',
+      price: '£749.00',
+      duration: '/year',
+      features: [
+        '✔ Daily/Weekly Office Cleaning',
+        '✔ Desk & Shared Area Cleaning',
+        '✔ Equipment & Monitor Wipes',
+        '✔ 2 Free Deep Clean Services'
+      ]
+    }
+  };
+
+  const currentPlan = pricing[billingType];
 
   return (
     <div className="office-cleaning">
@@ -57,7 +87,10 @@ const OfficeCleaning = () => {
           <p>
             Reliable and professional office cleaning services to keep your workspace hygienic, fresh, and productive every day.
           </p>
-          <button className="btn primary-btn" onClick={() => handleBookNow("Office Cleaning", "£69.00/month")}>
+          <button
+            className="btn primary-btn"
+            onClick={() => handleBookNow("Office Cleaning", currentPlan.price + currentPlan.duration)}
+          >
             Book Now
           </button>
         </motion.div>
@@ -103,7 +136,7 @@ const OfficeCleaning = () => {
                 <h3>{item.title}</h3>
                 <p>{item.desc}</p>
               </div>
-              <button className="card-link" onClick={() => handleBookNow(item.title, "£69.00/month")}>
+              <button className="card-link" onClick={() => handleBookNow(item.title, currentPlan.price + currentPlan.duration)}>
                 Book Now →
               </button>
             </motion.div>
@@ -115,6 +148,22 @@ const OfficeCleaning = () => {
       <section className="plans">
         <h2>Our Plan</h2>
         <p>Office Cleaning Subscription</p>
+
+        <div className="plan-toggle">
+          <button
+            className={`btn secondary-btn ${billingType === 'monthly' ? 'active' : ''}`}
+            onClick={() => setBillingType('monthly')}
+          >
+            Monthly
+          </button>
+          <button
+            className={`btn secondary-btn ${billingType === 'yearly' ? 'active' : ''}`}
+            onClick={() => setBillingType('yearly')}
+          >
+            Yearly
+          </button>
+        </div>
+
         <div className="plan-cards">
           <motion.div
             className="plan-card"
@@ -122,14 +171,17 @@ const OfficeCleaning = () => {
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.2 }}
           >
-            <h3>Office Cleaning Package</h3>
-            <p className="price">£69.00 <span>/month</span></p>
+            <h3>{currentPlan.title}</h3>
+            <p className="price">{currentPlan.price} <span>{currentPlan.duration}</span></p>
             <ul>
-              <li>✔ Daily/Weekly Office Cleaning</li>
-              <li>✔ Desk & Shared Area Cleaning</li>
-              <li>✔ Equipment & Monitor Wipes</li>
+              {currentPlan.features.map((feature, i) => (
+                <li key={i}>{feature}</li>
+              ))}
             </ul>
-            <button className="btn primary-btn" onClick={() => handleBookNow("Office Cleaning", "£69.00/month")}>
+            <button
+              className="btn primary-btn"
+              onClick={() => handleBookNow(currentPlan.title, currentPlan.price + currentPlan.duration)}
+            >
               Book Now
             </button>
           </motion.div>
@@ -169,7 +221,8 @@ const OfficeCleaning = () => {
           ))}
         </div>
       </section>
-       {/* Footer */}
+
+      {/* Footer */}
       <footer className="footer">
         <div className="footer-content">
           <div className="footer-section">
@@ -203,7 +256,6 @@ const OfficeCleaning = () => {
           <p>&copy; {new Date().getFullYear()} Clean and Clear. All rights reserved.</p>
         </div>
       </footer>
-      
     </div>
   );
 };

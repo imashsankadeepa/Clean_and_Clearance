@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
-import logo from '../assets/Logo3.png'; // Update to exact path
+import logo from '../assets/Logo1.png';
+
+// Update to exact path
 import './nav.css';
 
 function Nav() {

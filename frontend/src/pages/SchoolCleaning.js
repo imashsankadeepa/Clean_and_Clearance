@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './SchoolCleaning.css';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { useEffect } from 'react';
+
 import background4 from '../assets/background4.webp';
 import pic1 from '../assets/pic1.webp';
 import pic2 from '../assets/pic2.webp';
@@ -12,15 +12,38 @@ const SchoolCleaning = () => {
   const navigate = useNavigate();
   const bookingFormPath = '/booking';
 
+  const [billingCycle, setBillingCycle] = useState('monthly');
+
   const handleBookNow = (service, price) => {
     navigate(bookingFormPath, {
       state: { service, price },
     });
   };
- useEffect(() => {
+
+  useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-  
+
+  const plans = [
+    {
+      title: 'Basic Package',
+      monthly: '$30.00',
+      yearly: '$300.00',
+      features: ['✔ Dusting', '✔ Mopping'],
+    },
+    {
+      title: 'Standard Package',
+      monthly: '$50.00',
+      yearly: '$500.00',
+      features: ['✔ Dusting', '✔ Mopping', '✔ Vacuuming'],
+    },
+    {
+      title: 'Premium Package',
+      monthly: '$80.00',
+      yearly: '$800.00',
+      features: ['✔ Dusting', '✔ Mopping', '✔ Deep Clean'],
+    },
+  ];
 
   return (
     <div className="school-cleaning">
@@ -74,23 +97,21 @@ const SchoolCleaning = () => {
         </div>
 
         <div className="service-cards">
-          {[
-            {
-              img: pic1,
-              title: "Cleaner, Hall, Toilet Cleaning",
-              desc: "Comprehensive cleaning of all school facilities including hallways and restrooms"
-            },
-            {
-              img: pic2,
-              title: "Playground & Classroom Supports",
-              desc: "Specialized cleaning for playground equipment and classroom furniture"
-            },
-            {
-              img: pic3,
-              title: "Morning School Cleaning",
-              desc: "Early morning services to ensure facilities are ready before students arrive"
-            },
-          ].map((item, i) => (
+          {[{
+            img: pic1,
+            title: "Cleaner, Hall, Toilet Cleaning",
+            desc: "Comprehensive cleaning of all school facilities including hallways and restrooms"
+          },
+          {
+            img: pic2,
+            title: "Playground & Classroom Supports",
+            desc: "Specialized cleaning for playground equipment and classroom furniture"
+          },
+          {
+            img: pic3,
+            title: "Morning School Cleaning",
+            desc: "Early morning services to ensure facilities are ready before students arrive"
+          }].map((item, i) => (
             <motion.div
               key={i}
               className="service-card"
@@ -118,46 +139,43 @@ const SchoolCleaning = () => {
         <h2>Our Plans</h2>
         <p>Choose Your Plan</p>
         <div className="plan-toggle">
-          <button className="btn secondary-btn active">Monthly</button>
-          <button className="btn secondary-btn">Yearly</button>
+          <button
+            className={`btn secondary-btn ${billingCycle === 'monthly' ? 'active' : ''}`}
+            onClick={() => setBillingCycle('monthly')}
+          >
+            Monthly
+          </button>
+          <button
+            className={`btn secondary-btn ${billingCycle === 'yearly' ? 'active' : ''}`}
+            onClick={() => setBillingCycle('yearly')}
+          >
+            Yearly
+          </button>
         </div>
         <div className="plan-cards">
-          {[
-            {
-              title: 'Basic Package',
-              price: '$30.00',
-              features: ['✔ Dusting', '✔ Mopping'],
-            },
-            {
-              title: 'Standard Package',
-              price: '$50.00',
-              features: ['✔ Dusting', '✔ Mopping', '✔ Vacuuming'],
-            },
-            {
-              title: 'Premium Package',
-              price: '$80.00',
-              features: ['✔ Dusting', '✔ Mopping', '✔ Deep Clean'],
-            },
-          ].map((plan, i) => (
-            <motion.div
-              key={i}
-              className="plan-card"
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ delay: i * 0.2 }}
-            >
-              <h3>{plan.title}</h3>
-              <p className="price">{plan.price} <span>/month</span></p>
-              <ul>
-                {plan.features.map((f, j) => (
-                  <li key={j}>{f}</li>
-                ))}
-              </ul>
-              <button className="btn primary-btn" onClick={() => handleBookNow(plan.title, plan.price)}>
-                Book Now
-              </button>
-            </motion.div>
-          ))}
+          {plans.map((plan, i) => {
+            const price = billingCycle === 'monthly' ? plan.monthly : plan.yearly;
+            return (
+              <motion.div
+                key={i}
+                className="plan-card"
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ delay: i * 0.2 }}
+              >
+                <h3>{plan.title}</h3>
+                <p className="price">{price} <span>/{billingCycle}</span></p>
+                <ul>
+                  {plan.features.map((f, j) => (
+                    <li key={j}>{f}</li>
+                  ))}
+                </ul>
+                <button className="btn primary-btn" onClick={() => handleBookNow(plan.title, price)}>
+                  Book Now
+                </button>
+              </motion.div>
+            );
+          })}
         </div>
       </section>
 

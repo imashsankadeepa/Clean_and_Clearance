@@ -103,18 +103,16 @@
 
 .hero-content {
   position: relative;
-  z-index: 2;
+
   max-width: 1000px;
   text-align: left;
   padding: 10px 0 40px 20px;
   animation: none; /* Remove slide-in animation */
 }
 
-.hero-subtitle,
 
-.hero-description,
 .hero-buttons {
-  opacity: 1;
+ 
   transform: none;
   animation: none;
 }
@@ -149,13 +147,15 @@
   text-shadow: 0 3px 6px rgba(0, 0, 0, 0.6);
   text-align: left;
 }
-
 .hero-buttons {
   display: flex;
   gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
 .hero-button {
+  display: inline-block; /* Needed for anchor elements to behave like buttons */
   padding: 12px 30px;
   font-size: 1.1rem;
   font-family: 'Montserrat', sans-serif;
@@ -164,24 +164,27 @@
   cursor: pointer;
   text-transform: uppercase;
   letter-spacing: 1px;
+  text-decoration: none; /* Remove underline from <Link> */
   transition: all 0.4s ease-in-out;
-}
-
-.hero-button.primary,
-.hero-button.secondary {
   background: transparent;
-  color: #1dc872;
+  color: #f7fff8;
   border: 2px solid #1dc872;
-  box-shadow: 0 4px 15px rgba(0, 212, 192, 0.3);
 }
 
-.hero-button.primary:hover,
-.hero-button.secondary:hover {
+.hero-button:hover {
   background: #ffffff;
   color: #1dc872;
   transform: translateY(-3px);
   box-shadow: 0 6px 20px rgba(0, 212, 192, 0.5);
 }
+
+.hero-button:focus,
+.hero-button:active {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(29, 200, 114, 0.4);
+}
+
+
 /* === Responsive Styles === */
 @media (max-width: 1024px) {
   .hero-title2 {
@@ -735,7 +738,7 @@
 
 .pricing-header {
   text-align: center;
-  margin-bottom: 48px;
+  margin-bottom: 60px;
   position: relative;
   z-index: 1;
 }
@@ -829,8 +832,8 @@
 }
 
 .price-container {
-  background-color: var(--success);
-  color: var(--white);
+  background-color: rgb(253, 253, 253);
+  color:black;
   border-radius: 8px;
   padding: 16px 24px;
   margin-bottom: 24px;
