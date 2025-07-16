@@ -1,93 +1,125 @@
+/* BookingForm.css */
+
+/* Container */
 .booking-form-container {
   max-width: 600px;
-  margin: 2rem auto;
+  margin: 0 auto;
   padding: 2rem;
   background-color: #ffffff;
   border-radius: 12px;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.booking-form h2 {
+/* Headings */
+.booking-form-container h1 {
   font-size: 2rem;
   margin-bottom: 0.5rem;
-  text-align: center;
+  color: #2d2d2d;
 }
 
-.booking-form p {
-  text-align: center;
-  margin-bottom: 2rem;
-  color: #6b7280;
+.booking-form-container p {
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+  color: #666;
 }
 
+/* Form */
 .booking-form label {
-  font-weight: 600;
   display: block;
-  margin-top: 1rem;
-  margin-bottom: 0.3rem;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: #333;
 }
 
 .booking-form input,
 .booking-form select,
 .booking-form textarea {
   width: 100%;
-  padding: 0.9rem;
+  padding: 0.75rem;
+  margin-bottom: 1.25rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
   font-size: 1rem;
-  border: 1px solid #d1d5db;
-  border-radius: 8px;
-  margin-bottom: 0.5rem;
-  transition: border 0.3s;
-}
-
-.booking-form textarea {
-  resize: vertical;
-  min-height: 100px;
+  transition: border-color 0.3s ease;
 }
 
 .booking-form input:focus,
 .booking-form select:focus,
 .booking-form textarea:focus {
-  border-color: #1a2e35;
+  border-color: #0077cc;
   outline: none;
 }
 
-.booking-form .btn {
-  display: block;
-  width: 100%;
-  padding: 0.9rem;
-  margin-top: 1rem;
-  font-size: 1rem;
-  font-weight: 600;
-  background-color: #1a2e35;
-  color: #ffffff;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-}
-
-.booking-form .btn:hover {
-  background-color: #0f1e23;
-}
-
-.status-message {
-  margin-top: 1rem;
-  font-weight: 600;
-  text-align: center;
-  color: #22c55e;
-}
-
+/* Error styles */
 .error-input {
-  border-color: #dc2626 !important;
+  border-color: #e74c3c;
+  background-color: #fff5f5;
 }
 
 .error-message {
-  color: #dc2626;
+  color: #e74c3c;
   font-size: 0.875rem;
-  margin-bottom: 0.5rem;
+  margin-top: -0.75rem;
+  margin-bottom: 1rem;
   display: block;
 }
-.success-message {
-  color: #22c55e;
-  font-size: 0.875rem;
-  margin-top: 0.5rem;
-  text-align: center;
+
+/* Button */
+.btn.primary-btn {
+  background-color: #0077cc;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn.primary-btn:hover {
+  background-color: #005fa3;
+}
+
+/* Status Message */
+.status-message {
+  margin-top: 1rem;
+  font-size: 1rem;
+  color: #2d2d2d;
+}
+
+/* Success Modal */
+.success-modal {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background-color: #e6ffed;
+  border: 1px solid #27ae60;
+  color: #2c662d;
+  padding: 1rem 1.5rem;
+  border-radius: 8px;
+  z-index: 1000;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.success-content {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.success-icon {
+  font-size: 1.5rem;
+  color: #27ae60;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  .booking-form-container {
+    padding: 1rem;
+  }
+
+  .btn.primary-btn {
+    width: 100%;
+  }
 }

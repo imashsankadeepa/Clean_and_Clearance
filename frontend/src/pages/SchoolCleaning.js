@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { Helmet } from 'react-helmet';  // Import Helmet for SEO
 import './SchoolCleaning.css';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { useEffect } from 'react';
+
 import background4 from '../assets/background4.webp';
 import pic1 from '../assets/pic1.webp';
 import pic2 from '../assets/pic2.webp';
@@ -12,18 +13,64 @@ const SchoolCleaning = () => {
   const navigate = useNavigate();
   const bookingFormPath = '/booking';
 
+  const [billingCycle, setBillingCycle] = useState('monthly');
+
   const handleBookNow = (service, price) => {
     navigate(bookingFormPath, {
       state: { service, price },
     });
   };
- useEffect(() => {
+
+  useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-  
+
+  const plans = [
+    {
+      title: 'Basic Package',
+      monthly: '$30.00',
+      yearly: '$300.00',
+      features: ['✔ Dusting', '✔ Mopping'],
+    },
+    {
+      title: 'Standard Package',
+      monthly: '$50.00',
+      yearly: '$500.00',
+      features: ['✔ Dusting', '✔ Mopping', '✔ Vacuuming'],
+    },
+    {
+      title: 'Premium Package',
+      monthly: '$80.00',
+      yearly: '$800.00',
+      features: ['✔ Dusting', '✔ Mopping', '✔ Deep Clean'],
+    },
+  ];
 
   return (
     <div className="school-cleaning">
+
+      {/* SEO Metadata */}
+      <Helmet>
+        <title>Professional School Cleaning Services | Clean and Clear</title>
+        <meta
+          name="description"
+          content="Professional cleaning services tailored for schools and educational facilities, ensuring a clean, safe, and healthy learning environment."
+        />
+        <meta
+          name="keywords"
+          content="school cleaning, educational facility cleaning, classroom cleaning, playground sanitization, janitorial services"
+        />
+        <meta name="author" content="Clean and Clear" />
+        <meta property="og:title" content="Professional School Cleaning Services | Clean and Clear" />
+        <meta
+          property="og:description"
+          content="Reliable and tailored cleaning solutions for schools, including classrooms, playgrounds, and facilities."
+        />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content={background4} />
+        <meta property="og:url" content={window.location.href} />
+      </Helmet>
+
       {/* Hero Section */}
       <section
         className="hero"
@@ -59,7 +106,11 @@ const SchoolCleaning = () => {
             Professional cleaning services tailored for educational facilities,
             ensuring a clean, safe, and healthy learning environment for students and staff.
           </p>
-          <button className="btn primary-btn" onClick={() => handleBookNow("School Cleaning", "Custom")}>
+          <button
+            className="btn primary-btn"
+            onClick={() => handleBookNow("School Cleaning", "Custom")}
+            aria-label="Book School Cleaning Service"
+          >
             Book Now
           </button>
         </motion.div>
@@ -74,23 +125,21 @@ const SchoolCleaning = () => {
         </div>
 
         <div className="service-cards">
-          {[
-            {
-              img: pic1,
-              title: "Cleaner, Hall, Toilet Cleaning",
-              desc: "Comprehensive cleaning of all school facilities including hallways and restrooms"
-            },
-            {
-              img: pic2,
-              title: "Playground & Classroom Supports",
-              desc: "Specialized cleaning for playground equipment and classroom furniture"
-            },
-            {
-              img: pic3,
-              title: "Morning School Cleaning",
-              desc: "Early morning services to ensure facilities are ready before students arrive"
-            },
-          ].map((item, i) => (
+          {[{
+            img: pic1,
+            title: "Cleaner, Hall, Toilet Cleaning",
+            desc: "Comprehensive cleaning of all school facilities including hallways and restrooms"
+          },
+          {
+            img: pic2,
+            title: "Playground & Classroom Supports",
+            desc: "Specialized cleaning for playground equipment and classroom furniture"
+          },
+          {
+            img: pic3,
+            title: "Morning School Cleaning",
+            desc: "Early morning services to ensure facilities are ready before students arrive"
+          }].map((item, i) => (
             <motion.div
               key={i}
               className="service-card"
@@ -99,13 +148,17 @@ const SchoolCleaning = () => {
               transition={{ duration: 0.5, delay: i * 0.2 }}
             >
               <div className="card-image">
-                <img src={item.img} alt={item.title} />
+                <img src={item.img} alt={`${item.title} service image`} />
               </div>
               <div className="card-content">
                 <h3>{item.title}</h3>
                 <p>{item.desc}</p>
               </div>
-              <button className="card-link" onClick={() => handleBookNow(item.title, "Custom")}>
+              <button
+                className="card-link"
+                onClick={() => handleBookNow(item.title, "Custom")}
+                aria-label={`Book ${item.title} service`}
+              >
                 Book Now →
               </button>
             </motion.div>
@@ -118,46 +171,49 @@ const SchoolCleaning = () => {
         <h2>Our Plans</h2>
         <p>Choose Your Plan</p>
         <div className="plan-toggle">
-          <button className="btn secondary-btn active">Monthly</button>
-          <button className="btn secondary-btn">Yearly</button>
+          <button
+            className={`btn secondary-btn ${billingCycle === 'monthly' ? 'active' : ''}`}
+            onClick={() => setBillingCycle('monthly')}
+            aria-pressed={billingCycle === 'monthly'}
+          >
+            Monthly
+          </button>
+          <button
+            className={`btn secondary-btn ${billingCycle === 'yearly' ? 'active' : ''}`}
+            onClick={() => setBillingCycle('yearly')}
+            aria-pressed={billingCycle === 'yearly'}
+          >
+            Yearly
+          </button>
         </div>
         <div className="plan-cards">
-          {[
-            {
-              title: 'Basic Package',
-              price: '$30.00',
-              features: ['✔ Dusting', '✔ Mopping'],
-            },
-            {
-              title: 'Standard Package',
-              price: '$50.00',
-              features: ['✔ Dusting', '✔ Mopping', '✔ Vacuuming'],
-            },
-            {
-              title: 'Premium Package',
-              price: '$80.00',
-              features: ['✔ Dusting', '✔ Mopping', '✔ Deep Clean'],
-            },
-          ].map((plan, i) => (
-            <motion.div
-              key={i}
-              className="plan-card"
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ delay: i * 0.2 }}
-            >
-              <h3>{plan.title}</h3>
-              <p className="price">{plan.price} <span>/month</span></p>
-              <ul>
-                {plan.features.map((f, j) => (
-                  <li key={j}>{f}</li>
-                ))}
-              </ul>
-              <button className="btn primary-btn" onClick={() => handleBookNow(plan.title, plan.price)}>
-                Book Now
-              </button>
-            </motion.div>
-          ))}
+          {plans.map((plan, i) => {
+            const price = billingCycle === 'monthly' ? plan.monthly : plan.yearly;
+            return (
+              <motion.div
+                key={i}
+                className="plan-card"
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ delay: i * 0.2 }}
+              >
+                <h3>{plan.title}</h3>
+                <p className="price">{price} <span>/{billingCycle}</span></p>
+                <ul>
+                  {plan.features.map((f, j) => (
+                    <li key={j}>{f}</li>
+                  ))}
+                </ul>
+                <button
+                  className="btn primary-btn"
+                  onClick={() => handleBookNow(plan.title, price)}
+                  aria-label={`Book ${plan.title} plan`}
+                >
+                  Book Now
+                </button>
+              </motion.div>
+            );
+          })}
         </div>
       </section>
 
@@ -213,10 +269,12 @@ const SchoolCleaning = () => {
           </div>
           <div className="footer-section">
             <h4>Contact</h4>
-            <p>123 Cleaning Street<br />
+            <address>
+              123 Cleaning Street<br />
               London, UK<br />
-              info@cleanandclear.com<br />
-              +44 123 456 7890</p>
+              <a href="mailto:info@cleanandclear.com">info@cleanandclear.com</a><br />
+              <a href="tel:+441234567890">+44 123 456 7890</a>
+            </address>
           </div>
           <div className="footer-section">
             <h4>Hours</h4>
@@ -229,6 +287,7 @@ const SchoolCleaning = () => {
           <p>&copy; {new Date().getFullYear()} Clean and Clear. All rights reserved.</p>
         </div>
       </footer>
+
     </div>
   );
 };

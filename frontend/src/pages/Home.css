@@ -103,18 +103,16 @@
 
 .hero-content {
   position: relative;
-  z-index: 2;
+
   max-width: 1000px;
   text-align: left;
   padding: 10px 0 40px 20px;
   animation: none; /* Remove slide-in animation */
 }
 
-.hero-subtitle,
 
-.hero-description,
 .hero-buttons {
-  opacity: 1;
+ 
   transform: none;
   animation: none;
 }
@@ -149,13 +147,15 @@
   text-shadow: 0 3px 6px rgba(0, 0, 0, 0.6);
   text-align: left;
 }
-
 .hero-buttons {
   display: flex;
   gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
 .hero-button {
+  display: inline-block; /* Needed for anchor elements to behave like buttons */
   padding: 12px 30px;
   font-size: 1.1rem;
   font-family: 'Montserrat', sans-serif;
@@ -164,24 +164,27 @@
   cursor: pointer;
   text-transform: uppercase;
   letter-spacing: 1px;
+  text-decoration: none; /* Remove underline from <Link> */
   transition: all 0.4s ease-in-out;
-}
-
-.hero-button.primary,
-.hero-button.secondary {
   background: transparent;
-  color: #1dc872;
+  color: #f7fff8;
   border: 2px solid #1dc872;
-  box-shadow: 0 4px 15px rgba(0, 212, 192, 0.3);
 }
 
-.hero-button.primary:hover,
-.hero-button.secondary:hover {
+.hero-button:hover {
   background: #ffffff;
   color: #1dc872;
   transform: translateY(-3px);
   box-shadow: 0 6px 20px rgba(0, 212, 192, 0.5);
 }
+
+.hero-button:focus,
+.hero-button:active {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(29, 200, 114, 0.4);
+}
+
+
 /* === Responsive Styles === */
 @media (max-width: 1024px) {
   .hero-title2 {
@@ -250,7 +253,7 @@
 
 /* Services Section */
 .services-section {
-  padding: 80px 20px;
+  padding: 0px 80px;
   background-color: #ffffff;
 }
 
@@ -263,49 +266,73 @@
 .services-header .section-title {
   font-size: 3rem;
   font-weight: 700;
-  color: #22C55E;
+  color: #22c55e;
   font-family: 'Poppins', sans-serif;
-  margin-bottom: 4px;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .services-header .section-description {
   font-size: 1.125rem;
   color: #111827;
   font-family: 'Poppins', sans-serif;
-  max-width: 500px;
+  max-width: 540px;
   margin: 0 auto;
   line-height: 1.6;
 }
 
 .services-grid {
   display: grid;
-  gap: 40px;
+  padding: 80px 0;
   grid-template-columns: 1fr;
+  gap: 30px; /* Explicit uniform gap */
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 @media (min-width: 768px) {
   .services-grid {
     grid-template-columns: repeat(2, 1fr);
+    gap: 40px 30px; /* row-gap 40px, column-gap 30px */
   }
 }
 
 @media (min-width: 1024px) {
   .services-grid {
     grid-template-columns: repeat(3, 1fr);
+    gap: 50px 40px; /* row-gap 50px, column-gap 40px */
   }
 }
 
 /* Individual Service Card */
 .service-card {
-  background: #ffffff;
+  background: #fff;
   border-radius: 12px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
   overflow: hidden;
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
 }
 
-.service-card:hover {
-  transform: translateY(-5px);
+.service-card:hover,
+.service-card:focus-within {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 30px rgba(34, 197, 94, 0.3);
+  outline: none;
+}
+
+.service-link {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+  height: 100%;
+  outline-offset: 3px;
+}
+
+.service-link:focus-visible {
+  outline: 3px solid #22c55e;
+  outline-offset: 3px;
 }
 
 .service-image {
@@ -313,95 +340,47 @@
   height: 220px;
   object-fit: cover;
   border-radius: 12px 12px 0 0;
+  transition: transform 0.3s ease;
+}
+
+.service-card:hover .service-image {
+  transform: scale(1.05);
 }
 
 .service-details {
-  padding: 24px;
+  padding: 24px 28px;
 }
 
 .service-title {
-  font-size: 1.25rem;
+  font-size: 1.3rem;
   font-weight: 700;
-  color: #666666;
+  color: #333;
   font-family: 'Poppins', sans-serif;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
+  text-transform: capitalize;
 }
 
 .service-description {
   font-size: 1rem;
-  color: #7f8c8d;
+  color: #555;
   font-family: 'Poppins', sans-serif;
-  margin-bottom: 20px;
   line-height: 1.6;
+  margin-bottom: 20px;
 }
 
-/* Buttons */
-.service-button {
-  padding: 10px 30px;
-  border-radius: 8px;
-  font-size: 1rem;
-  font-family: 'Poppins', sans-serif;
-  cursor: pointer;
-  transition: all 0.4s ease;
-}
-
-.service-button.filled {
-  background-color: transparent;
-  color: #29d479;
-  border: 2px solid #29d479;
-  box-shadow: 0 3px 10px rgba(56, 215, 39, 0.94);
-}
-
-.service-button.filled:hover {
-  background-color: #24ca4b;
-  color: #ffffff;
-  transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(50, 238, 107, 0.4);
-}
-
-.service-button.outline {
-  background-color: transparent;
-  color: #29d479;
-  border: 2px solid #29d479;
-  box-shadow: 0 3px 10px rgba(56, 215, 39, 0.94);
-}
-
-.service-button.outline:hover {
-  background-color: #24ca4b;
-  color: #ffffff;
-  transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(50, 238, 107, 0.4);
-}
-
-/* Animation Keyframes */
-@keyframes slideFadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Responsive Design Tweaks */
+/* Responsive tweaks */
 @media (max-width: 768px) {
   .services-section {
-    padding: 60px 0;
+    padding: 60px 16px;
   }
 
   .services-header .section-title {
-    font-size: 2.25rem;
+    font-size: 2.4rem;
   }
 
   .services-header .section-description {
     font-size: 1rem;
-    padding: 0 20px;
-  }
-
-  .services-grid {
-    gap: 24px;
+    padding: 0 10px;
   }
 
   .service-image {
@@ -409,26 +388,21 @@
   }
 
   .service-details {
-    padding: 16px;
+    padding: 18px 20px;
   }
 
   .service-title {
-    font-size: 1.1rem;
+    font-size: 1.15rem;
   }
 
   .service-description {
     font-size: 0.95rem;
   }
-
-  .service-button {
-    padding: 8px 20px;
-    font-size: 0.9rem;
-  }
 }
 
 @media (max-width: 480px) {
   .services-section {
-    padding: 40px 0;
+    padding: 50px 12px;
   }
 
   .services-header .section-title {
@@ -444,7 +418,7 @@
   }
 
   .service-details {
-    padding: 12px;
+    padding: 14px 16px;
   }
 
   .service-title {
@@ -452,14 +426,10 @@
   }
 
   .service-description {
-    font-size: 0.85rem;
-  }
-
-  .service-button {
-    padding: 6px 16px;
-    font-size: 0.85rem;
+    font-size: 0.9rem;
   }
 }
+
 
 /* Why Choose Us Section */
 .why-choose-section {
@@ -470,7 +440,7 @@
 .why-choose-content {
   display: flex;
   flex-direction: column;
-  gap: 4rem;
+  gap: 13rem;
   align-items: center;
 }
 
@@ -735,9 +705,37 @@
 
 .pricing-header {
   text-align: center;
-  margin-bottom: 48px;
+  margin-bottom: 60px;
   position: relative;
   z-index: 1;
+}
+.service-button {
+  display: inline-block;
+  padding: 12px 28px;
+  background-color: #22c55e; /* Green */
+  color: white;
+  font-weight: 600;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  border-radius: 8px;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 12px rgba(34, 197, 94, 0.4);
+}
+
+.service-button:hover,
+.service-button:focus {
+  background-color: #16a34a; /* Darker green */
+  box-shadow: 0 6px 16px rgba(22, 163, 74, 0.6);
+  outline: none;
+  text-decoration: none;
+}
+
+.service-button:focus-visible {
+  outline: 3px solid #a7f3d0;
+  outline-offset: 3px;
 }
 
 .pricing-subtitle {
@@ -829,8 +827,8 @@
 }
 
 .price-container {
-  background-color: var(--success);
-  color: var(--white);
+  background-color: rgb(253, 253, 253);
+  color:black;
   border-radius: 8px;
   padding: 16px 24px;
   margin-bottom: 24px;

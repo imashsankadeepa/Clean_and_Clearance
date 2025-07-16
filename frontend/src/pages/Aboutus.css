@@ -1,16 +1,21 @@
+/* Base Container */
 .about-container {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   color: #333;
   background-color: #f9f9f9;
-  padding: 0;
+  max-width: 1200px;
+  margin: auto;
+  padding: 0 20px;
+  line-height: 1.6; /* Improves readability */
 }
 
+/* Hero Section */
 .about-hero5 {
   background-size: cover;
   background-position: center;
   padding: 100px 20px;
   text-align: center;
-  color: white;
+  color: #fff;
   position: relative;
 }
 
@@ -36,30 +41,29 @@
   color: #e2e8f0;
 }
 
-
+/* Mission & Vision */
 .mission-vision {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 40px;
   padding: 60px 20px;
-  max-width: 1100px;
-  margin: auto;
-
-  
 }
 
-.mission-box, .vision-box {
-  background: #ffffff;
+.mission-box,
+.vision-box {
+  background: #fff;
   padding: 30px;
   border-radius: 10px;
-  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease;
 }
 
-.mission-box:hover, .vision-box:hover {
+.mission-box:hover,
+.vision-box:hover {
   transform: translateY(-5px);
 }
 
+/* Core Values */
 .core-values {
   text-align: center;
   padding: 60px 20px;
@@ -82,12 +86,12 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  background: white;
+  background: #fff;
   padding: 15px 20px;
   border-radius: 10px;
   font-weight: bold;
   font-size: 1rem;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s;
 }
 
@@ -100,6 +104,7 @@
   color: #10c55e;
 }
 
+/* Stats Section */
 .stats {
   display: flex;
   justify-content: space-around;
@@ -115,16 +120,17 @@
 
 .stat-card h3 {
   font-size: 2rem;
-  color: #000000;
+  color: #000;
 }
 
 .stat-card p {
   font-weight: 600;
 }
 
+/* Testimonials */
 .testimonials {
   padding: 60px 20px;
-  background: #ffffff;
+  background: #fff;
   text-align: center;
 }
 
@@ -143,7 +149,7 @@
   background: #eaf4f4;
   padding: 25px;
   border-radius: 12px;
-  box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
   transition: transform 0.4s ease;
 }
 
@@ -161,16 +167,17 @@
   font-weight: bold;
 }
 
+/* Call-to-Action */
 .cta-section {
   background-color: #0ada06;
-  color: white;
+  color: #fff;
   text-align: center;
   padding: 60px 20px;
   border-radius: 0 0 10px 10px;
 }
 
 .cta-button {
-  background: white;
+  background: #fff;
   color: #0077b6;
   padding: 14px 28px;
   border-radius: 8px;
@@ -182,12 +189,8 @@
 .cta-button:hover {
   background: #e0f7fa;
 }
-.about-container {
-  max-width: 1200px;
-  margin: auto;
-  padding: 0 20px;
-}
-/* ======= MOBILE RESPONSIVE STYLES ======= */
+
+/* ============ Responsive Styles ============ */
 @media (max-width: 768px) {
   .about-hero5 {
     padding: 60px 15px;

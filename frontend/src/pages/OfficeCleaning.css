@@ -1,183 +1,109 @@
-.office-cleaning {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  color: #333;
-  line-height: 1.6;
-  overflow-x: hidden;
-}
-
-/* General Reuse Styles */
-section {
-  padding: 5rem 1.5rem;
-}
-
-h1, h2, h3, h4, h5 {
-  margin: 0 0 1rem;
-  font-weight: 700;
-}
-
-h1 { font-size: 3rem; }
-h2 { font-size: 2.2rem; }
-h3 { font-size: 1.6rem; }
-h4 { font-size: 1.4rem; }
-
-p {
-  color: #666;
-  font-size: 1.1rem;
-  margin-bottom: 1.5rem;
-}
-
-/* Hero */
-.hero {
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  text-align: center;
-  padding: 0 2rem;
-  position: relative;
-}
-
-.hero::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.6);
-  z-index: -1;
-}
-
-.hero-content {
-  max-width: 800px;
-}
-
-.hero h1 span {
-  display: inline-block;
-}
-
-/* Buttons */
-.btn {
-  display: inline-block;
-  padding: 1rem 2rem;
-  border: none;
+/* Plan Toggle */
+.plan-toggle {
+  display: inline-flex;
+  background: #f5f5f5;
   border-radius: 50px;
-  font-weight: bold;
-  cursor: pointer;
-  font-size: 1rem;
-  transition: 0.3s ease;
+  padding: 5px;
+  margin: 20px auto;
+  justify-content: center;
+  gap: 10px;
 }
 
-.primary-btn {
-  background-color: #2980b9;
-  color: #fff;
+.plan-toggle .secondary-btn {
+  border-radius: 50px;
+  padding: 0.6rem 1.8rem;
+  font-weight: 600;
+  background: transparent;
+  border: 2px solid transparent;
+  color: #555;
+  transition: all 0.3s ease;
 }
 
-.primary-btn:hover {
-  background-color: #3498db;
+.plan-toggle .secondary-btn.active {
+  background: #27ae60;
+  color: white;
+  border-color: #27ae60;
+  box-shadow: 0 4px 12px rgba(39, 174, 96, 0.3);
 }
 
-/* Section Tags */
-.section-tag {
-  color: #2980b9;
-  font-weight: bold;
-  font-size: 1rem;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-
-.section-tag.green {
-  color: #27ae60;
-}
-
-/* Cards Shared */
-.service-cards,
-.plan-cards,
-.free-cards {
+/* Plan Cards Section */
+.plan-cards {
   display: flex;
   flex-wrap: wrap;
-  gap: 2rem;
   justify-content: center;
+  gap: 2rem;
+  margin-top: 3rem;
 }
 
-.service-card,
-.plan-card,
-.free-card {
-  background: white;
-  border-radius: 10px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-  overflow: hidden;
-  width: 320px;
-  padding: 1.5rem;
-  text-align: left;
+.plan-card {
+  background: #ffffff;
+  padding: 2rem;
+  border-radius: 15px;
+  width: 300px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.card-image {
-  height: 180px;
-  overflow: hidden;
+.plan-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.1);
 }
 
-.card-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+.plan-card h3 {
+  font-size: 1.5rem;
+  color: #2c3e50;
+  margin-bottom: 1rem;
 }
 
-.card-content {
-  margin-top: 1rem;
-}
-
-.card-link {
-  background: #ecf0f1;
-  color: #2980b9;
-  font-weight: bold;
-  padding: 1rem;
-  display: block;
-  border-top: 1px solid #ddd;
-  cursor: pointer;
-}
-
-.card-link:hover {
-  background: #2980b9;
-  color: #fff;
-}
-
-/* Plan Cards */
 .plan-card .price {
   font-size: 2rem;
   color: #27ae60;
+  font-weight: bold;
+  margin: 10px 0;
+}
+
+.plan-card .price span {
+  font-size: 1rem;
+  color: #7f8c8d;
 }
 
 .plan-card ul {
   list-style: none;
   padding: 0;
+  margin: 1.5rem 0;
+  text-align: left;
 }
 
 .plan-card li {
-  padding-left: 1.2rem;
-  margin-bottom: 0.5rem;
+  padding: 0.5rem 0;
+  padding-left: 1.5rem;
   position: relative;
+  border-bottom: 1px solid #eee;
 }
 
 .plan-card li::before {
-  content: '✔';
+  content: "✔";
   position: absolute;
   left: 0;
   color: #27ae60;
+  font-weight: bold;
 }
 
-/* Responsive */
+/* Book Now Button in Cards */
+.plan-card .btn {
+  width: 100%;
+  margin-top: 1rem;
+}
+
+/* Responsive Enhancements */
 @media (max-width: 768px) {
-  .service-card,
-  .plan-card,
-  .free-card {
-    width: 100%;
-    max-width: 400px;
+  .plan-toggle {
+    flex-direction: column;
+    gap: 0.5rem;
   }
 
-  .hero h1 {
-    font-size: 2rem;
-  }
-
-  section {
-    padding: 3rem 1rem;
+  .plan-card {
+    width: 90%;
+    max-width: 360px;
   }
 }

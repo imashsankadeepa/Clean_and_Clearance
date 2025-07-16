@@ -1,7 +1,7 @@
-// Service.js
 import React, { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import { Helmet } from 'react-helmet';
 import {
   FaRegFileAlt,
   FaBroom,
@@ -10,16 +10,16 @@ import {
   FaLeaf,
   FaSmile,
 } from 'react-icons/fa';
+
 import './Service.css';
-import serviceImage1 from '../assets/office1.webp';
-import serviceImage2 from '../assets/home1.webp';
-import serviceImage3 from '../assets/kichen.webp';
+import ss1 from '../assets/ss1.webp';
+import ss2 from '../assets/ss2.webp';
+import ss3 from '../assets/ss3.webp';
 import backgroundImg from '../assets/background4.webp';
 
 const Service = () => {
   const navigate = useNavigate();
 
-  // Scroll to top when the page loads
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -28,32 +28,32 @@ const Service = () => {
     {
       title: 'Free Quote',
       description: 'Instant pricing and transparent process.',
-      icon: <FaRegFileAlt size={40} color="#22c55e" />,
+      icon: <FaRegFileAlt size={40} color="#22c55e" aria-hidden="true" />,
     },
     {
       title: 'Clean',
       description: 'Our expert team performs high-quality cleaning.',
-      icon: <FaBroom size={40} color="#22c55e" />,
+      icon: <FaBroom size={40} color="#22c55e" aria-hidden="true" />,
     },
     {
       title: 'Relax',
       description: 'Enjoy your spotless space with peace of mind.',
-      icon: <FaCouch size={40} color="#22c55e" />,
+      icon: <FaCouch size={40} color="#22c55e" aria-hidden="true" />,
     },
     {
       title: 'Schedule Flexibly',
       description: 'Choose the time that suits your schedule.',
-      icon: <FaCalendarAlt size={40} color="#22c55e" />,
+      icon: <FaCalendarAlt size={40} color="#22c55e" aria-hidden="true" />,
     },
     {
       title: 'Eco-friendly Products',
       description: 'We use safe and sustainable cleaning supplies.',
-      icon: <FaLeaf size={40} color="#22c55e" />,
+      icon: <FaLeaf size={40} color="#22c55e" aria-hidden="true" />,
     },
     {
       title: 'Satisfaction Guaranteed',
       description: 'Your happiness is our priority.',
-      icon: <FaSmile size={40} color="#22c55e" />,
+      icon: <FaSmile size={40} color="#22c55e" aria-hidden="true" />,
     },
   ];
 
@@ -65,9 +65,9 @@ const Service = () => {
   ];
 
   const services = [
-    { id: 1, title: 'Office Cleaning', image: serviceImage1 },
-    { id: 2, title: 'School Cleaning', image: serviceImage2 },
-    { id: 3, title: 'Home Cleaning', image: serviceImage3 },
+    { id: 1, title: 'Office Cleaning', image: ss1 },
+    { id: 2, title: 'School Cleaning', image: ss2 },
+    { id: 3, title: 'Home Cleaning', image: ss3 },
   ];
 
   const pathMap = {
@@ -78,8 +78,31 @@ const Service = () => {
 
   return (
     <div className="service-container">
+
+      {/* SEO Metadata */}
+      <Helmet>
+        <title>Expert Cleaning Services | Clean and Clear UK</title>
+        <meta
+          name="description"
+          content="Reliable, professional, and eco-friendly cleaning services across the UK. Office, school, and home cleaning tailored to your needs."
+        />
+        <meta
+          name="keywords"
+          content="cleaning services, office cleaning, school cleaning, home cleaning, eco-friendly cleaning, UK cleaning services"
+        />
+        <meta name="author" content="Clean and Clear" />
+        <meta property="og:title" content="Expert Cleaning Services | Clean and Clear UK" />
+        <meta
+          property="og:description"
+          content="Reliable, professional, and eco-friendly cleaning services for offices, schools, and homes across the UK."
+        />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content={backgroundImg} />
+        <meta property="og:url" content={window.location.href} />
+      </Helmet>
+
       {/* Hero Section */}
-      <section className="service-hero">
+      <section className="service-hero" aria-label="Hero section with overview of cleaning services">
         <div
           className="hero-bg-image"
           style={{ backgroundImage: `url(${backgroundImg})` }}
@@ -103,24 +126,15 @@ const Service = () => {
             Delivering reliable, professional and eco-friendly cleaning across the UK.
           </motion.p>
           <div className="hero-buttons">
-            <button className="primary-btn">Get a Quote</button>
-            <button className="secondary-btn">Explore Services</button>
+            <Link to="/booking" className="primary-btn" aria-label="Get a quote for cleaning services">
+              Get a Quote
+            </Link>
           </div>
         </div>
-        <img
-          src={serviceImage1}
-          alt="Office cleaning decor"
-          className="hero-decor decor-left"
-        />
-        <img
-          src={serviceImage2}
-          alt="Home cleaning decor"
-          className="hero-decor decor-right"
-        />
       </section>
 
       {/* Stats Section */}
-      <section className="why-stats">
+      <section className="why-stats" aria-label="Statistics showing company expertise and experience">
         <h2>We Are Experienced & Have Expert Teams</h2>
         <div className="stats-grid">
           {stats.map((stat, index) => (
@@ -131,6 +145,8 @@ const Service = () => {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.2, duration: 0.5 }}
+              role="region"
+              aria-label={`${stat.label}: ${stat.value}`}
             >
               <p>{stat.value}</p>
               <span>{stat.label}</span>
@@ -140,7 +156,7 @@ const Service = () => {
       </section>
 
       {/* Services Section */}
-      <section className="service-categories">
+      <section className="service-categories" aria-label="List of cleaning services offered">
         <h2>Here's What We Can Do for You</h2>
         <div className="service-cards-grid">
           {services.map((service) => (
@@ -154,8 +170,16 @@ const Service = () => {
               transition={{ duration: 0.3 }}
               onClick={() => navigate(pathMap[service.title])}
               style={{ cursor: 'pointer' }}
+              role="button"
+              tabIndex={0}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  navigate(pathMap[service.title]);
+                }
+              }}
+              aria-label={`Navigate to ${service.title} page`}
             >
-              <img src={service.image} alt={service.title} />
+              <img src={service.image} alt={`${service.title} service image`} />
               <h3>{service.title}</h3>
             </motion.div>
           ))}
@@ -163,16 +187,18 @@ const Service = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="quote-section">
+      <section className="quote-section" aria-label="Call to action to book cleaning services">
         <h2>Book a Cleaning Today</h2>
         <p>
           We’re ready to help you maintain a clean and healthy space. Schedule a cleaning in just a few clicks.
         </p>
-        <button className="primary-btn">Request a Quote</button>
+        <Link to="/booking" className="primary-btn" aria-label="Request a cleaning quote">
+          Request a Quote
+        </Link>
       </section>
 
       {/* Process Steps */}
-      <section className="process-steps">
+      <section className="process-steps" aria-label="Step-by-step process of getting cleaning service">
         <h2>Quick and Easy</h2>
         <p className="process-intro">
           Our streamlined process ensures your cleaning needs are met smoothly and efficiently.
@@ -186,6 +212,8 @@ const Service = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.15, duration: 0.6 }}
+              role="region"
+              aria-label={`Step ${index + 1}: ${step.title} - ${step.description}`}
             >
               <div className="step-number">{index + 1}</div>
               <div className="step-icon">{step.icon}</div>
@@ -197,7 +225,7 @@ const Service = () => {
       </section>
 
       {/* Footer */}
-      <footer className="footer">
+      <footer className="footer" aria-label="Footer with company information and contact details">
         <div className="footer-content">
           <div className="footer-section">
             <h3>Clean and Clear</h3>
@@ -214,12 +242,12 @@ const Service = () => {
           </div>
           <div className="footer-section">
             <h4>Contact</h4>
-            <p>
+            <address>
               123 Cleaning Street<br />
               London, UK<br />
-              info@cleanandclear.com<br />
-              +44 123 456 7890
-            </p>
+              <a href="mailto:info@cleanandclear.com">info@cleanandclear.com</a><br />
+              <a href="tel:+441234567890">+44 123 456 7890</a>
+            </address>
           </div>
           <div className="footer-section">
             <h4>Hours</h4>
@@ -234,6 +262,7 @@ const Service = () => {
           <p>&copy; {new Date().getFullYear()} Clean and Clear. All rights reserved.</p>
         </div>
       </footer>
+
     </div>
   );
 };
