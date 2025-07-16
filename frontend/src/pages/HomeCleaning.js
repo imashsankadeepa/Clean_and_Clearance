@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Helmet } from 'react-helmet';    // Import Helmet for SEO
 import './SchoolCleaning.css'; // Reusing styles
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
@@ -50,6 +51,28 @@ const HomeCleaning = () => {
 
   return (
     <div className="school-cleaning">
+      {/* SEO Metadata */}
+      <Helmet>
+        <title>Professional Home Cleaning Services in London | Clean and Clear</title>
+        <meta
+          name="description"
+          content="Complete home cleaning and clearance services in London, including deep cleaning, kitchen and bathroom sanitation, end of tenancy cleaning, and more."
+        />
+        <meta
+          name="keywords"
+          content="home cleaning, house cleaning, deep cleaning, kitchen sanitation, bathroom cleaning, clearance services, London cleaning services"
+        />
+        <meta name="author" content="Clean and Clear" />
+        <meta property="og:title" content="Professional Home Cleaning Services in London | Clean and Clear" />
+        <meta
+          property="og:description"
+          content="Complete home cleaning and clearance services in London, tailored to your needs."
+        />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content={background4} />
+        <meta property="og:url" content={window.location.href} />
+      </Helmet>
+
       {/* Hero Section */}
       <section
         className="hero"
@@ -84,7 +107,11 @@ const HomeCleaning = () => {
           <p>
             Complete home cleaning and clearance services tailored to suit your needs. From deep cleaning to post-party cleanup, we’ve got your space covered.
           </p>
-          <button className="btn primary-btn" onClick={() => handleBookNow("Home Cleaning", currentPlan.price + currentPlan.duration)}>
+          <button
+            className="btn primary-btn"
+            onClick={() => handleBookNow("Home Cleaning", currentPlan.price + currentPlan.duration)}
+            aria-label="Book Home Cleaning Service"
+          >
             Book Now
           </button>
         </motion.div>
@@ -134,13 +161,17 @@ const HomeCleaning = () => {
               transition={{ duration: 0.5, delay: i * 0.2 }}
             >
               <div className="card-image">
-                <img src={item.img} alt={item.title} />
+                <img src={item.img} alt={`${item.title} service image`} />
               </div>
               <div className="card-content">
                 <h3>{item.title}</h3>
                 <p>{item.desc}</p>
               </div>
-              <button className="card-link" onClick={() => handleBookNow(item.title, currentPlan.price + currentPlan.duration)}>
+              <button
+                className="card-link"
+                onClick={() => handleBookNow(item.title, currentPlan.price + currentPlan.duration)}
+                aria-label={`Book ${item.title} service`}
+              >
                 Book Now →
               </button>
             </motion.div>
@@ -157,12 +188,14 @@ const HomeCleaning = () => {
           <button
             className={`btn secondary-btn ${billingType === 'monthly' ? 'active' : ''}`}
             onClick={() => setBillingType('monthly')}
+            aria-pressed={billingType === 'monthly'}
           >
             Monthly
           </button>
           <button
             className={`btn secondary-btn ${billingType === 'yearly' ? 'active' : ''}`}
             onClick={() => setBillingType('yearly')}
+            aria-pressed={billingType === 'yearly'}
           >
             Yearly
           </button>
@@ -176,7 +209,9 @@ const HomeCleaning = () => {
             transition={{ delay: 0.2 }}
           >
             <h3>{currentPlan.title}</h3>
-            <p className="price">{currentPlan.price} <span>{currentPlan.duration}</span></p>
+            <p className="price">
+              {currentPlan.price} <span>{currentPlan.duration}</span>
+            </p>
             <ul>
               {currentPlan.features.map((feature, index) => (
                 <li key={index}>{feature}</li>
@@ -185,6 +220,7 @@ const HomeCleaning = () => {
             <button
               className="btn primary-btn"
               onClick={() => handleBookNow(currentPlan.title, currentPlan.price + currentPlan.duration)}
+              aria-label={`Book ${currentPlan.title}`}
             >
               Book Now
             </button>
@@ -244,16 +280,20 @@ const HomeCleaning = () => {
           </div>
           <div className="footer-section">
             <h4>Contact</h4>
-            <p>123 Cleaning Street<br />
+            <address>
+              123 Cleaning Street<br />
               London, UK<br />
-              info@cleanandclear.com<br />
-              +44 123 456 7890</p>
+              <a href="mailto:info@cleanandclear.com">info@cleanandclear.com</a><br />
+              <a href="tel:+441234567890">+44 123 456 7890</a>
+            </address>
           </div>
           <div className="footer-section">
             <h4>Hours</h4>
-            <p>Monday - Friday: 8am - 8pm<br />
+            <p>
+              Monday - Friday: 8am - 8pm<br />
               Saturday: 9am - 5pm<br />
-              Sunday: Closed</p>
+              Sunday: Closed
+            </p>
           </div>
         </div>
         <div className="footer-bottom">

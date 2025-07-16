@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import './Home.css';
-// Import the separate Team Section CSS
 import { Link } from 'react-router-dom';
-
+import { Helmet } from 'react-helmet';
 
 import cleaning2 from '../assets/cleaning2.webp';
 import p1 from '../assets/p1.webp';
@@ -15,10 +13,12 @@ import ss3 from '../assets/ss3.webp';
 import rr1 from '../assets/rr1.webp';
 import rr2 from '../assets/rr2.webp';
 import rr3 from '../assets/rr3.webp';
+
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-// Register GSAP ScrollTrigger
+import './Home.css';
+
 gsap.registerPlugin(ScrollTrigger);
 
 const Home = () => {
@@ -50,7 +50,6 @@ const Home = () => {
     alert('Quote request submitted! We will contact you shortly.');
   };
 
-  // GSAP Animations for Why Choose Us Section
   useEffect(() => {
     gsap.fromTo(
       '.why-choose-text',
@@ -87,9 +86,9 @@ const Home = () => {
   }, []);
 
   const services = [
-    { id: 1, title: 'Office Cleaning', description: 'Professional office cleaning tailored to your schedule.', image: ss1, buttonStyle: 'outline' },
-    { id: 2, title: 'School Cleaning', description: 'Deep cleaning for a fresh start every season.', image: ss3, buttonStyle: 'filled' },
-    { id: 3, title: 'House Cleaning', description: 'Comprehensive home cleaning services.', image: ss2, buttonStyle: 'outline' },
+    { id: 1, title: 'Office Cleaning', description: 'Professional office cleaning tailored to your schedule.', image: ss1, buttonStyle: 'outline', link: '/services/office-cleaning' },
+    { id: 2, title: 'School Cleaning', description: 'Deep cleaning for a fresh start every season.', image: ss3, buttonStyle: 'filled', link: '/services/school-cleaning' },
+    { id: 3, title: 'House Cleaning', description: 'Comprehensive home cleaning services.', image: ss2, buttonStyle: 'outline', link: '/services/home-cleaning' },
   ];
 
   const teamMembers = [
@@ -98,7 +97,6 @@ const Home = () => {
     { id: 3, name: 'Sathisma', image: p3, description: 'Pro in deep cleaning.', socialLinks: [{ icon: '/images/img_behance.svg', url: '#' }] },
   ];
 
-  // Pricing plans now depend on selectedPlan (monthly/yearly)
   const getPricingPlans = (planType) => {
     if (planType === 'monthly') {
       return [
@@ -108,7 +106,7 @@ const Home = () => {
       ];
     } else {
       return [
-        { id: 1, name: 'Basic Package', price: '$300.00', period: '/year', features: ['Dusting', 'Mopping'], buttonStyle: 'outline' },
+        { id: 1, name: 'Basic Package', price: '$300.00', period: '/year', features: ['Dusting', 'Mopping'], buttonStyle: 'outline', popular: true },
         { id: 2, name: 'Standard Package', price: '$500.00', period: '/year', features: ['Dusting', 'Mopping', 'Vacuuming'], buttonStyle: 'filled', popular: true },
         { id: 3, name: 'Premium Package', price: '$800.00', period: '/year', features: ['Dusting', 'Mopping', 'Deep Clean'], buttonStyle: 'outline' },
       ];
@@ -142,7 +140,6 @@ const Home = () => {
     },
   ];
 
-  // Animation variants for team cards
   const cardVariants = {
     hidden: { opacity: 0, y: 50 },
     visible: (i) => ({
@@ -157,241 +154,363 @@ const Home = () => {
   };
 
   return (
-    <div className="home-container">
-      {/* Hero Section */}
-      <section className="hero-section">
-        <div className="hero-overlay"></div>
-        <div className="container">
-          <div className="hero-content">
-            <p className="hero-subtitle">Welcome to Cleaner World</p>
-            <h1 className="hero-title2">Britain's Most Trusted Cleaning & Clearance Experts</h1>
-            <p className="hero-description">Over 20 years of excellence in cleaning solutions</p>
-            <div className="hero-buttons">
-            
-               <Link to="/services" className="hero-button primary">Book Our Service</Link>
-            </div>
-          </div>
-        </div>
-      </section>
+    <>
+      <Helmet>
+        <title>Oak Roots Cleaning & Clearance UK - Trusted Cleaning Experts</title>
+        <meta
+          name="description"
+          content="Oak Roots provides expert cleaning and clearance services across the UK. Affordable packages, trusted team, and guaranteed satisfaction."
+        />
+        <meta
+          name="keywords"
+          content="cleaning services UK, office cleaning, school cleaning, house cleaning, clearance services, cleaning packages"
+        />
+        <meta name="robots" content="index, follow" />
+        <link rel="canonical" href="https://yourdomain.com/" />
+        <script type="application/ld+json">
+          {`
+          {
+            "@context": "https://schema.org",
+            "@type": "LocalBusiness",
+            "name": "Oak Roots Cleaning & Clearance UK",
+            "image": "https://yourdomain.com/path-to-cleaning2.webp",
+            "telephone": "+44 123 456 7890",
+            "email": "info@cleanandclear.com",
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "123 Cleaning Street",
+              "addressLocality": "London",
+              "addressCountry": "UK"
+            },
+            "url": "https://yourdomain.com",
+            "sameAs": [
+              "https://www.facebook.com/yourpage",
+              "https://twitter.com/yourhandle",
+              "https://www.instagram.com/yourhandle"
+            ]
+          }
+          `}
+        </script>
+      </Helmet>
 
-      {/* Services Section */}
-      <section className="services-section">
-        <div className="container">
-          <div className="services-header">
-            <h1 className="section-title">OUR SERVICES - TAILORED TO YOU</h1>
-            <p className="section-description">20+ years of professional service with spotless results</p>
-          </div>
-          <div className="services-grid">
-            {services.map((service) => (
-              <div key={service.id} className="service-card">
-                <img src={service.image} alt={service.title} className="service-image" />
-                <div className="service-details">
-                  <h3 className="service-title">{service.title}</h3>
-                  <p className="service-description">{service.description}</p>
-                 
-                  <Link to="/booking" className='service-button'>book now</Link>
-                </div>
+      <main className="home-container">
+        {/* Hero Section */}
+        <section aria-labelledby="hero-title" className="hero-section">
+          <div className="hero-overlay"></div>
+          <div className="container">
+            <div className="hero-content">
+              <p className="hero-subtitle">Welcome to Cleaner World</p>
+              <h1 id="hero-title" className="hero-title2">
+                Britain's Most Trusted Cleaning & Clearance Experts
+              </h1>
+              <p className="hero-description">Over 20 years of excellence in cleaning solutions</p>
+              <div className="hero-buttons">
+                <Link to="/services" className="hero-button primary" aria-label="Book our cleaning services">
+                  Book Our Service
+                </Link>
               </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Why Choose Us Section */}
-      <section className="why-choose-section">
-        <div className="container">
-          <div className="why-choose-content">
-            <div className="why-choose-text">
-              <p className="why-subtitle">Why Choose Us</p>
-              <h2 className="section-title2">Let Us Be the Secret Behind Your Spotless Space</h2>
-              <p className="section-description">We're not just a service - we're your partners in peace of mind.</p>
-              <ul className="benefits-list">
-                <li className="benefit-item">
-                  <span className="benefit-icon">✔</span> Affordable packages for all budgets
-                </li>
-                <li className="benefit-item">
-                  <span className="benefit-icon">✔</span> Free site surveys
-                </li>
-                <li className="benefit-item">
-                  <span className="benefit-icon">✔</span> After-clean performing options
-                </li>
-                <li className="benefit-item">
-                  <span className="benefit-icon">✔</span> 100% satisfaction guaranteed
-                </li>
-                <li className="benefit-item">
-                  <span className="benefit-icon">✔</span> Loyalty program with discounts for regular customers & schools
-                </li>
-              </ul>
-              <p className="company-name">Oak Roots Cleaning & Clearance UK</p>
-              <button onClick={handleGetQuote} className="cta-button">
-                Get a Quote
-              </button>
-            </div>
-            <div className="why-choose-images">
-              <img src={cleaning2} alt="Cleaning Service" className="main-image" />
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Team Section */}
-      <section className="team-section" aria-labelledby="team-heading">
-        <div className="container">
-          <div className="team-header">
-            <h2 id="team-heading" className="section-title1">Our Expert Team</h2>
-            <p className="section-description">Professionals delivering exceptional cleaning and clearance services across the UK</p>
-          </div>
-          <div className="team-grid">
-            {teamMembers.map((member, index) => (
-              <motion.div
-                key={member.id}
-                className="team-card"
-                custom={index}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, amount: 0.3 }}
-                variants={cardVariants}
-                role="article"
-                aria-labelledby={`team-member-${member.id}`}
-              >
-                <img
-                  src={member.image}
-                  alt={`Portrait of ${member.name}`}
-                  className="team-image"
-                  loading="lazy"
-                />
-                <div className="team-details">
-                  <h3 id={`team-member-${member.id}`} className="team-name">{member.name}</h3>
-                  <p className="team-description">{member.description}</p>
-                  <div className="social-links" role="navigation" aria-label={`Social media links for ${member.name}`}>
-                    {member.socialLinks.map((link, index) => (
-                      <a
-                        key={index}
-                        href={link.url}
-                        className="social-link"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label={`Visit ${member.name}'s ${
-                          link.icon.includes('linkedin') ? 'LinkedIn' :
-                          link.icon.includes('instagram') ? 'Instagram' :
-                          link.icon.includes('behance') ? 'Behance' : 'social'
-                        } profile`}
-                      >
-                        <img src={link.icon} alt="" className="social-icon" />
-                      </a>
-                    ))}
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Pricing Section */}
-      <section className="pricing-section">
-        <div className="pricing-overlay"></div>
-        <div className="container">
-          <div className="pricing-header">
-            <p className="pricing-subtitle">Our Plans</p>
-            <h2 className="section-title4">Choose Your Plan</h2>
-            <div className="plan-toggle">
-              <button onClick={() => setSelectedPlan('monthly')} className={`toggle-button ${selectedPlan === 'monthly' ? 'active' : ''}`}>Monthly</button>
-              <button onClick={() => setSelectedPlan('yearly')} className={`toggle-button ${selectedPlan === 'yearly' ? 'active' : ''}`}>Yearly</button>
+        {/* Services Section */}
+        <section aria-labelledby="services-title" className="services-section">
+          <div className="container">
+            <h2 id="services-title" className="section-title2">
+              Our Services
+            </h2>
+            <div className="services-grid">
+              {services.map((service) => (
+                <article key={service.id} className="service-card">
+                  <Link to={service.link} className="service-link" aria-label={`Learn more about ${service.title}`}>
+                    <img
+                      src={service.image}
+                      alt={`${service.title} Service by Oak Roots UK`}
+                      className="service-image"
+                      loading="lazy"
+                    />
+                    <div className="service-details">
+                      <h3 className="service-title">{service.title}</h3>
+                      <p className="service-description">{service.description}</p>
+                    </div>
+                  </Link>
+                </article>
+              ))}
             </div>
           </div>
-          <div className="pricing-grid">
-            {getPricingPlans(selectedPlan).map((plan,period)  => (
-              <div key={plan.id} className={`pricing-card ${plan.popular ? 'popular' : ''}`}>
-                <h3 className="plan-name">{plan.name}</h3>
-                <div className="price-container">
-                  <span className="price">{plan.price}</span>
-                  <span className="period">{plan.period}</span>
-                </div>
-                <ul className="features-list">
-                  {plan.features.map((feature, index) => (
-                    <li key={index} className="feature-item">{feature}</li>
-                  ))}
+        </section>
+
+        {/* Why Choose Us Section */}
+        <section aria-labelledby="why-choose-title" className="why-choose-section">
+          <div className="container">
+            <div className="why-choose-content">
+              <div className="why-choose-text">
+                <p className="why-subtitle">Why Choose Us</p>
+                <h2 id="why-choose-title" className="section-title2">
+                  Let Us Be the Secret Behind Your Spotless Space
+                </h2>
+                <p className="section-description">We're not just a service - we're your partners in peace of mind.</p>
+                <ul className="benefits-list">
+                  <li className="benefit-item">
+                    <span className="benefit-icon" aria-hidden="true">
+                      ✔
+                    </span>{' '}
+                    Affordable packages for all budgets
+                  </li>
+                  <li className="benefit-item">
+                    <span className="benefit-icon" aria-hidden="true">
+                      ✔
+                    </span>{' '}
+                    Free site surveys
+                  </li>
+                  <li className="benefit-item">
+                    <span className="benefit-icon" aria-hidden="true">
+                      ✔
+                    </span>{' '}
+                    After-clean performing options
+                  </li>
+                  <li className="benefit-item">
+                    <span className="benefit-icon" aria-hidden="true">
+                      ✔
+                    </span>{' '}
+                    100% satisfaction guaranteed
+                  </li>
+                  <li className="benefit-item">
+                    <span className="benefit-icon" aria-hidden="true">
+                      ✔
+                    </span>{' '}
+                    Loyalty program with discounts for regular customers & schools
+                  </li>
                 </ul>
-                <button onClick={() => handleBookNow(plan.name)} className={`plan-button ${plan.buttonStyle}`}>Book Now</button>
+                <p className="company-name">Oak Roots Cleaning & Clearance UK</p>
+                <button onClick={handleGetQuote} className="cta-button" aria-label="Get a quote for cleaning services">
+                  Get a Quote
+                </button>
               </div>
-            ))}
+              <div className="why-choose-images">
+                <img src={cleaning2} alt="Professional cleaning service in action" className="main-image" loading="lazy" />
+              </div>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Blog Section */}
-      <section className="blog-section">
-        <div className="container">
-          <motion.div 
-            className="blog-header"
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            <h2 className="section-title">Latest Cleaning Tips</h2>
-            <p className="section-description">Stay updated with expert advice</p>
-          </motion.div>
+        {/* Team Section */}
+        <section aria-labelledby="team-heading" className="team-section">
+          <div className="container">
+            <header className="team-header">
+              <h2 id="team-heading" className="section-title1">
+                Our Expert Team
+              </h2>
+              <p className="section-description">
+                Professionals delivering exceptional cleaning and clearance services across the UK
+              </p>
+            </header>
+            <div className="team-grid">
+              {teamMembers.map((member, index) => (
+                <motion.article
+                  key={member.id}
+                  className="team-card"
+                  custom={index}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true, amount: 0.3 }}
+                  variants={cardVariants}
+                  aria-labelledby={`team-member-${member.id}`}
+                  tabIndex={0}
+                >
+                  <img
+                    src={member.image}
+                    alt={`Portrait of ${member.name}`}
+                    className="team-image"
+                    loading="lazy"
+                  />
+                  <div className="team-details">
+                    <h3 id={`team-member-${member.id}`} className="team-name">
+                      {member.name}
+                    </h3>
+                    <p className="team-description">{member.description}</p>
+                    <nav className="social-links" aria-label={`Social media links for ${member.name}`}>
+                      {member.socialLinks.map((link, idx) => (
+                        <a
+                          key={idx}
+                          href={link.url}
+                          className="social-link"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          aria-label={`Visit ${member.name}'s ${
+                            link.icon.includes('linkedin')
+                              ? 'LinkedIn'
+                              : link.icon.includes('instagram')
+                              ? 'Instagram'
+                              : link.icon.includes('behance')
+                              ? 'Behance'
+                              : 'social'
+                          } profile`}
+                        >
+                          <img src={link.icon} alt="" className="social-icon" />
+                        </a>
+                      ))}
+                    </nav>
+                  </div>
+                </motion.article>
+              ))}
+            </div>
+          </div>
+        </section>
 
-          <div className="blog-grid">
-            {blogPosts.map((post, index) => (
-              <motion.div 
-                key={post.id}
-                className="blog-card"
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.2 }}
-                whileHover={{ scale: 1.03 }}
-                viewport={{ once: true }}
-              >
-                <img src={post.image} alt={post.title} className="blog-image" />
-                <div className="blog-details">
-                  <p className="blog-meta">{post.author} | {post.date}</p>
-                  <h3 className="blog-title">{post.title}</h3>
-                  <p className="blog-excerpt">{post.excerpt}</p>
-                  <button className="read-more-button">Read More</button>
-                </div>
-              </motion.div>
-            ))}
+        {/* Pricing Section */}
+        <section aria-labelledby="pricing-title" className="pricing-section">
+          <div className="pricing-overlay"></div>
+          <div className="container">
+            <header className="pricing-header">
+              <p className="pricing-subtitle">Our Plans</p>
+              <h2 id="pricing-title" className="section-title4">
+                Choose Your Plan
+              </h2>
+              <div className="plan-toggle" role="tablist" aria-label="Pricing plan toggle">
+                <button
+                  role="tab"
+                  aria-selected={selectedPlan === 'monthly'}
+                  aria-controls="monthly-plan-panel"
+                  id="monthly-plan-tab"
+                  onClick={() => setSelectedPlan('monthly')}
+                  className={`toggle-button ${selectedPlan === 'monthly' ? 'active' : ''}`}
+                >
+                  Monthly
+                </button>
+                <button
+                  role="tab"
+                  aria-selected={selectedPlan === 'yearly'}
+                  aria-controls="yearly-plan-panel"
+                  id="yearly-plan-tab"
+                  onClick={() => setSelectedPlan('yearly')}
+                  className={`toggle-button ${selectedPlan === 'yearly' ? 'active' : ''}`}
+                >
+                  Yearly
+                </button>
+              </div>
+            </header>
+            <div
+              className="pricing-grid"
+              role="tabpanel"
+              id={`${selectedPlan}-plan-panel`}
+              aria-labelledby={`${selectedPlan}-plan-tab`}
+            >
+              {getPricingPlans(selectedPlan).map((plan) => (
+                <article key={plan.id} className={`pricing-card ${plan.popular ? 'popular' : ''}`}>
+                  <h3 className="plan-name">{plan.name}</h3>
+                  <div className="price-container">
+                    <span className="price">{plan.price}</span>
+                    <span className="period">{plan.period}</span>
+                  </div>
+                  <ul className="features-list">
+                    {plan.features.map((feature, index) => (
+                      <li key={index} className="feature-item">
+                        {feature}
+                      </li>
+                    ))}
+                  </ul>
+                  <Link
+                    to="/booking"
+                    className="service-button"
+                    aria-label={`Book now for ${plan.name} cleaning plan`}
+                    onClick={() => handleBookNow(plan.name)}
+                  >
+                    Book Now
+                  </Link>
+                </article>
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Footer */}
-      <footer className="footer">
-        <div className="footer-content">
-          <div className="footer-section">
-            <h3>Clean and Clear</h3>
-            <p>Professional cleaning services for schools and educational facilities.</p>
+        {/* Blog Section */}
+        <section aria-labelledby="blog-title" className="blog-section">
+          <div className="container">
+            <motion.header
+              className="blog-header"
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+            >
+              <h2 id="blog-title" className="section-title">
+                Latest Cleaning Tips
+              </h2>
+              <p className="section-description">Stay updated with expert advice</p>
+            </motion.header>
+
+            <div className="blog-grid">
+              {blogPosts.map((post, index) => (
+                <motion.article
+                  key={post.id}
+                  className="blog-card"
+                  initial={{ opacity: 0, y: 50 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: index * 0.2 }}
+                  whileHover={{ scale: 1.03 }}
+                  viewport={{ once: true }}
+                  tabIndex={0}
+                  aria-labelledby={`blog-post-title-${post.id}`}
+                >
+                  <img src={post.image} alt={post.title} className="blog-image" loading="lazy" />
+                  <div className="blog-details">
+                    <p className="blog-meta">
+                      {post.author} | {post.date}
+                    </p>
+                    <h3 id={`blog-post-title-${post.id}`} className="blog-title">
+                      {post.title}
+                    </h3>
+                    <p className="blog-excerpt">{post.excerpt}</p>
+                    <button className="read-more-button" aria-label={`Read more about ${post.title}`}>
+                      Read More
+                    </button>
+                  </div>
+                </motion.article>
+              ))}
+            </div>
           </div>
-          <div className="footer-section">
-            <h4>Services</h4>
-            <ul>
-              <li>School Cleaning</li>
-              <li>Office Cleaning</li>
-              <li>Commercial Cleaning</li>
-              <li>Special Services</li>
-            </ul>
+        </section>
+
+        {/* Footer */}
+        <footer className="footer" role="contentinfo">
+          <div className="footer-content">
+            <section className="footer-section" aria-label="About Clean and Clear">
+              <h3>Clean and Clear</h3>
+              <p>Professional cleaning services for schools and educational facilities.</p>
+            </section>
+            <section className="footer-section" aria-label="Services offered">
+              <h4>Services</h4>
+              <ul>
+                <li>School Cleaning</li>
+                <li>Office Cleaning</li>
+                <li>Commercial Cleaning</li>
+                <li>Special Services</li>
+              </ul>
+            </section>
+            <section className="footer-section" aria-label="Contact information">
+              <h4>Contact</h4>
+              <address>
+                123 Cleaning Street<br />
+                London, UK<br />
+                <a href="mailto:info@cleanandclear.com">info@cleanandclear.com</a><br />
+                <a href="tel:+441234567890">+44 123 456 7890</a>
+              </address>
+            </section>
+            <section className="footer-section" aria-label="Opening hours">
+              <h4>Hours</h4>
+              <p>
+                Monday - Friday: 8am - 8pm<br />
+                Saturday: 9am - 5pm<br />
+                Sunday: Closed
+              </p>
+            </section>
           </div>
-          <div className="footer-section">
-            <h4>Contact</h4>
-            <p>123 Cleaning Street<br />
-              London, UK<br />
-              info@cleanandclear.com<br />
-              +44 123 456 7890</p>
+          <div className="footer-bottom">
+            <p>&copy; {new Date().getFullYear()} Clean and Clear. All rights reserved.</p>
           </div>
-          <div className="footer-section">
-            <h4>Hours</h4>
-            <p>Monday - Friday: 8am - 8pm<br />
-              Saturday: 9am - 5pm<br />
-              Sunday: Closed</p>
-          </div>
-        </div>
-        <div className="footer-bottom">
-          <p>&copy; {new Date().getFullYear()} Clean and Clear. All rights reserved.</p>
-        </div>
-      </footer>
-    </div>
+        </footer>
+      </main>
+    </>
   );
 };
 

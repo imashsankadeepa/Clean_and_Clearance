@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import './BookingForm.css';
 import axios from 'axios';
 import { useLocation } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 
 const BookingForm = () => {
   const { state } = useLocation();
@@ -70,7 +71,6 @@ const BookingForm = () => {
       setFormData({ name: '', email: '', date: '', plan: '', message: '' });
       setErrors({});
 
-      // Auto-close modal after 3 seconds
       setTimeout(() => {
         setShowSuccessModal(false);
       }, 3000);
@@ -83,49 +83,89 @@ const BookingForm = () => {
 
   return (
     <div className="booking-form-container">
-      <h2>Book a Cleaning Service</h2>
+      <Helmet>
+        <title>Book a Cleaning Service | OAK Roots UK</title>
+        <meta name="description" content="Schedule your professional cleaning service with OAK Roots. Choose from Basic, Standard, or Premium packages and get your space shining." />
+        <meta name="robots" content="index, follow" />
+        <meta property="og:title" content="Book a Cleaning Service | OAK Roots" />
+        <meta property="og:description" content="Fill out the form to schedule residential or office cleaning. Reliable and affordable services in the UK." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://www.cleanndclearnce.uk/book" />
+        <script type="application/ld+json">
+          {`
+          {
+            "@context": "https://schema.org",
+            "@type": "Service",
+            "name": "Cleaning Booking Service",
+            "provider": {
+              "@type": "LocalBusiness",
+              "name": "OAK Roots"
+            },
+            "areaServed": {
+              "@type": "Country",
+              "name": "UK"
+            },
+            "serviceType": "Home and Office Cleaning",
+            "availableChannel": {
+              "@type": "ServiceChannel",
+              "serviceUrl": "https://www.cleanndclearnce.uk/book"
+            }
+          }
+          `}
+        </script>
+      </Helmet>
+
+      <h1>Book a Cleaning Service</h1>
       <p>Fill out the form below to schedule your cleaning appointment.</p>
 
       <form className="booking-form" onSubmit={handleSubmit} noValidate>
-        <label>Name</label>
+        <label htmlFor="name">Name</label>
         <input
-          ref={errors.name && !firstErrorRef.current ? firstErrorRef : null}
-          type="text"
+          id="name"
           name="name"
+          type="text"
           value={formData.name}
           onChange={handleChange}
           className={errors.name ? 'error-input' : ''}
+          ref={errors.name && !firstErrorRef.current ? firstErrorRef : null}
+          aria-invalid={errors.name ? "true" : "false"}
         />
         {errors.name && <span className="error-message">{errors.name}</span>}
 
-        <label>Email</label>
+        <label htmlFor="email">Email</label>
         <input
-          ref={errors.email && !firstErrorRef.current ? firstErrorRef : null}
-          type="email"
+          id="email"
           name="email"
+          type="email"
           value={formData.email}
           onChange={handleChange}
           className={errors.email ? 'error-input' : ''}
+          ref={errors.email && !firstErrorRef.current ? firstErrorRef : null}
+          aria-invalid={errors.email ? "true" : "false"}
         />
         {errors.email && <span className="error-message">{errors.email}</span>}
 
-        <label>Preferred Date</label>
+        <label htmlFor="date">Preferred Date</label>
         <input
-          ref={errors.date && !firstErrorRef.current ? firstErrorRef : null}
-          type="date"
+          id="date"
           name="date"
+          type="date"
           value={formData.date}
           onChange={handleChange}
           className={errors.date ? 'error-input' : ''}
+          ref={errors.date && !firstErrorRef.current ? firstErrorRef : null}
+          aria-invalid={errors.date ? "true" : "false"}
         />
         {errors.date && <span className="error-message">{errors.date}</span>}
 
-        <label>Choose a Plan</label>
+        <label htmlFor="plan">Choose a Plan</label>
         <select
+          id="plan"
           name="plan"
           value={formData.plan}
           onChange={handleChange}
           className={errors.plan ? 'error-input' : ''}
+          aria-invalid={errors.plan ? "true" : "false"}
         >
           <option value="">-- Select Plan --</option>
           <option value="Basic Package - $30">Basic Package - $30</option>
@@ -135,8 +175,9 @@ const BookingForm = () => {
         </select>
         {errors.plan && <span className="error-message">{errors.plan}</span>}
 
-        <label>Additional Notes</label>
+        <label htmlFor="message">Additional Notes</label>
         <textarea
+          id="message"
           name="message"
           placeholder="Tell us more about your cleaning needs..."
           value={formData.message}
@@ -150,11 +191,10 @@ const BookingForm = () => {
         {status && <p className="status-message">{status}</p>}
       </form>
 
-      {/* ✅ Success Modal */}
       {showSuccessModal && (
-        <div className="success-modal">
+        <div className="success-modal" role="alert" aria-live="polite">
           <div className="success-content">
-            <div className="success-icon">✔</div>
+            <div className="success-icon" aria-hidden="true">✔</div>
             <p>Your submission has been received!</p>
           </div>
         </div>

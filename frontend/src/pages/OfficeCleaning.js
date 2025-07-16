@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Helmet } from 'react-helmet';  // <-- import Helmet for SEO
 import './OfficeCleaning.css';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
@@ -21,10 +22,8 @@ const OfficeCleaning = () => {
     window.scrollTo(0, 0);
   }, []);
 
-  // Billing type toggle state
   const [billingType, setBillingType] = useState('monthly');
 
-  // Pricing plans for both billing types
   const pricing = {
     monthly: {
       title: 'Office Cleaning Package',
@@ -53,6 +52,29 @@ const OfficeCleaning = () => {
 
   return (
     <div className="office-cleaning">
+
+      {/* SEO Metadata */}
+      <Helmet>
+        <title>Professional Office Cleaning Services in London | Clean and Clear</title>
+        <meta
+          name="description"
+          content="Reliable and professional office cleaning services to keep your workspace hygienic, fresh, and productive. Flexible plans with daily, weekly, and deep cleaning options."
+        />
+        <meta
+          name="keywords"
+          content="office cleaning, workspace cleaning, desk cleaning, monitor wipes, commercial cleaning, London cleaning services"
+        />
+        <meta name="author" content="Clean and Clear" />
+        <meta property="og:title" content="Professional Office Cleaning Services in London | Clean and Clear" />
+        <meta
+          property="og:description"
+          content="Keep your office clean and hygienic with our tailored office cleaning packages. Flexible monthly and yearly plans available."
+        />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content={background4} />
+        <meta property="og:url" content={window.location.href} />
+      </Helmet>
+
       {/* Hero Section */}
       <section
         className="hero"
@@ -90,6 +112,7 @@ const OfficeCleaning = () => {
           <button
             className="btn primary-btn"
             onClick={() => handleBookNow("Office Cleaning", currentPlan.price + currentPlan.duration)}
+            aria-label="Book Office Cleaning Service"
           >
             Book Now
           </button>
@@ -130,13 +153,17 @@ const OfficeCleaning = () => {
               transition={{ duration: 0.5, delay: i * 0.2 }}
             >
               <div className="card-image">
-                <img src={item.img} alt={item.title} />
+                <img src={item.img} alt={`${item.title} service image`} />
               </div>
               <div className="card-content">
                 <h3>{item.title}</h3>
                 <p>{item.desc}</p>
               </div>
-              <button className="card-link" onClick={() => handleBookNow(item.title, currentPlan.price + currentPlan.duration)}>
+              <button
+                className="card-link"
+                onClick={() => handleBookNow(item.title, currentPlan.price + currentPlan.duration)}
+                aria-label={`Book ${item.title} service`}
+              >
                 Book Now →
               </button>
             </motion.div>
@@ -153,12 +180,14 @@ const OfficeCleaning = () => {
           <button
             className={`btn secondary-btn ${billingType === 'monthly' ? 'active' : ''}`}
             onClick={() => setBillingType('monthly')}
+            aria-pressed={billingType === 'monthly'}
           >
             Monthly
           </button>
           <button
             className={`btn secondary-btn ${billingType === 'yearly' ? 'active' : ''}`}
             onClick={() => setBillingType('yearly')}
+            aria-pressed={billingType === 'yearly'}
           >
             Yearly
           </button>
@@ -181,6 +210,7 @@ const OfficeCleaning = () => {
             <button
               className="btn primary-btn"
               onClick={() => handleBookNow(currentPlan.title, currentPlan.price + currentPlan.duration)}
+              aria-label={`Book ${currentPlan.title}`}
             >
               Book Now
             </button>
@@ -240,22 +270,27 @@ const OfficeCleaning = () => {
           </div>
           <div className="footer-section">
             <h4>Contact</h4>
-            <p>123 Cleaning Street<br />
+            <address>
+              123 Cleaning Street<br />
               London, UK<br />
-              info@cleanandclear.com<br />
-              +44 123 456 7890</p>
+              <a href="mailto:info@cleanandclear.com">info@cleanandclear.com</a><br />
+              <a href="tel:+441234567890">+44 123 456 7890</a>
+            </address>
           </div>
           <div className="footer-section">
             <h4>Hours</h4>
-            <p>Monday - Friday: 8am - 8pm<br />
+            <p>
+              Monday - Friday: 8am - 8pm<br />
               Saturday: 9am - 5pm<br />
-              Sunday: Closed</p>
+              Sunday: Closed
+            </p>
           </div>
         </div>
         <div className="footer-bottom">
           <p>&copy; {new Date().getFullYear()} Clean and Clear. All rights reserved.</p>
         </div>
       </footer>
+
     </div>
   );
 };

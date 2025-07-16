@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Helmet } from 'react-helmet';  // Import Helmet for SEO
 import './SchoolCleaning.css';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
@@ -47,6 +48,29 @@ const SchoolCleaning = () => {
 
   return (
     <div className="school-cleaning">
+
+      {/* SEO Metadata */}
+      <Helmet>
+        <title>Professional School Cleaning Services | Clean and Clear</title>
+        <meta
+          name="description"
+          content="Professional cleaning services tailored for schools and educational facilities, ensuring a clean, safe, and healthy learning environment."
+        />
+        <meta
+          name="keywords"
+          content="school cleaning, educational facility cleaning, classroom cleaning, playground sanitization, janitorial services"
+        />
+        <meta name="author" content="Clean and Clear" />
+        <meta property="og:title" content="Professional School Cleaning Services | Clean and Clear" />
+        <meta
+          property="og:description"
+          content="Reliable and tailored cleaning solutions for schools, including classrooms, playgrounds, and facilities."
+        />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content={background4} />
+        <meta property="og:url" content={window.location.href} />
+      </Helmet>
+
       {/* Hero Section */}
       <section
         className="hero"
@@ -82,7 +106,11 @@ const SchoolCleaning = () => {
             Professional cleaning services tailored for educational facilities,
             ensuring a clean, safe, and healthy learning environment for students and staff.
           </p>
-          <button className="btn primary-btn" onClick={() => handleBookNow("School Cleaning", "Custom")}>
+          <button
+            className="btn primary-btn"
+            onClick={() => handleBookNow("School Cleaning", "Custom")}
+            aria-label="Book School Cleaning Service"
+          >
             Book Now
           </button>
         </motion.div>
@@ -120,13 +148,17 @@ const SchoolCleaning = () => {
               transition={{ duration: 0.5, delay: i * 0.2 }}
             >
               <div className="card-image">
-                <img src={item.img} alt={item.title} />
+                <img src={item.img} alt={`${item.title} service image`} />
               </div>
               <div className="card-content">
                 <h3>{item.title}</h3>
                 <p>{item.desc}</p>
               </div>
-              <button className="card-link" onClick={() => handleBookNow(item.title, "Custom")}>
+              <button
+                className="card-link"
+                onClick={() => handleBookNow(item.title, "Custom")}
+                aria-label={`Book ${item.title} service`}
+              >
                 Book Now →
               </button>
             </motion.div>
@@ -142,12 +174,14 @@ const SchoolCleaning = () => {
           <button
             className={`btn secondary-btn ${billingCycle === 'monthly' ? 'active' : ''}`}
             onClick={() => setBillingCycle('monthly')}
+            aria-pressed={billingCycle === 'monthly'}
           >
             Monthly
           </button>
           <button
             className={`btn secondary-btn ${billingCycle === 'yearly' ? 'active' : ''}`}
             onClick={() => setBillingCycle('yearly')}
+            aria-pressed={billingCycle === 'yearly'}
           >
             Yearly
           </button>
@@ -170,7 +204,11 @@ const SchoolCleaning = () => {
                     <li key={j}>{f}</li>
                   ))}
                 </ul>
-                <button className="btn primary-btn" onClick={() => handleBookNow(plan.title, price)}>
+                <button
+                  className="btn primary-btn"
+                  onClick={() => handleBookNow(plan.title, price)}
+                  aria-label={`Book ${plan.title} plan`}
+                >
                   Book Now
                 </button>
               </motion.div>
@@ -231,10 +269,12 @@ const SchoolCleaning = () => {
           </div>
           <div className="footer-section">
             <h4>Contact</h4>
-            <p>123 Cleaning Street<br />
+            <address>
+              123 Cleaning Street<br />
               London, UK<br />
-              info@cleanandclear.com<br />
-              +44 123 456 7890</p>
+              <a href="mailto:info@cleanandclear.com">info@cleanandclear.com</a><br />
+              <a href="tel:+441234567890">+44 123 456 7890</a>
+            </address>
           </div>
           <div className="footer-section">
             <h4>Hours</h4>
@@ -247,6 +287,7 @@ const SchoolCleaning = () => {
           <p>&copy; {new Date().getFullYear()} Clean and Clear. All rights reserved.</p>
         </div>
       </footer>
+
     </div>
   );
 };
