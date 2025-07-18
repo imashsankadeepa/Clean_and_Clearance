@@ -19,7 +19,7 @@ function AboutUs() {
   return (
     <div className="about-container">
       <Helmet>
-        <title>About Us | OAK Roots Cleaning & Clearance UK</title>
+        <title>About Us | Oak roots cleaning</title>
         <meta
           name="description"
           content="Discover OAK Roots UK – your trusted cleaning and clearance partner. Learn about our mission, vision, and values in delivering eco-friendly, reliable services across the UK."

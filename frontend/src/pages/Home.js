@@ -156,7 +156,7 @@ const Home = () => {
   return (
     <>
       <Helmet>
-        <title>Oak Roots Cleaning & Clearance UK - Trusted Cleaning Experts</title>
+        <title>  Home | Oak roots cleaning</title>
         <meta
           name="description"
           content="Oak Roots provides expert cleaning and clearance services across the UK. Affordable packages, trusted team, and guaranteed satisfaction."

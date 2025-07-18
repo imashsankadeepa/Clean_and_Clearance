@@ -51,7 +51,7 @@ const SchoolCleaning = () => {
 
       {/* SEO Metadata */}
       <Helmet>
-        <title>Professional School Cleaning Services | Clean and Clear</title>
+        <title>School Cleaning Services | Oak roots cleaning</title>
         <meta
           name="description"
           content="Professional cleaning services tailored for schools and educational facilities, ensuring a clean, safe, and healthy learning environment."
