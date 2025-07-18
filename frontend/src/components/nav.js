@@ -14,7 +14,7 @@ function Nav() {
     <header>
       <nav className="navbar" aria-label="Main Navigation">
         <div className="nav-container">
-          <Link to="/" className="logo" aria-label="Oak Roots Home">
+          <Link to="/" className="logo1" aria-label="Oak Roots Home">
             <img
               src={logo}
               alt="Oak Roots Cleaning & Clearance Logo"

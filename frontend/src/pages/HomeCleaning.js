@@ -53,7 +53,7 @@ const HomeCleaning = () => {
     <div className="school-cleaning">
       {/* SEO Metadata */}
       <Helmet>
-        <title>Professional Home Cleaning Services in London | Clean and Clear</title>
+        <title>Home Cleaning Services | Oak roots cleaning</title>
         <meta
           name="description"
           content="Complete home cleaning and clearance services in London, including deep cleaning, kitchen and bathroom sanitation, end of tenancy cleaning, and more."
