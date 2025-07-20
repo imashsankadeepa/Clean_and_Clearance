@@ -66,21 +66,12 @@ o0HJ5YFmatDaceGG52vNAjiX1vtW027g8aANE8wb9NSHZhw7tI6iI1qH0atnjd2FyhaMDc
 AADWDspk8LMV+jZ0q/VtICyWmHRb4wUuVG7s4xF4Ys67gYGKjulvGNTUPt2s/xtWP0EzKZ
 PBL1VGYMKWLzM6TvkkAv1Hq8oLWslRYNrE0aVA+DK+/udaRGdwwfa7cftLjdlLOxDL32U5
 EPmKMmolMAGzAAAAG2ltYXNoc2Fua2FkZWVwYTI3QGdtYWlsLmNvbQECAwQFBgc=
------END OPENSSH PRIVATE KEY-----
+-----END OPENSSH PRIVATE KEY-----}}
 
 port: 22
         source: "."
-        target: "/home/${{oakroots}}/repositories"
+        target: "/home/${{oakroots}}/public_html"
 
-deployment:
-  tasks:
-    - export NODE_ENV=production
-    - cd backend
-    - npm install
-    - pm2 restart server.js --name "backend-app" || pm2 start server.js --name "backend-app"
-    - cd ../frontend
-    - npm install
-    - npm run build
-    - cp -r build/* ../public_html/
+
 
        
