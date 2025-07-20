@@ -10,15 +10,16 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
+    - name: Checkout code
+      uses: actions/checkout@v3
 
-      - name: Deploy to cPanel via SCP
-        uses: appleboy/scp-action@v0.1.3
-        with:
-          host: ${{ secrets.CPANEL_HOST }}
-          username: ${{ secrets.CPANEL_USER }}
-          key: ${{ secrets.CPANEL_SSH_KEY }}
-          port: 22
-          source: "."
-          target: "${{ secrets.DEST_PATH }}"
+    - name: Deploy via SCP
+      uses: appleboy/scp-action@v0.1.3
+      with:
+        host: ${{node238.r-usdatacenter.register.lk}}
+        username: ${{oakroots}}
+        key: ${{ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDQ75A3ISG3owDfdj24dpdLuieycsQpuMxvltcFyIUlxvlRbyVOhSHF7teS7WSOzoTOWd0uNoG/+t5mYfmmKaMZaGGsiW1O5WjKZVv+Q5TmOnugiMM4Fu4XKHX3ot8rFAnjlTPCdlQydyWqwbkIsjKMOL8XrL/vvTazwNCRFcajYhNOyRdw37zr53td/KknZx1ISkl5VE6xTrjJ2yrSV/AhvpD6ZGQRvPBWC4ra3RQqToHiWbHYMW2ncz9ZtjLjDof/ZjJEJ7r0cYxa0WoVPvotIekU2ZACYxJaCFP9O2pkFyO9v/+herSImCnoVDK2qcZj6rPnusRPe4o6ukIQBp8JxoDWNxM3Bi7QbHeTjWjm9MWW6oYfY2Hnb562WoAZLmnzkPVfBKdhLJeaE36VfzvCd0v/FJOgJ5o21PooR5IIoDxw53xxk1DGFsvY/Wz5VYn7av47Ht60O1gh77pXqgazJ3GoRJtu9x1u/+WoqBPc5+leoeMU9Mhpbk4HgfdhrbxeKtQ7wDGN0B7zUUas6hSHnKU8wzeYEmyWU/IZ/hi1V+/t3hgzvH/BlJpClGGQGVNiID87szjOSC3UZfG9U1BOHrdtRdQ/F1wgLxdn2Rwql+MvZ+Y1a0fRNgkMArhlHdinGmx8L7W7Toqw8+fernrutJmH2rxOrC6fGAUNVhH7BQ== imashsankadeepa27@gmail.com
+}}
+        port: 22
+        source: "."
+        target: "/home/${{oakroots}}/public_html/"
