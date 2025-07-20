@@ -1,25 +1,25 @@
-name: Deploy to cPanel
+deployment:
+  tasks:
+    - echo "🔁 Starting deployment..."
 
-on:
-  push:
-    branches:
-      - main
+    - export NODE_ENV=production
 
-jobs:
-  deploy:
-    runs-on: ubuntu-latest
+    - echo "📦 Installing backend dependencies..."
+    - cd backend
+    - npm install
 
-    steps:
-    - name: Checkout code
-      uses: actions/checkout@v3
+    - echo "🚀 Restarting backend app with PM2..."
+    - pm2 restart server.js --name "backend-app" || pm2 start server.js --name "backend-app"
 
-    - name: Deploy via SCP
-      uses: appleboy/scp-action@v0.1.3
-      with:
-        host: ${{node238.r-usdatacenter.register.lk}}
-        username: ${{oakroots}}
-        key: ${{ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQClmPofIGMewtMREyEBAirtoH91iMSw+gi8UUzFClfflpDzoBbHajzWQthJKa8SSU3ls50kuiZUj0bpWWaXAS4WAhTAF/NpY60WPWW5JJTsneSwTZ9JpeBZUSymI+djHf2H8cEiNl1xCzBvlYyPIIVv0I4WvlDVSOih/aUA0T/XJNaqP61D08UpkEorEPdAdev1VA0LJ7yLp2mRfVzopjWuJ4LdTvDS4erAvGvDmuLZG0O83zddu881BKCYgiFO5rSTJUA/x9d/so3/fT8DIlyrH5MbpMN/sKRW9mK8uuFklV4LrhHWXBvymZB897qFV9E8rVe6LrlwqOc1Y5ct3lDWedUJ7hE75z6cyOCSb63CO/I2oovwnKSCtewcumAS8GlukXglojJkGTnr57rvhKLzslOFzMtPgUQJ6+bmwZIlSFtfMVbJRwXwhg/ZoXKNcjJ7X8qG3x76fgttCEDJtTUx6U35hx87zJR6BHXGPJ7FA264v4u13wzZm37EbSeO6IMOvRnhmvuARhCusbiEZ//ZMcnFUUyTWlFx1Lq56ESHray//HhMXMDx/CxGFgEJElbUqI7LxZbvv/mR/SUcJwOXCODoQ0k8GQunuAdfXnWBcIyV10wFf/sJDQv0FKHRdmQwy9l8xgWFOBOqFjXUxLm0+IMTMFruM9aR+1E04it6Fw== imashsankadeepa27@gmail.com
-        }}
-        port: 22
-        source: "."
-        target: "/home/${{oakroots}}public_html"
+    - echo "🧱 Building frontend..."
+    - cd ../frontend
+    - npm install
+    - npm run build
+
+    - echo "🧹 Cleaning old frontend files..."
+    - rm -rf ../public_html/*
+
+    - echo "📤 Deploying frontend to public_html..."
+    - cp -r build/* ../public_html/
+
+    - echo "✅ Deployment finished!"
