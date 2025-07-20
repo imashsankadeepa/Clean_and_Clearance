@@ -70,4 +70,4 @@ EPmKMmolMAGzAAAAG2ltYXNoc2Fua2FkZWVwYTI3QGdtYWlsLmNvbQECAwQFBgc=
 
         port: 22
         source: "."
-        target: "/home/${{oakroots}}/repositories"
+        target: "/home/${{oakroots}}/public_html"
