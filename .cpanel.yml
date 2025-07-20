@@ -1,0 +1,12 @@
+---
+deployment:
+  tasks:
+    - echo "Starting deployment..."
+    - cd frontend
+    - npm install
+    - npm run build
+    - rmdir /s /q ..\public_html
+    - xcopy /e /i /y build ..\public_html
+    - cd ..\backend
+    - npm install
+    - pm2 restart backend || pm2 start server.js --name backend
