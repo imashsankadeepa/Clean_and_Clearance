@@ -33,7 +33,7 @@ function AboutUs() {
         <meta property="og:type" content="website" />
         <meta
           property="og:url"
-          content="https://www.cleanndclearnce.uk/about"
+          content="https://oakrootscleaning.uk/about"
         />
         <meta property="og:image" content={background4} />
         <script type="application/ld+json">
@@ -42,8 +42,8 @@ function AboutUs() {
             "@context": "https://schema.org",
             "@type": "Organization",
             "name": "OAK Roots",
-            "url": "https://www.cleanndclearnce.uk/about",
-            "logo": "https://www.cleanndclearnce.uk/logo.png",
+            "url": "https://oakrootscleaning.uk/about",
+            "logo": "https://oakrootscleaning.uk/logo.png",
             "description": "OAK Roots provides premier eco-friendly cleaning and clearance services across the UK.",
             "address": {
               "@type": "PostalAddress",

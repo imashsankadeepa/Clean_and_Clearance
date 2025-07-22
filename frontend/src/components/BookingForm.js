@@ -65,7 +65,7 @@ const BookingForm = () => {
     setStatus('');
 
     try {
-      await axios.post('http://localhost:5000/api/bookings', formData);
+      await axios.post('https://oakrootscleaning.uk/api/bookings', formData);
       setStatus('✅ Booking successful! Confirmation email sent.');
       setShowSuccessModal(true);
       setFormData({ name: '', email: '', date: '', plan: '', message: '' });
@@ -90,7 +90,7 @@ const BookingForm = () => {
         <meta property="og:title" content="Book a Cleaning Service | OAK Roots" />
         <meta property="og:description" content="Fill out the form to schedule residential or office cleaning. Reliable and affordable services in the UK." />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://www.cleanndclearnce.uk/book" />
+        <meta property="og:url" content="https://oakrootscleaning.uk/book" />
         <script type="application/ld+json">
           {`
           {
@@ -108,7 +108,7 @@ const BookingForm = () => {
             "serviceType": "Home and Office Cleaning",
             "availableChannel": {
               "@type": "ServiceChannel",
-              "serviceUrl": "https://www.cleanndclearnce.uk/book"
+              "serviceUrl": "https://oakrootscleaning.uk/book"
             }
           }
           `}

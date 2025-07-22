@@ -49,7 +49,7 @@ function Contact() {
     const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
 
     try {
-      await axios.post('http://localhost:5000/api/contact', formData);
+      await axios.post('https://oakrootscleaning.uk/api/contact', formData);
 
       window.open(whatsappURL, '_blank');
 
@@ -85,14 +85,14 @@ function Contact() {
           content="Professional cleaning services contact page for schools, offices and commercial spaces in the UK."
         />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://www.cleanandclear.uk/contact" />
+        <meta property="og:url" content="https://oakrootscleaning.uk/contact" />
         <script type="application/ld+json">
           {`
             {
               "@context": "https://schema.org",
               "@type": "LocalBusiness",
               "name": "Clean and Clear",
-              "image": "https://www.cleanandclear.uk/logo.webp",
+              "image": "https://oakrootscleaning.uk/logo.webp",
               "telephone": "+44 123 456 7890",
               "address": {
                 "@type": "PostalAddress",
@@ -101,7 +101,7 @@ function Contact() {
                 "postalCode": "SW1A 1AA",
                 "addressCountry": "UK"
               },
-              "url": "https://www.cleanandclear.uk/contact",
+              "url": "https://oakrootscleaning.uk/contact",
               "sameAs": [
                 "https://facebook.com/yourpage",
                 "https://tiktok.com/@yourprofile",

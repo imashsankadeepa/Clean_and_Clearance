@@ -166,14 +166,14 @@ const Home = () => {
           content="cleaning services UK, office cleaning, school cleaning, house cleaning, clearance services, cleaning packages"
         />
         <meta name="robots" content="index, follow" />
-        <link rel="canonical" href="https://yourdomain.com/" />
+        <link rel="canonical" href="https://oakrootscleaning.uk/" />
         <script type="application/ld+json">
           {`
           {
             "@context": "https://schema.org",
             "@type": "LocalBusiness",
             "name": "Oak Roots Cleaning & Clearance UK",
-            "image": "https://yourdomain.com/path-to-cleaning2.webp",
+            "image": "https://oakrootscleaning.uk/path-to-cleaning2.webp",
             "telephone": "+44 123 456 7890",
             "email": "info@cleanandclear.com",
             "address": {
@@ -182,7 +182,7 @@ const Home = () => {
               "addressLocality": "London",
               "addressCountry": "UK"
             },
-            "url": "https://yourdomain.com",
+            "url": "https://oakrootscleaning.uk",
             "sameAs": [
               "https://www.facebook.com/yourpage",
               "https://twitter.com/yourhandle",

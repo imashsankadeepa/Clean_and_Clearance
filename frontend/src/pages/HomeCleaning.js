@@ -283,7 +283,7 @@ const HomeCleaning = () => {
             <address>
               123 Cleaning Street<br />
               London, UK<br />
-              <a href="mailto:info@cleanandclear.com">info@cleanandclear.com</a><br />
+              <a href="https://oakrootscleaning.uk">https://oakrootscleaning.uk</a><br />
               <a href="tel:+441234567890">+44 123 456 7890</a>
             </address>
           </div>
